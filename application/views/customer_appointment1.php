@@ -41,14 +41,19 @@
                             </h4>
 
                             <div class="col-sm-12">
+                            
                                <div class="panel panel-red">
                                    <div class="panel-heading">
                                      <div class="radio">
+
+
                               <label>
                                   <input type="radio" name="photoserviceRadios" id="photoserviceRadios1" value="option1" checked><h3 class="panel-title">PORTRAITS, COUPLE + FAMILY - 8000.00
                                     </h3>
                               </label>
-                          </div>
+                                      </div>
+
+
                                    </div>
                                    <div class="panel-body">
                                      One-hour photoshoot (maximum 6 people)
@@ -61,109 +66,7 @@
                                    </div>
                                  </div>
                                </div>
-
-                               <div class="col-sm-12">
-                                  <div class="panel panel-red">
-                                      <div class="panel-heading">
-                                        <div class="radio">
-                                 <label>
-                                     <input type="radio" name="photoserviceRadios" id="photoserviceRadios1" value="option1" checked><h3 class="panel-title">PROFESSIONAL HEADSHOTS - 6000.00
-                                       </h3>
-                                 </label>
-                             </div>
-                                      </div>
-                                      <div class="panel-body">
-                                        1-hour photoshoot 10 processed high-resolution, 10 web-versions for website, and 10 watermarked for web sharing photos in a CD
-                                      </div>
-                                    </div>
-                                  </div>
-
-                                  <div class="col-sm-12">
-                                     <div class="panel panel-red">
-                                         <div class="panel-heading">
-                                           <div class="radio">
-                                    <label>
-                                        <input type="radio" name="photoserviceRadios" id="photoserviceRadios1" value="option1" checked><h3 class="panel-title">FRIENDS & FAMILY PARTIES - 5000.00
-                                          </h3>
-                                    </label>
-                                </div>
-                                         </div>
-                                         <div class="panel-body">
-                                           4-hour Photo Coverage
-
-                                           100 Event Photos includes 75 processed high-resolution and web posting photos in a CD
-
-                                           Additional $ 50 / hour
-                                         </div>
-                                       </div>
-                                     </div>
-
-
-                                     <div class="col-sm-12">
-                                        <div class="panel panel-red">
-                                            <div class="panel-heading">
-                                              <div class="radio">
-                                       <label>
-                                           <input type="radio" name="photoserviceRadios" id="photoserviceRadios1" value="option1" checked><h3 class="panel-title">MATERNITY PACKAGE - 6999.00
-                                             </h3>
-                                       </label>
-                                   </div>
-                                            </div>
-                                            <div class="panel-body">
-                                              1 and a half hour Mommy and Daddy Photo Session
-
-                                              25 processed high-resolution and 25 photos for web sharing photos in a CD
-
-                                              Choice of three 8" x 10"
-                                            </div>
-                                          </div>
-                                        </div>
-
-                                        <div class="col-sm-12">
-                                           <div class="panel panel-red">
-                                               <div class="panel-heading">
-                                                 <div class="radio">
-                                          <label>
-                                              <input type="radio" name="photoserviceRadios" id="photoserviceRadios1" value="option1" checked><h3 class="panel-title">NEWBORN PHOTOS - $ 499.00 + tax
-                                                </h3>
-                                          </label>
-                                      </div>
-                                               </div>
-                                               <div class="panel-body">
-                                                 3-hour Photo Session
-
-                                                25 processed high-resolution and 25 photos for web sharing photos in a CD
-
-                                                Choice of three 8" x 10"
-                                               </div>
-                                             </div>
-                                           </div>
-
-                                           <div class="col-sm-12">
-                                              <div class="panel panel-red">
-                                                  <div class="panel-heading">
-                                                    <div class="radio">
-                                             <label>
-                                                 <input type="radio" name="photoserviceRadios" id="photoserviceRadios1" value="option1" checked><h3 class="panel-title">Graduation Package C
-                                                   </h3>
-                                             </label>
-                                         </div>
-                                                  </div>
-                                                  <div class="panel-body">
-                                                      Panel content
-                                                  </div>
-                                                </div>
-                                              </div>
-
-                                              <div class="col-sm-12">
-                                                 <div class="panel panel-red">
-                                                     <div class="panel-heading">
-                                                       <div class="radio">
-                                                <label>
-                                                    <input type="radio" name="photoserviceRadios" id="photoserviceRadios1" value="option1" checked><h3 class="panel-title">MATERNITY + NEWBORN PACKAGE - $ 749.00 + tax
-                                                      </h3>
-                                                </label>
-                                            </div>
+ 
                                                      </div>
                                                      <div class="panel-body">
                                                        1.5-hour Mommy and Daddy Photo Session
