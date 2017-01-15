@@ -40,33 +40,45 @@
 
                             </h4>
 
-                            <div class="col-sm-12">
+                            <div class="col-md-12">
                             
                                <div class="panel panel-red">
-                                   <div class="panel-heading">
-                                     <div class="radio">
+  
+                                  <div class = 'col-md-4'>
+                                      
+                                      <h4>PORTRAITS, COUPLE + FAMILY</4>
+
+                                      <img src="packages_imgs/Desert.jpg" class="img-circle" alt="Cinque Terre" width="150" height="150">
+
+                                       <button class="btn btn-info">View Details</button> 
+
+                                  </div>      
+                              
+                                  <div class = 'col-md-4'>
+                                      <h4>PROFESSIONAL HEADSHOTS</h4>
+                                      
+                                      <img src="packages_imgs/Desert.jpg" class="img-circle" alt="Cinque Terre" width="150" height="150">
+
+                                      <button class="btn btn-info">View Details</button>
+
+                                  </div> 
 
 
-                              <label>
-                                  <input type="radio" name="photoserviceRadios" id="photoserviceRadios1" value="option1" checked><h3 class="panel-title">PORTRAITS, COUPLE + FAMILY - 8000.00
-                                    </h3>
-                              </label>
-                                      </div>
+                                  <div class = 'col-md-4'>
+                                      <h4>FRIENDS & FAMILY PARTIES</h4>
+                                  
+                                      <img src="packages_imgs/Desert.jpg" class="img-circle" alt="Cinque Terre" width="150" height="150">
+
+                                      <button class="btn btn-info">View Details</button>
+
+                                  </div> 
 
 
-                                   </div>
-                                   <div class="panel-body">
-                                     One-hour photoshoot (maximum 6 people)
-
-                                     25 processed high-resolution and 25 photos for web sharing photos in a CD
-
-                                    ,Choice of one 8" x 10" or three 5" x 7" prints.
-
-                                    ADDITIONAL PERSON IN GROUP: $ 9.99 per person includes 3 more photos in CD
-                                   </div>
-                                 </div>
                                </div>
- 
+
+                            </div>
+
+  
                                                      </div>
                                                      <div class="panel-body">
                                                        1.5-hour Mommy and Daddy Photo Session

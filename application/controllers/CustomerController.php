@@ -18,10 +18,42 @@ class CustomerController extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/user_guide/general/urls.html
 	 */
+
+
+	public function __construct(){
+
+        parent::__construct();
+
+		$this->load->model('modelTemplate');
+
+		$this->load->library('session');
+		
+		$data['sales_daily_trans'] 		=	$this->inventoryModel->get_sales_daily_trans();
+
+		// $this->nav_data['ing_requests'] =  $this->inventoryModel->get_ingredient_requests();
+
+
+
+		// $this->session->set_userdata('acct_type', 'admin');
+		// $this->session->set_userdata('username', 'admin');
+
+ 
+		// if($this->session->userdata('username') === NULL){
+
+		// 	redirect(base_url("index.php/vapeLoginController/index"));
+		// }
+
+      }
+
+
+
+
+
 	public function index()
 	{
 
 		$this->load->view('required_pages/header');
+
 		$this->load->view('customer_appointment1');
 		$this->load->view('required_pages/footer');
 	
