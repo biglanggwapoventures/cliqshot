@@ -1,4 +1,4 @@
-<?php class inventoryModel extends CI_Model {
+<?php class modelTemplate extends CI_Model {
 
  
         public function __construct()

@@ -28,20 +28,20 @@ class CustomerController extends CI_Controller {
 
 		$this->load->library('session');
 		
-		$data['sales_daily_trans'] 		=	$this->inventoryModel->get_sales_daily_trans();
+		//* $data['sales_daily_trans'] 		=	$this->inventoryModel->get_sales_daily_trans();
 
-		// $this->nav_data['ing_requests'] =  $this->inventoryModel->get_ingredient_requests();
+		//* $this->nav_data['ing_requests'] =  $this->inventoryModel->get_ingredient_requests();
 
 
 
-		// $this->session->set_userdata('acct_type', 'admin');
-		// $this->session->set_userdata('username', 'admin');
+		//* $this->session->set_userdata('acct_type', 'admin');
+		//* $this->session->set_userdata('username', 'admin');
 
  
-		// if($this->session->userdata('username') === NULL){
+		//* if($this->session->userdata('username') === NULL){
 
-		// 	redirect(base_url("index.php/vapeLoginController/index"));
-		// }
+		//* 	redirect(base_url("index.php/vapeLoginController/index"));
+		//* }
 
       }
 
