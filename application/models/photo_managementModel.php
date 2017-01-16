@@ -1,4 +1,4 @@
-<?php class photographyModel extends CI_Model {
+<?php class Photo_managementModel extends CI_Model {
 
  
         public function __construct()
