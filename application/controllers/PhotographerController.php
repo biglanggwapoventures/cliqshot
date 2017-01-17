@@ -50,7 +50,7 @@ class PhotographerController extends CI_Controller {
 	public function index()
 	{
 
-	 		redirect(base_url("index.php/vapeLoginController/list_packages"));
+	 		redirect(base_url("index.php/PhotographerController/upload_order_album"));
 
 	}
 
@@ -60,11 +60,33 @@ class PhotographerController extends CI_Controller {
 
 		$data['get_packages'] = $this->photo_managementModel->get_packages();
 
-		$this->load->view('required_pages/header');
+		$this->load->view('photographer/photographer_required_pages/header');
 
 		$this->load->view('list_orders', $data);
 		
-		$this->load->view('required_pages/footer');
+		$this->load->view('photographer/photographer_required_pages/footer');
+	
+	}
+
+
+
+	public function my_assigned_orders()
+	{
+
+		$photographer_id = 1; // $this->session->userdata('photographer_id');
+
+		$data['my_assigned_orders'] 			= $this->photo_managementModel->get_my_pending_orders($photographer_id);
+
+		$nav_data['page_name'] 			= "my_pending_orders";
+
+
+		$this->load->view('photographer/photographer_required_pages/header');
+
+		$this->load->view('photographer/photographer_required_pages/nav', $nav_data);
+
+		$this->load->view('photographer/my_assigned_orders', $data);
+		
+		$this->load->view('photographer/photographer_required_pages/footer');
 	
 	}
 
@@ -73,11 +95,15 @@ class PhotographerController extends CI_Controller {
 
 		$data['get_packages'] = $this->photo_managementModel->get_packages();
 
-		$this->load->view('required_pages/header');
+		$nav_data['page_name'] 			= "upload_order_album";
 
-		$this->load->view('list_packages', $data);
+		$this->load->view('photographer/photographer_required_pages/header');
+
+		$this->load->view('photographer/photographer_required_pages/nav', $nav_data);
+
+		$this->load->view('photographer/upload_order_photos', $data);
 		
-		$this->load->view('required_pages/footer');
+		$this->load->view('photographer/photographer_required_pages/footer');
 	
 	}
 

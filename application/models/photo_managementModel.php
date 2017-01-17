@@ -15,6 +15,15 @@
                 return $query->result();
         }
 
+        public function get_my_pending_orders($photographer_id)
+        {
+
+                $this->db->where('photographer_id', $photographer_id);
+
+                $query = $this->db->get('orders');
+
+                return $query->result();
+        }
 
 }
 
