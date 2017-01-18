@@ -24,6 +24,7 @@
                                             <td>Package Name
                                             <td>Date Ordered
                                             <td>Event Date
+                                            <td>Event Time
                                             <td>Status
                                     </thead>
                                       
@@ -36,9 +37,9 @@
 
                                         <tr><td><?php echo $row->order_id; ?>
                                             <td><?php echo $row->package_name; ?>
-                                            <td><?php echo $row->photographer_id; ?>
                                             <td><?php echo date("M, d Y", strtotime($row->date_ordered)); ?>
                                             <td><?php echo date("M, d Y", strtotime($row->event_date)); ?>
+                                            <td><?php echo date("H:m", strtotime($row->time_ordered)); ?>
                                             <td><?php echo $row->order_status; ?>
 
 

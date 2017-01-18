@@ -1,5 +1,5 @@
 
-		<form action = 'index.php/CustomerController/insert_orders' method = 'POST'>
+		<form action = 'index.php/CustomerController/view_order_receipt' method = 'POST'>
 
 			<p><h4>Package Name: <?php echo $package_info['package_name']; ?> </h4></p>
 	 							 

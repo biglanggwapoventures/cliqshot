@@ -67,6 +67,33 @@ class CustomerController extends CI_Controller {
 	
 	}
 
+	public function view_order_receipt()
+	{
+		$package_id =  $this->input->post('package_id');
+ 
+		$orders_data['package_id'] 			= $package_id ;
+		$orders_data['date_ordered'] 		=  date("Y-m-d");
+		$orders_data['time_ordered'] 		=  $this->input->post('time_ordered');
+		$orders_data['event_date'] 			=  $this->input->post('event_date');
+		$orders_data['package_info'] 		=  $this->customerModel->get_package_info($package_id);
+
+
+		$this->load->view('customer/customer_required_pages/header');
+		
+		$nav_data['page_name'] 			= "view_order_receipt";
+
+		$this->load->view('customer/customer_required_pages/nav', $nav_data );
+
+		$this->load->view('customer/view_order_receipt', $orders_data);
+
+		$this->load->view('customer/customer_required_pages/footer');
+
+		//* $data['get_packages'] = $this->photographyModel->get_packages();
+ 		
+
+	
+	}
+
 	public function insert_orders()
 	{
  
@@ -76,7 +103,7 @@ class CustomerController extends CI_Controller {
 		$orders_data['photographer_id'] 	= '';
 		$orders_data['date_ordered'] 		= date("Y-m-d");
 		$orders_data['time_ordered'] 		=  $this->input->post('time_ordered');
-		$orders_data['event_date'] 			=  $this->input->post('date_event');
+		$orders_data['event_date'] 			=  $this->input->post('event_date');
 		$orders_data['order_status'] 		=  "pending";
 
 		 $this->customerModel->insert_orders($orders_data);
