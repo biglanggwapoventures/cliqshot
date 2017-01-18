@@ -1,0 +1,60 @@
+Clark pasensya na jud kaayo nga nadugay.
+Bitaw mao ni ang naa sa among ui
+
+sa Admin index, butangan nako ug graph sa photo services, kato gani ang main, sa ubos ato pwede butngan ug bar graph which
+nga makadetermine kung unsa nga photo service ang pinakahalin. Di ko kahibaw magbutang sa graphs
+
+sa Inbox makareceive ang customer nga muconfirm ba sila within 24 hours nga mupadayon syag appoint sa photo service, kung dili
+ang gibayran niya nga reservation fee, makuha na.
+
+Ang iiban ra diay sa paypal kay ang reservation fee.
+
+Ang sa photographer module, tig send ra ang photographer sa mga photos sa customer.
+
+Ang sa clerk module, sya ang tig accept sa mga bayranan, makaview sya sa bayad sa customer ug ang appointment date.
+
+if naa gani kuwang sa ui, ingna lang nya ko. Thank you! Sorry kaayo.
+
+Di ko kahibaw kung unsaon pag butang sa calendar, nya ang sulod gani sa calendar kay mga schedule kung kinsa ang nakaavail
+ana, pwede nimo ibutang? sa clerk module ni sya sa view appointment schedule
+
+Bitaw dili ko kamao ug charts. Ang ibutang nga overall earnings chart kay ang pila ka sales gikan january to december sa clerk
+
+Kato gani template nga imo gihatag sa ako nga link, please diay ko iapply toh sa Gallery. Naglisod kog apply ato, and bati
+ako pagbutang ato
+
+Same ra ang dashboard sa admin ug clerk. 
+
+Ang sa notifications diay, kato gani bell something, diha makanotify kung nasend na ang photo gallery ug mga announcements pud
+
+If naa kay ma-add, okay ra jud. ingna lang mi
+
+Ang sa view gallery sa photo management, katong gisend nimo sa ako nga link mao to iapply, unya by folder sa first, kana gani
+pina fb. Same ra ang view gallery sa photographer account ug customer account
+
+After 3 months diay, madelete automatic ang photos gikan sa customer.
+
+Makaupload ra ang photographer ug photos kung apil sa package ang giappoint nila
+Ibutang daw sa drive d ang mga photos ana si sir tok, kahibaw ka unsaon pagapply sa drive d?
+
+makamessage ang customer sa admin, clerk ug photographer didto sa inbox. himoa lang ug modal
+
+ang home sa photographer, galibog mi tanan unsa ang ibutang. Unsay suggestion nimo? Kay wala mi mahuna hunaan since 
+ang gamit ra sa photographer kay tig upload ug photos
+
+I think sayop ang view gallery sa customer, ichange sya ug katong gisend nimo sa ako nga link. Thanks!
+
+ang sa paypal ba, ikaw nalang add ato ha. Muadd ra mi ug bayad clark. Thank you kaayo sa tanan!
+
+clark pwede idownload as pdf ang whole receipt sa customers? reservation fee lang sa ang iiban sa paypal para makaappoint.
+
+Sa view appointment sa customer, if malagpas gani ug 24 hours nga walay confirmation. Automatic Cancel ilang appointment
+Pero if nakaconfirm na gani pero ila gi cancel after 24 hours, ang reservation fee kay non refundable na
+
+Ang sa login system diay, ang customer ra ang makacreate account, sa admin ra makacreate ug account ang photographer ug clerk
+
+
+
+Thank you Clark! Belated Merry Christmas and Happy New Year :)
+
+
