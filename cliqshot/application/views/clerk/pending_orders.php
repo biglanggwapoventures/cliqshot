@@ -45,7 +45,7 @@
 
                                                 <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-success btn-sm' > Approve Order</a>
                                                 <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-info btn-sm' > Reschedule Order</a>
-                                                <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-danger btn-sm' > Cancel Order</a>
+                                                <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-danger btn-sm' > Cancel Ordered</a>
 
 
 
