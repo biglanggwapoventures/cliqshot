@@ -56,7 +56,7 @@
 
                                         <h4> <?php echo $row->package_name; ?> </4>
 
-                                        <img src="<?php echo base_url() . 'packages_imgs/' . $row->package_img; ?>" class="img-circle" alt="Cinque Terre" width="150" height="150">
+                                        <img src="<?php echo base_url() . '/packages_imgs/' . $row->package_img; ?>" class="img-circle" alt="Cinque Terre" width="150" height="150">
 
                                          <a href = "#"  
 

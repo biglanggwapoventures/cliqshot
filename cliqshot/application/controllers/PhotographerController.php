@@ -122,6 +122,41 @@ class PhotographerController extends CI_Controller {
 	
 	}
 
+	public function upload_multiples(){
+
+		// Count # of uploaded files in array
+
+		$total = count($_FILES['photos_uploaded']['name']);
+
+		// Loop through each file
+		for($i=0; $i<$total; $i++) {
+		  //Get the temp file path
+		  $tmpFilePath = $_FILES['photos_uploaded']['tmp_name'][$i];
+
+		  //Make sure we have a filepath
+		  if ($tmpFilePath != ""){
+		    
+		    //Setup our new file path
+		   	// File Path should have folder name the same name in album name/title
+		   	 
+		    $newFilePath = "uploadFiles/" . $_FILES['photos_uploaded']['name'][$i];
+
+		    // File name should be uniq and random
+		    
+		    //* Store it in DB
+
+		    //Upload the file into the temp dir
+		    if(move_uploaded_file($tmpFilePath, $newFilePath)) {
+
+		      //Handle other code here
+
+		    }
+		  }
+
+
+	}
+
+}
 
 //* For Uploading Packages
 

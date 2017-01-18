@@ -86,6 +86,35 @@ class ClerkController extends CI_Controller {
 	
 	}
 
+		public function approved_orders(){
+
+
+		$data['my_orders'] = $this->ClerkModel->get_pending_orders();
+
+
+		$this->load->view('clerk/clerk_required_pages/header');
+
+		$nav_data['page_name'] 			= "approved_orders";
+
+		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
+
+		$this->load->view('clerk/approved_orders', $data);
+		
+		$this->load->view('clerk/clerk_required_pages/footer');
+
+	
+	}
+
+
+		public function approve_order($order_id){
+
+
+				$this->ClerkModel->approve_order($order_id);	
+
+
+				redirect('ClerkController/pending_orders');
+		}
+
 
 
 }

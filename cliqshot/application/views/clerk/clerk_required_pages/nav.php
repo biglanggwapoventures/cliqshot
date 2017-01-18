@@ -15,9 +15,15 @@
 
 
 
-                    <li <?php     if($page_name == 'my_appointments') echo "class = 'active' "; ?>>
-                        <a href="my_appointments"><i class="fa fa-fw fa-picture-o"></i> 
-                        My Appointments</a>
+                    <li <?php     if($page_name == 'pending_orders') echo "class = 'active' "; ?>>
+                        <a href="pending_orders"><i class="fa fa-fw fa-picture-o"></i> 
+                        Pending Orders</a>
+                    </li>
+
+
+                    <li <?php     if($page_name == 'approved_orders') echo "class = 'active' "; ?>>
+                        <a href="approved_orders"><i class="fa fa-fw fa-picture-o"></i> 
+                        Approved Orders</a>
                     </li>
 
                 </ul>

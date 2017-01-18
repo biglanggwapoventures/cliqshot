@@ -45,6 +45,24 @@
         }
 
 
+        public function get_approve_orders()
+        {
+
+
+
+                $this->db->where("order_status", "approve");
+    
+                $this->db->join('package', 'package.package_id= orders.package_id');
+ 
+                $query = $this->db->get('orders');
+                
+                $result =  $query->result();
+
+               
+
+                return $result;
+        }
+
         public function get_pending_orders()
         {
 
@@ -63,6 +81,12 @@
                 return $result;
         }
 
+         public function approve_order($order_id)
+        {
+              $this->db->set('order_status', "approve");
+              $this->db->where('order_id', $order_id);
+              $this->db->update('orders');
+        }       
 
 }
 
