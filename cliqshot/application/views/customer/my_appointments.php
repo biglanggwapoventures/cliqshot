@@ -10,12 +10,16 @@
 
                         <div class="row">
                             
-                            <div class="col-md-12">
-                            
-                               <div class="panel panel-red">
+                            <div class="col-lg-12">
+                            <div class="panel panel-default">
+                                     <div class="panel-heading">
+                                         Client List
+                                      </div>
+                                    <!-- /.panel-heading -->
+                                     <div class="panel-body">
   
                                     
-                                    <table class ='table table-striped table-condensed'>
+                                    <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
 
                                     <thead>
 
@@ -54,4 +58,5 @@
 
                             </div>
                     </div>
+                    </td>
                                                   

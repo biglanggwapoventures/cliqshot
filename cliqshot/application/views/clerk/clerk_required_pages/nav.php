@@ -26,6 +26,12 @@
                         Approved Orders</a>
                     </li>
 
+                     <li <?php     if($page_name == 'assigned_orders') echo "class = 'active' "; ?>>
+                        <a href="assigned_orders"><i class="fa fa-fw fa-picture-o"></i> 
+                        Assigned Orders</a>
+                    </li>
+
+
                 </ul>
             </div>
 

@@ -8,9 +8,13 @@
 
                                   <h2>Package Details</h2>
 
+                                  
+
                                </div>
 
                               <div  id = "package_details"> 
+
+
 
 
                               </div>

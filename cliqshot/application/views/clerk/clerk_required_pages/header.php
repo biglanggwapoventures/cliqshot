@@ -9,7 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Cliqshot | Member</title>
+    <title>Cliqshot | Clerk</title>
 
     <!-- Bootstrap Core CSS -->
 
@@ -27,7 +27,14 @@
     <link href="<?php echo 'http://localhost/cliqshot/cliqshot/assets/font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">    
 
     <link href="<?php echo 'http://localhost/cliqshot/cliqshot/assets/font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">
-    
+        
+
+    <!-- DataTables JavaScript -->
+
+    <script src="<?php echo 'http://localhost/cliqshot/cliqshot/assets/js/jquery.js'; ?>"></script>    
+    <script src="<?php echo base_url();?>assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="<?php echo base_url();?>assets/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
+
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>

@@ -43,7 +43,7 @@
                                             <td><?php echo $row->order_status; ?>
                                             <td>
 
-                                                <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-success btn-sm' > Assign Photographer</a>
+                                                <a href= "select_photographer/<?php echo $row->order_id; ?>" class= 'btn btn-success btn-sm' > Select  a Photographer</a>
                                                 <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-info btn-sm' > View Order</a>
                                                
 

@@ -55,15 +55,15 @@ class ClerkController extends CI_Controller {
 		$data['get_packages'] = $this->photo_managementModel->get_packages();
 
 
-		$this->load->view('customer/customer_required_pages/header');
+		$this->load->view('clerk/clerk_required_pages/header');
 		
 		$nav_data['page_name'] 			= "package_lists";
 
-		$this->load->view('customer/customer_required_pages/nav', $nav_data );
+		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
 
 		$this->load->view('customer/list_packages', $data);
 		
-		$this->load->view('customer/customer_required_pages/footer');
+		$this->load->view('clerk/clerk_required_pages/footer');
 	
 	}
 
@@ -89,7 +89,7 @@ class ClerkController extends CI_Controller {
 		public function approved_orders(){
 
 
-		$data['my_orders'] = $this->ClerkModel->get_pending_orders();
+		$data['my_orders'] = $this->ClerkModel->get_approve_orders();
 
 
 		$this->load->view('clerk/clerk_required_pages/header');
@@ -112,9 +112,59 @@ class ClerkController extends CI_Controller {
 				$this->ClerkModel->approve_order($order_id);	
 
 
-				redirect('ClerkController/pending_orders');
+				redirect('ClerkController/approved_orders');
 		}
 
 
+		public function select_photographer($order_id){
+
+
+		$data['photographers']  = $this->ClerkModel->get_photographers();
+		$data['order_info'] 	= $this->ClerkModel->get_order_info($order_id);
+ 
+
+		$this->load->view('clerk/clerk_required_pages/header');
+
+		$nav_data['page_name'] 			= "select_photographer";
+
+		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
+
+		$this->load->view('clerk/select_photographer', $data);
+		
+		$this->load->view('clerk/clerk_required_pages/footer');
+
+	
+	}
+
+
+		public function assign_photographer(){
+
+				$order_id = $this->input->get('order_id');
+				$photographer_id = $this->input->get('photographer_id');
+				
+				$this->ClerkModel->assign_photographer($order_id, $photographer_id);	
+
+
+				redirect('ClerkController/assigned_orders');
+		}
+
+		public function assigned_orders(){
+
+
+		$data['my_orders'] = $this->ClerkModel->get_assigned_orders();
+
+
+		$this->load->view('clerk/clerk_required_pages/header');
+
+		$nav_data['page_name'] 			= "assigned_orders";
+
+		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
+
+		$this->load->view('clerk/assigned_orders', $data);
+		
+		$this->load->view('clerk/clerk_required_pages/footer');
+
+	
+	}
 
 }
