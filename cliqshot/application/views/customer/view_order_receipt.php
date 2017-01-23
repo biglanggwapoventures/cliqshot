@@ -19,7 +19,7 @@
                                 <tbody>
                                     <tr>
                                         <td><?php echo date("M, d Y", strtotime($date_ordered)); ?></td>
-                                        <td><?php echo date("hh:mm", strtotime($time_ordered)); ?></td>
+                                        <td><?php echo date("h:m", strtotime($time_ordered)); ?></td>
 
                                     </tr>
 
