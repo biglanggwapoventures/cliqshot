@@ -606,7 +606,7 @@ class AdminController extends CI_Controller
 
 
 		//DELETE
-	public function delete_photoservices($package_id)
+	public function delete_services($package_id)
 	{
 				$this->photoServicesModel->delete_service($package_id);
 		redirect(site_url('AdminController/read_photoservices'));

@@ -106,7 +106,7 @@ class C_Main extends CI_Controller
 						'clerk_user' => $row['clerk_user']
 					);
 					$this->session->set_userdata($row_data);
-					redirect('ClerkController');
+					redirect('ClerkController/pending_orders');
 				}
 				else
 				{

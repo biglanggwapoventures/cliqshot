@@ -1,6 +1,6 @@
 
-
-<?php $this->load->view('admin/Va_Navbar');?>
+<?php $this->load->view('admin/admin_required_pages/header');?>
+<?php $this->load->view('admin/admin_required_pages/nav');?>
 
         <div id="page-wrapper">
             <div class="row">
@@ -69,4 +69,4 @@
         <!-- /#page-wrapper -->
 
 
-<?php $this->load->view('main/V_Script');?>
+<?php $this->load->view('admin/admin_required_pages/footer');?>

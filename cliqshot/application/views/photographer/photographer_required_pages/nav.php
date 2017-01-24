@@ -9,8 +9,8 @@
                     </li>
 
 
-                    <li <?php     if($page_name == 'my_pending_orders') echo "class = 'active' "; ?>>
-                        <a href="my_assigned_orders"><i class="fa fa-fw fa-user"></i> My Assigned Orders 
+                    <li <?php     if($page_name == 'orders_request') echo "class = 'active' "; ?>>
+                        <a href="orders_request"><i class="fa fa-fw fa-picture-o"></i> Orders Requests 
                         
                         <!-- Count Pending Orders of Photographer -->
 
@@ -20,17 +20,41 @@
 
                     </li>
 
-                    <li <?php     if($page_name == 'my_appointments') echo "class = 'active' "; ?>>
-                        <a href="my_appointments"><i class="fa fa-fw fa-picture-o"></i> 
-                        My Assigned Orders</a>
+                    <li <?php     if($page_name == 'upcoming_orders') echo "class = 'active' "; ?>>
+                        <a href="upcoming_orders"><i class="fa fa-fw fa-picture-o"></i> Upcoming Assigned Orders 
+                        
+                        <!-- Count Upcoming Assigned Orders of Photographer -->
+
+                        <lablel class = 'label label-danger'>5</lablel>
+
+                        </a>
+
+                    </li>
+
+                     <li <?php     if($page_name == 'pending_order_album') echo "class = 'active' "; ?>>
+                        <a href="pending_order_album"><i class="fa fa-fw fa-picture-o"></i> Pending for Album Orders
+                        
+                        <!-- Count Upcoming Assigned Orders of Photographer -->
+
+                        <lablel class = 'label label-success'>3</lablel>
+
+                        </a>
+
+                    </li>
+
+                    <li <?php     if($page_name == 'orders_history') echo "class = 'active' "; ?>>
+                        <a href="orders_history"><i class="fa fa-fw fa-picture-o"></i> My Orders History
+                        
+                        <!-- Count  Orders History  of Photographer -->
+
+                        <lablel class = 'label label-info'>5</lablel>
+
+                        </a>
+
                     </li>
 
 
-                    <li  <?php     if($page_name == 'upload_order_photos') echo "class = 'active' "; ?>>
-                        <a href="customer_gallery.html" ><i class="fa fa-fw fa-picture-o"></i> Uploaded Order Albums</a>
-                    </li>
-
-
+ 
 
                 </ul>
             </div>

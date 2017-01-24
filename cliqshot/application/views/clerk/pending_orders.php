@@ -8,14 +8,18 @@
 
                         </h3>
 
-                        <div class="row">
+                         <div class="row">
                             
                             <div class="col-md-12">
                             
-                               <div class="panel panel-red">
-  
-                                    
-                                    <table class ='table table-striped table-condensed'>
+                                <div class="panel panel-default">
+                        <div class="panel-heading">
+                            List of Pending Orders
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
+
 
                                     <thead>
 
@@ -26,6 +30,7 @@
                                             <td>Event Date
                                             <td>Event Time
                                             <td>Status
+                                            <td>Options
                                     </thead>
                                       
                                     <?php
@@ -59,4 +64,9 @@
 
                             </div>
                     </div>
+
+                      </div>
+
+                            </div>
+
                                                   

@@ -14,26 +14,19 @@
     <!-- Bootstrap Core CSS -->
 
 
-     <link href="<?php echo 'http://localhost/cliqshot/cliqshot/assets/css/bootstrap.min.css'; ?>" rel="stylesheet">
+     <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
+    <link href="<?php echo base_url();?>assets/css/sb-admin.css" rel="stylesheet">
 
-     <link href="<?php echo 'http://localhost/cliqshot/cliqshot/assets/css/sb-admin.css'; ?>" rel="stylesheet">
+    <!-- Morris Charts CSS -->
+    <link href="<?php echo base_url();?>assets/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
+    <link href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <link href="<?php echo 'http://localhost/cliqshot/cliqshot/assets/font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">
-
-    <link href="<?php echo 'http://localhost/cliqshot/cliqshot/assets/font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">    
-
-    <link href="<?php echo 'http://localhost/cliqshot/cliqshot/assets/font-awesome/css/font-awesome.min.css'; ?>" rel="stylesheet" type="text/css">
         
 
-    <!-- DataTables JavaScript -->
-
-    <script src="<?php echo 'http://localhost/cliqshot/cliqshot/assets/js/jquery.js'; ?>"></script>    
-    <script src="<?php echo base_url();?>assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
-    <script src="<?php echo base_url();?>assets/vendor/datatables-plugins/dataTables.bootstrap.min.js"></script>
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -146,7 +139,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('clerk_user') ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -159,7 +152,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="<?php echo site_url('C_Main/logout');?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
                         </li>
                     </ul>
                 </li>

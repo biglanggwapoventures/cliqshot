@@ -30,8 +30,17 @@
                                     </table>
                             </div>
 
-                            <div class="panel panel-blue">
-                                    <table class ='table table-striped table-condensed'>
+                             <div class="row">
+                            
+                            <div class="col-md-12">
+                            
+                                <div class="panel panel-default">
+                        <div class="panel-heading">
+                            List of Assigned Orders
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <table width="100%" class="table table-striped table-bordered table-hover" id="dataTables-example">
 
                                     <thead>
 
@@ -40,6 +49,7 @@
                                             <td>Photographer User Name
                                             <td>Photographer Name
                                             <td>Date Email
+                                            <td>Options
 
                                     </thead>
                                       
@@ -71,4 +81,9 @@
 
                             </div>
                     </div>
+                    </div>
+
+                            </div>
+                    </div>
+
                                                   

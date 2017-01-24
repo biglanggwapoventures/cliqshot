@@ -75,12 +75,13 @@
         }
 
 
-        public function get_approve_orders()
+        public function get_approved_orders()
         {
 
 
 
                 $this->db->where("order_status", "approve");
+                $this->db->where("assign_status", "not_assigned");
                 $this->db->where("photographer_id", 0);
     
                 $this->db->join('package', 'package.package_id= orders.package_id');
@@ -99,9 +100,12 @@
 
 
 
-                $this->db->where("photographer_id !=", 0);
+                $this->db->where("orders.photographer_id !=", 0);
+                $this->db->where("assign_status ", 'assigned');
     
                 $this->db->join('package', 'package.package_id= orders.package_id');
+
+                $this->db->join('photographer', 'photographer.photographer_id= orders.photographer_id');
  
                 $query = $this->db->get('orders');
                 
@@ -112,12 +116,26 @@
                 return $result;
         }
 
+        public function get_upcoming_orders()
+        { 
+                $this->db->where("orders.photographer_id !=", 0);
+                $this->db->where('assign_status', 'assigned');
+                $this->db->where('event_date <=', date("Y-m-d"));
+
+                $this->db->join('package', 'package.package_id= orders.package_id');
+                $this->db->join('photographer', 'photographer.photographer_id= orders.photographer_id');
+
+                $query = $this->db->get('orders');
+
+                return $query->result();
+        }
+
         public function get_pending_orders()
         {
 
 
 
-                $this->db->where("order_status", "approve");
+                $this->db->where("order_status", "pending");
         
                 $this->db->join('package', 'package.package_id= orders.package_id');
  
@@ -140,6 +158,7 @@
           public function assign_photographer($order_id, $photographer_id)
         {
               $this->db->set('photographer_id', $photographer_id);
+              $this->db->set('assign_status', 'pending_assignment');
               $this->db->where('order_id', $order_id);
               $this->db->update('orders');
         }       
