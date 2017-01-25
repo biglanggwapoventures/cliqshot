@@ -17,8 +17,7 @@
                                 </thead>
 
                                 <tbody>
-                                    <tr>
-                                        <td><?php echo date("M d, Y", strtotime($event_date)); ?></td>
+                                    <tr> 
                                         <td><?php echo date("h:m", strtotime($time_ordered)); ?></td>
 
                                     </tr>
