@@ -10,7 +10,8 @@
 
 			<tr>
 				<td>Order #
-				<td>Customer Id
+				<td>Package Name
+				<td>Customer Name
 				<td>Date Ordered
 				<td>Order Status
 
@@ -20,11 +21,11 @@
 
 					<tr>
 						<td><?php echo $row->order_id; ?>
-						<td><?php echo $row->user_id; ?>
+						<td><?php echo $row->package_name; ?>
+						<td><?php echo $row->client_fullname; ?>
 						<td><?php echo $row->order_id; ?>
 
 						<td>
-							<a href= "upload_order_album?order_id=<?php echo $row->order_id; ?>" class = 'btn btn-primary'> Upload </a>
 	 						<a href= "approve_assignment" class = 'btn btn-info'> View Order Details</a>
 	 
 

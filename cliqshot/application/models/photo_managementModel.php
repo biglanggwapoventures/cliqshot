@@ -19,7 +19,13 @@
         {
 
                 $this->db->where('photographer_id', $photographer_id);
+
                 $this->db->where('assign_status', 'pending_assignment');
+
+                $this->db->join('package', 'package.package_id = orders.package_id');
+
+                $this->db->join('customer', 'customer.client_id = orders.user_id');
+
                //. $this->db->where('order_status', 'approve');
 
                 $query = $this->db->get('orders');
@@ -29,6 +35,10 @@
 
         public function get_upcoming_orders($photographer_id)
         {
+
+                $this->db->join('package', 'package.package_id = orders.package_id');
+
+                $this->db->join('customer', 'customer.client_id = orders.user_id');
 
                 $this->db->where('photographer_id', $photographer_id);
                 $this->db->where('assign_status', 'assigned');
@@ -45,6 +55,11 @@
                  $this->db->where('assign_status', 'assigned');
                  $this->db->where('event_date >', date("Y-m-d"));
 
+
+                $this->db->join('package', 'package.package_id = orders.package_id');
+
+                $this->db->join('customer', 'customer.client_id = orders.user_id');
+
                 $query = $this->db->get('orders');
 
                 return $query->result();
@@ -55,7 +70,12 @@
 
                 $this->db->where('uploaded_status', 'uploaded');
 
-                $query = $this->db->get('orders');
+
+                $this->db->join('package', 'package.package_id = orders.package_id');
+
+                $this->db->join('customer', 'customer.client_id = orders.user_id');
+
+                $query = $this->db->get("orders");
 
                 return $query->result();
         }
@@ -67,9 +87,14 @@
                 $this->db->select("*");
                 $this->db->from("orders");
                 $this->db->where("order_id", $order_id);
-                $this->db->join('package', 'package.package_id = package.package_id');
-                $query = $this->db->get();
+  
 
+                $this->db->join('package', 'package.package_id = orders.package_id');
+
+                $this->db->join('customer', 'customer.client_id = orders.user_id');
+
+                $query = $this->db->get();
+ 
                 $result =  $query->row_array();
                
                  

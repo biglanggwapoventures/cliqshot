@@ -17,7 +17,7 @@
 	 								<input type='hidden' name='package_id' id = 'package_id' 
 	 											value = ' <?php echo $package_info['package_id']; ?>' required /> 
 
-	 								Date of Event: <input type = 'date' name = 'date_event' required />
+	 								Date of Event: <input type = 'date' name = 'event_date' required />
 	 								Time Ordered: <input type = 'time' name = 'time_ordered' required />
 
                               <div class='modal-footer'>

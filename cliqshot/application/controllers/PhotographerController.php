@@ -54,7 +54,7 @@ class PhotographerController extends CI_Controller {
 	public function index()
 	{
 
-	 		redirect(base_url("index.php/PhotographerController/upload_order_album"));
+	 		redirect(base_url("index.php/PhotographerController/upcoming_orders"));
 
 	}
 
@@ -168,22 +168,22 @@ class PhotographerController extends CI_Controller {
 		$nav_data['page_name'] 			= "view_album_gallery";
 
 
-		$this->load->view('photographer/photographer_required_pages/header');
+//		$this->load->view('photographer/photographer_required_pages/header_view_album_gallery');
 
-		$this->load->view('photographer/photographer_required_pages/nav', $nav_data);
+//		$this->load->view('photographer/photographer_required_pages/nav', $nav_data);
 
 		$this->load->view('photographer/view_album_gallery', $data);
 		
-		$this->load->view('photographer/photographer_required_pages/footer');
+//*		$this->load->view('photographer/photographer_required_pages/footer');
 	
 	}
 
 	public function upload_order_album()
 	{
 		$order_id =  $this->input->get('order_id');
-		$data['get_packages'] = $this->photo_managementModel->get_packages();
-		$data['order_id']	  = $order_id;
-		$data['order_info']	  =  $this->photo_managementModel->get_order_info($order_id);
+		$data['get_packages']         = $this->photo_managementModel->get_packages();
+		$data['order_id']	  		  = $order_id;
+		$data['order_info']	 		  =  $this->photo_managementModel->get_order_info($order_id);
 
 		$nav_data['page_name'] 			= "upload_order_order";
 

@@ -1,4 +1,4 @@
-<div class="panel panel-primary">
+`<div class="panel panel-primary">
                                                     <div class="panel-heading">
                                                         <h3 class="panel-title">Appointment Details</h3>
                                                     </div>
@@ -9,8 +9,8 @@
                                 <thead>
                                     <tr>
 
-                                        <th>Date of Appointment</th>
-                                        <th>Time of Appointment</th>
+                                        <th>Date of Event</th>
+                                        <th>Time of Event</th>
 
                                     </tr>
 
@@ -18,7 +18,7 @@
 
                                 <tbody>
                                     <tr>
-                                        <td><?php echo date("M, d Y", strtotime($date_ordered)); ?></td>
+                                        <td><?php echo date("M d, Y", strtotime($event_date)); ?></td>
                                         <td><?php echo date("h:m", strtotime($time_ordered)); ?></td>
 
                                     </tr>

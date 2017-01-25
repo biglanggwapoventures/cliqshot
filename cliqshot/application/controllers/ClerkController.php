@@ -197,7 +197,7 @@ class ClerkController extends CI_Controller {
 		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
  
 
-		$this->load->view('photographer/pending_order_album', $data);
+		$this->load->view('clerk/pending_order_album', $data);
 		
 		$this->load->view('clerk/clerk_required_pages/footer');
 
@@ -217,8 +217,47 @@ class ClerkController extends CI_Controller {
  
 		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
 
-		$this->load->view('photographer/orders_history', $data);
+		$this->load->view('clerk/orders_history', $data);
 		
 		$this->load->view('clerk/clerk_required_pages/footer');	
 	}
+
+	public function view_album_gallery()
+	{
+
+ 
+		$data['uploaded_album_order'] 	= $this->photo_managementModel->get_orders_history();
+
+		$nav_data['page_name'] 			= "view_album_gallery";
+
+
+//		$this->load->view('photographer/photographer_required_pages/header_view_album_gallery');
+
+//		$this->load->view('photographer/photographer_required_pages/nav', $nav_data);
+
+		$this->load->view('clerk/view_album_gallery', $data);
+		
+//*		$this->load->view('photographer/photographer_required_pages/footer');
+	
+	}
+	public function reports()
+	{
+
+ 
+		$data['uploaded_album_order'] 	= $this->photo_managementModel->get_orders_history();
+
+ 		$nav_data['page_name'] 			= "reports";
+
+		$data= 'data';
+
+ 		$this->load->view('clerk/clerk_required_pages/header');
+
+ 		$this->load->view('clerk/clerk_required_pages/nav', $nav_data);
+
+		$this->load->view('clerk/reports', $data);
+		
+ 		$this->load->view('clerk/clerk_required_pages/footer');
+	
+	}
+
 }

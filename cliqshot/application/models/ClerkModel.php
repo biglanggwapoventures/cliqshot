@@ -52,7 +52,7 @@
                 $this->db->select("*");
                 $this->db->from("orders");
                 $this->db->where("order_id", $order_id);
-                $this->db->join('package', 'package.package_id = package.package_id');
+                $this->db->join('package', 'package.package_id = orders.package_id');
                 $query = $this->db->get();
 
                 $result =  $query->row_array();
@@ -158,7 +158,7 @@
           public function assign_photographer($order_id, $photographer_id)
         {
               $this->db->set('photographer_id', $photographer_id);
-              $this->db->set('assign_status', 'pending_assignment');
+              $this->db->set('assign_status', 'assigned');
               $this->db->where('order_id', $order_id);
               $this->db->update('orders');
         }       

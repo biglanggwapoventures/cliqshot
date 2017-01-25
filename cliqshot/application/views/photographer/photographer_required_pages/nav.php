@@ -1,27 +1,28 @@
  <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    <li>
+             <li>
                         <a href="customer_index.html"><i class="fa fa-fw fa-dashboard"></i> Home</a>
                     </li>
 
-                    <li <?php     if($page_name == 'package_lists') echo "class = 'active' "; ?>>
+             <!--        <li <?php     if($page_name == 'package_lists') echo "class = 'active' "; ?>>
                         <a href="index"><i class="fa fa-fw fa-user"></i> Packages </a>
-                    </li>
-
+                    </li>  -->
+<!-- 
 
                     <li <?php     if($page_name == 'orders_request') echo "class = 'active' "; ?>>
                         <a href="orders_request"><i class="fa fa-fw fa-picture-o"></i> Orders Requests 
                         
-                        <!-- Count Pending Orders of Photographer -->
+                        <!-- Count Pending Orders of Photographer 
 
                         <lablel class = 'label label-warning'>5</lablel>
 
                         </a>
 
-                    </li>
+                    </li> -->
 
                     <li <?php     if($page_name == 'upcoming_orders') echo "class = 'active' "; ?>>
-                        <a href="upcoming_orders"><i class="fa fa-fw fa-picture-o"></i> Upcoming Assigned Orders 
+                        <a href="upcoming_orders"><i class="fa fa-fw fa-picture-o"></i> My Scheduled Photography Sessions
+
                         
                         <!-- Count Upcoming Assigned Orders of Photographer -->
 

@@ -1,4 +1,4 @@
-<h2>My Assigned Orders</h2>
+<h2> My Scheduled Photography Sessions </h2>
 
 
 <form action="" method="POST">
@@ -22,7 +22,7 @@
 
 					<tr>
 						<td><?php echo $row->order_id; ?>
-						<td><?php echo $row->user_id; ?>
+						<td><?php echo $row->client_fullname; ?>
 						<td><?php echo $row->date_ordered; ?>
 						<td><?php echo $row->event_date; ?>
   
