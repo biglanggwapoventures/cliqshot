@@ -179,7 +179,7 @@
                                 <a href="<?php echo site_url('AdminController/read_photographer');?>">Photographer</a>
                             </li>
                              <li>
-                                <a href="<?php echo site_url('AdminController/read_member');?>">Client</a>
+                                <a href="<?php echo site_url('AdminController/read_customer');?>">Client</a>
                             </li>
                         </ul>
                     </li>

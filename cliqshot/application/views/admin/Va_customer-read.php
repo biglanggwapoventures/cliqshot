@@ -11,7 +11,7 @@
 
             <div class="row">
                 <div class="col-lg-12">
-                    <a href="<?php echo site_url('AdminController/create_member');?>" class="btn btn-primary">
+                    <a href="<?php echo site_url('AdminController/create_customer');?>" class="btn btn-primary">
                         <i class="fa fa-plus"></i> Add data
                     </a>
                 </div>
@@ -40,7 +40,7 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php $no=1; foreach($data_member AS $client){ ?>
+                                    <?php $no=1; foreach($data_customer AS $client){ ?>
                                     <tr>
                                         <td><?="$no.";?></td>
                                         <td><?=$client->client_username;?></td>
@@ -50,9 +50,9 @@
                                         <td><?=$client->client_contact;?></td>
                                         <td><?=$client->client_birthdate;?></td>
                                         <td>
-                                            <a href="<?=site_url('AdminController/update_member/'.$client->client_id);?>"><i class="fa fa-edit fa-fw" style="color: green;"></i></a>
+                                            <a href="<?=site_url('AdminController/update_customer/'.$client->client_id);?>"><i class="fa fa-edit fa-fw" style="color: green;"></i></a>
                                             &nbsp;|&nbsp;
-                                            <a href="<?=site_url('AdminController/delete_member/'.$client->client_id);?>" onClick="return doconfirm();"><i class="fa fa-trash fa-fw" style="color: red;"></i></a>
+                                            <a href="<?=site_url('AdminController/delete_customer/'.$client->client_id);?>" onClick="return doconfirm();"><i class="fa fa-trash fa-fw" style="color: red;"></i></a>
                                         </td>
                                     </tr>
                                     <?php $no++; } ?>

@@ -18,7 +18,7 @@ class AdminController extends CI_Controller
 		$data['count_admin']  = $this->AdminModel->admin_count()->result();
 		$data['count_photographer'] = $this->AdminModel->photographer_count()->result();
 		$data['count_clerk'] = $this->AdminModel->clerk_count()->result();
-		$data['count_member'] = $this->AdminModel->member_count()->result();
+		$data['count_customer'] = $this->AdminModel->customer_count()->result();
 		$data['count_services'] = $this->AdminModel->services_count()->result();
 
 
@@ -48,7 +48,8 @@ class AdminController extends CI_Controller
 		$data['data_admin']		= $this->AdminModel->tb_admin()->result();
 		$data['data_photographer']		= $this->AdminModel->tb_photographer()->result();
 		$data['data_clerk']		= $this->AdminModel->tb_clerk()->result();
-		$data['data_member']	= $this->AdminModel->tb_member()->result();
+		$data['data_customer']	= $this->AdminModel->tb_customer
+		()->result();
 
 		
 		$nav_data['page_name'] 			= "users";
@@ -143,33 +144,34 @@ class AdminController extends CI_Controller
 	}
 
 
-	/*==================== MODULES MEMBER ====================*/
+	/*==================== MODULES customer ====================*/
 	//CREATE
-	public function create_member()
+	public function create_customer
+	()
 	{
 		//GET REQUIRED DATA FROM DB
 		$data['data_admin']		= $this->AdminModel->tb_admin()->result();
 		$data['data_photographer']	= $this->AdminModel->tb_photographer()->result();
 		$data['data_clerk']	= $this->AdminModel->tb_clerk()->result();
-		$data['data_member']	= $this->AdminModel->tb_member()->result();
+		$data['data_customer']	= $this->AdminModel->tb_customer()->result();
 
 		$nav_data['page_name'] 			= "users";
 
 		$this->load->view('admin/admin_required_pages/nav', $nav_data );
 		
 
-		$this->load->view('admin/Va_member-create', $data);
+		$this->load->view('admin/Va_customer-create', $data);
 	}
-	public function create_member_process()
+	public function create_customer_process()
 	{
-    	$this->form_validation->set_rules('username','USERNAME','required|trim|min_length[5]|max_length[20]|is_unique[member.client_username]',
+    	$this->form_validation->set_rules('username','USERNAME','required|trim|min_length[5]|max_length[20]|is_unique[customer.client_username]',
 					    		array(
 					                'is_unique' => 'This %s already exists.'
 					        	));
-    	$this->form_validation->set_rules('fullname','MEMBER NAME','required');
+    	$this->form_validation->set_rules('fullname','CUSTOMER NAME','required');
     	$this->form_validation->set_rules('address','ADDRESS','required');
     	$this->form_validation->set_rules('birthdate','BIRTH DATE','required');
-    	$this->form_validation->set_rules('email','EMAIL','required|trim|valid_email|is_unique[member.client_email]',
+    	$this->form_validation->set_rules('email','EMAIL','required|trim|valid_email|is_unique[customer.client_email]',
 					    		array(
 					    			'required' => 'Not valid EMAIL address, must be username@domain.com',
 					                'is_unique' => 'This %s already exists.'
@@ -182,7 +184,7 @@ class AdminController extends CI_Controller
 			$nav_data['page_name'] 			= "users";
 
 			$this->load->view('admin/admin_required_pages/nav', $nav_data );
-			$this->load->view('admin/Va_member-create');
+			$this->load->view('admin/Va_customer-create');
 		}
 		else
 		{
@@ -193,38 +195,39 @@ class AdminController extends CI_Controller
 			$data['client_birthdate'] 	= date("Y-m-d", strtotime($this->input->post('birthdate')));
 			$data['client_email'] 	= $this->input->post('email');
 			$data['client_contact'] 	= $this->input->post('contact');
-			$this->AdminModel->create_member($data);
-			redirect(site_url('AdminController/read_member'));
+			$this->AdminModel->create_customer
+			($data);
+			redirect(site_url('AdminController/read_customer'));
 		}
 	}
 
 
     //READ
-	public function read_member()
+	public function read_customer()
 	{
-		$data['data_member'] = $this->AdminModel->tb_member()->result();
+		$data['data_customer'] = $this->AdminModel->tb_customer()->result();
 
 		$nav_data['page_name'] 			= "users";
 
 		$this->load->view('admin/admin_required_pages/nav', $nav_data );
 
 		
-        $this->load->view('admin/Va_member-read', $data);
+        $this->load->view('admin/Va_customer-read', $data);
 	}
 
 
     //UPDATE
-	public function update_member($client_id)
+	public function update_customer($client_id)
 	{
 		//GET REQUIRED DATA FROM DB
-		$data['data_member'] = $this->AdminModel->client_id($client_id)->row();
+		$data['data_customer'] = $this->AdminModel->client_id($client_id)->row();
 
 		$nav_data['page_name'] 			= "users";
 
 		$this->load->view('admin/admin_required_pages/nav', $nav_data );
-        $this->load->view('admin/Va_member-update', $data);
+        $this->load->view('admin/Va_customer-update', $data);
 	}
-	public function update_member_process()
+	public function update_customer_process()
 	{
     	$this->form_validation->set_rules('username','USERNAME','required|trim|min_length[5]|max_length[20]');
     	$this->form_validation->set_rules('fullname','FULL NAME','required');
@@ -239,7 +242,7 @@ class AdminController extends CI_Controller
 			$nav_data['page_name'] 			= "users";
 
 			$this->load->view('admin/admin_required_pages/nav', $nav_data );
-			$this->load->view('admin/Va_member-create');
+			$this->load->view('admin/Va_customer-create');
 		}
 		else
 		{
@@ -250,17 +253,17 @@ class AdminController extends CI_Controller
 			$data['client_birthdate'] 	= date("Y-m-d", strtotime($this->input->post('birthdate')));
 			$data['client_email'] 	= $this->input->post('email');
 			$client_id 	 			= $this->input->post('client_id');
-        	$this->AdminModel->update_member($client_id, $data);
-			redirect(site_url('AdminController/read_member'));
+        	$this->AdminModel->update_customer($client_id, $data);
+			redirect(site_url('AdminController/read_customer'));
 		}
 	}
 
 
     //DELETE
-	public function delete_member($client_id)
+	public function delete_customer($client_id)
 	{
-        $this->AdminModel->delete_member($client_id);
-		redirect(site_url('AdminController/read_member'));
+        $this->AdminModel->delete_customer($client_id);
+		redirect(site_url('AdminController/read_customer'));
 	}
 
 
@@ -277,7 +280,7 @@ class AdminController extends CI_Controller
 		$data['data_admin']		= $this->AdminModel->tb_admin()->result();
 		$data['data_photographer']	= $this->AdminModel->tb_photographer()->result();
 		$data['data_clerk']	= $this->AdminModel->tb_clerk()->result();
-		$data['data_member']	= $this->AdminModel->tb_member()->result();
+		$data['data_customer']	= $this->AdminModel->tb_customer()->result();
 
 		$nav_data['page_name'] 			= "users";
 
@@ -396,7 +399,8 @@ class AdminController extends CI_Controller
 		$data['data_admin']		= $this->AdminModel->tb_admin()->result();
 		$data['data_photographer']	= $this->AdminModel->tb_photographer()->result();
 		$data['data_clerk']	= $this->AdminModel->tb_clerk()->result();
-		$data['data_member']	= $this->AdminModel->tb_member()->result();
+		$data['data_customer
+		']	= $this->AdminModel->tb_customer()->result();
 
 		$nav_data['page_name'] 			= "users";
 

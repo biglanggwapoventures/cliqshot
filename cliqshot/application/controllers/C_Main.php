@@ -43,7 +43,7 @@ class C_Main extends CI_Controller
 		$admin = $this->M_Main->get_admin($username,$password);
 		$clerk = $this->M_Main->get_clerk($username,$password);
 		$photographer = $this->M_Main->get_photographer($username,$password);
-		$client = $this->M_Main->get_member($username,$password);
+		$client = $this->M_Main->get_customer($username,$password);
 
 		if($admin->num_rows() == 1)
 		{
@@ -149,14 +149,14 @@ class C_Main extends CI_Controller
 
     public function register()
     {
-    	$this->form_validation->set_rules('username','USERNAME','required|trim|min_length[5]|max_length[20]|is_unique[member.client_username]',
+    	$this->form_validation->set_rules('username','USERNAME','required|trim|min_length[5]|max_length[20]|is_unique[customer.client_username]',
 					    		array(
 					                'is_unique' => 'This %s already exists.'
 					        	));
     	$this->form_validation->set_rules('fullname','CLIENT NAME','required');
     	$this->form_validation->set_rules('address','ADDRESS','required');
     	$this->form_validation->set_rules('birthdate','BIRTH DATE','required');
-    	$this->form_validation->set_rules('email','EMAIL','required|trim|valid_email|is_unique[member.client_email]',
+    	$this->form_validation->set_rules('email','EMAIL','required|trim|valid_email|is_unique[customer.client_email]',
 					    		array(
 					    			'required' => 'Not valid EMAIL address, must be username@domain.com',
 					                'is_unique' => 'This %s already exists.'
@@ -176,7 +176,7 @@ class C_Main extends CI_Controller
 			$data['client_address'] 	= $this->input->post('address');
 			$data['client_birthdate'] 	= date("Y-m-d", strtotime($this->input->post('birthdate')));
 			$data['client_email'] 	= $this->input->post('email');
-			$this->AdminModel->create_member($data);
+			$this->AdminModel->create_customer($data);
 
 			$pesan['success']  = "Registrasion Success!";
 			$this->load->view('login/V_Login',$pesan);

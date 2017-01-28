@@ -73,14 +73,14 @@
                                     <i class="fa fa-users fa-5x"></i>
                                 </div>
                                 <div class="col-xs-9 text-right">
-                                    <?php foreach($count_member AS $member){ ?>
-                                    <div class="huge"><?=$member->member_count;?></div>
+                                    <?php foreach($count_customer AS $customer){ ?>
+                                    <div class="huge"><?=$customer->customer_count;?></div>
                                     <?php } ?>
-                                    <div>Member</div>
+                                    <div>customer</div>
                                 </div>
                             </div>
                         </div>
-                        <a href="<?php echo site_url('AdminController/read_member');?>">
+                        <a href="<?php echo site_url('AdminController/read_customer');?>">
                             <div class="panel-footer">
                                 <span class="pull-left">View Details</span>
                                 <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

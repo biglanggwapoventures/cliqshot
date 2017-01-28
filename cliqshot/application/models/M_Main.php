@@ -21,9 +21,9 @@ class M_Main extends CI_Model
 		return $query;
 	}
 	
-	public function get_member($username,$password)
+	public function get_customer($username,$password)
 	{
-		$query = $this->db->query("SELECT * FROM member WHERE client_username='$username' AND client_password='$password' ");
+		$query = $this->db->query("SELECT * FROM customer WHERE client_username='$username' AND client_password='$password' ");
 		return $query;
 	}
 

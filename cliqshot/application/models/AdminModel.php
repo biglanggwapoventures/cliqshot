@@ -68,47 +68,47 @@ class AdminModel extends CI_Model {
 	}
 
 
-	/*==================== MODULES MEMBER ====================*/
+	/*==================== MODULES customer ====================*/
 
 	//SELECT * FROM TABLES
-	function tb_member()
+	function tb_customer()
 	{
 		$this->db->select('*')
-				 ->from('member')
+				 ->from('customer')
 				 ->order_by('client_username','asc');
 		return $this->db->get();
 	}
 
-	function member_count()
+	function customer_count()
 	{
-		$this->db->select('COUNT(client_id) AS member_count')
-				 ->from('member');
+		$this->db->select('COUNT(client_id) AS customer_count')
+				 ->from('customer');
 		return $this->db->get();
 	}
 
 	function client_id($client_id)
 	{
 		$this->db->select('*')
-				 ->from('member')
+				 ->from('customer')
 				 ->where('client_id', $client_id);
 		return $this->db->get();
 	}
 
 	//CREATE, UPDATE, DELETE
-	function create_member($data)
+	function create_customer($data)
 	{
-		$this->db->insert('member', $data);
+		$this->db->insert('customer', $data);
 	}
 
-	function update_member($client_id, $data)
+	function update_customer($client_id, $data)
 	{
 		$this->db->where(array('client_id' => $client_id, 'client_id !=' => 1));
-		$this->db->update('member', $data);
+		$this->db->update('customer', $data);
 	}
 
-	function delete_member($client_id)
+	function delete_customer($client_id)
 	{
-		$this->db->delete('member', array(
+		$this->db->delete('customer', array(
 							'client_id' => $client_id,
 							'client_id !=' => 1
 						));
@@ -116,10 +116,10 @@ class AdminModel extends CI_Model {
 
 
 	// Used for paginationsample
-	function paging_member($limit=array())
+	function paging_customer($limit=array())
 	{
 		$this->db->select('*');
-		$this->db->from('member');
+		$this->db->from('customer');
 		$this->db->order_by('client_username', 'asc');
 
 		if ($limit != NULL)
