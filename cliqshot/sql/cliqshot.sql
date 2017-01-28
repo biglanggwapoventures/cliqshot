@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Jan 23, 2017 at 03:02 PM
+-- Generation Time: Jan 28, 2017 at 03:56 AM
 -- Server version: 10.1.13-MariaDB
 -- PHP Version: 7.0.8
 
@@ -82,10 +82,10 @@ INSERT INTO `clerk` (`clerk_id`, `clerk_user`, `clerk_pass`, `clerk_nama`, `cler
 -- --------------------------------------------------------
 
 --
--- Table structure for table `member`
+-- Table structure for table `customer`
 --
 
-CREATE TABLE `member` (
+CREATE TABLE `customer` (
   `client_id` int(10) NOT NULL,
   `client_username` char(20) NOT NULL,
   `client_password` varchar(255) NOT NULL,
@@ -97,11 +97,11 @@ CREATE TABLE `member` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `member`
+-- Dumping data for table `customer`
 --
 
-INSERT INTO `member` (`client_id`, `client_username`, `client_password`, `client_fullname`, `client_address`, `client_birthdate`, `client_email`, `client_contact`) VALUES
-(4, 'macmac123', '47ce138310dbdf748d76087b537e4b48', 'Marc Anthony Ruba', 'Buanoy Balamban, Cebu', '2001-11-21', 'marcanthonyruba@yahoo.com', ''),
+INSERT INTO `customer` (`client_id`, `client_username`, `client_password`, `client_fullname`, `client_address`, `client_birthdate`, `client_email`, `client_contact`) VALUES
+(1, 'macmac123', '47ce138310dbdf748d76087b537e4b48', 'Marc Anthony Ruba', 'Buanoy Balamban, Cebu', '2001-11-21', 'marcanthonyruba@yahoo.com', ''),
 (5, 'jamesgalops', 'a6fb23dabdda8d9ac5849b2933154f53', 'James Galope', 'Zamboanga', '1998-04-01', 'jamesgalops@gmail.com', ''),
 (6, 'sandrajaen', 'f80436703683be68ec27f2227439f412', 'Kassandra Jaen Pepito', 'Liloan', '1997-11-28', 'sandrajaen@gmail.com', ''),
 (8, 'jillbitua', '94ce66c640e9f201ae1314d2c557603b', 'Jill Bitua', 'Argao', '1997-02-01', 'jillbitua@gmail.com', ''),
@@ -110,7 +110,9 @@ INSERT INTO `member` (`client_id`, `client_username`, `client_password`, `client
 (11, 'justinbob', 'cf7eab9d51dc5f0362f34fd54b790e2c', 'Justin Bobby', 'Samar', '1996-06-06', 'justinbob@gmail.com', ''),
 (12, 'Kelly', '90ff14b6291375639077a194a684f55d', 'Quin', 'USA', '1990-01-01', 'kellyquinn@gmail.com', ''),
 (13, 'alexgaskarth', 'd7e135f7aa9a065a94385176da79d853', 'Alex Gaskarth', 'Baltimore, USA', '1987-02-01', 'alexgaskarth@gmail.com', '09324345432'),
-(14, 'lizasoberano', '13430dd07773a07a8af64a45d0b95521', 'Hope Elizabeth Soberano', 'Manila, Philippines', '1998-01-17', 'lizasoberano@gmail.com', '09271234567');
+(14, 'lizasoberano', '13430dd07773a07a8af64a45d0b95521', 'Hope Elizabeth Soberano', 'Manila, Philippines', '1998-01-17', 'lizasoberano@gmail.com', '09271234567'),
+(15, 'janinev', '697229921f6aa5b263f067e0e6c628e0', 'Janine', 'Liloan', '1995-01-16', 'janinev@gmail.com', '09234567890'),
+(16, 'angelolim', 'f625ab125cf3828df31058cdcd32c1ef', 'Angelo Lim', 'Mandaue', '1997-06-02', 'angelolim@gmail.com', '');
 
 -- --------------------------------------------------------
 
@@ -136,19 +138,22 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`order_id`, `package_id`, `user_id`, `photographer_id`, `date_ordered`, `time_ordered`, `event_date`, `order_status`, `assign_status`, `uploaded_status`) VALUES
-(5, 1, 1, 1, '2017-01-23 13:04:43', '12:59:00', '2017-01-19', 'approve', 'pending_assignment', 'not_uploaded'),
-(6, 1, 1, 1, '2017-01-23 13:04:39', '12:02:00', '2017-01-11', 'approve', 'pending_assignment', 'not_uploaded'),
-(7, 1, 1, 3, '2017-01-22 16:03:14', '12:59:00', '2016-12-31', 'approve', 'not_assigned', 'uploaded'),
-(8, 1, 1, 3, '2017-01-22 16:03:00', '23:59:00', '0000-00-00', 'approve', 'not_assigned', 'uploaded'),
-(9, 1, 1, 0, '2017-01-18 16:00:00', '09:00:00', '0000-00-00', 'pending', 'not_assigned', 'uploaded'),
-(10, 1, 1, 0, '2017-01-18 16:00:00', '17:00:00', '0000-00-00', 'pending', 'not_assigned', 'uploaded'),
-(11, 3, 1, 0, '2017-01-19 16:00:00', '09:00:00', '0000-00-00', 'pending', 'not_assigned', 'uploaded'),
-(12, 2, 1, 0, '2017-01-20 16:00:00', '12:59:00', '0000-00-00', 'pending', 'not_assigned', 'uploaded'),
-(13, 1, 1, 0, '2017-01-21 16:00:00', '09:00:00', '0000-00-00', 'pending', 'not_assigned', 'uploaded'),
-(14, 2, 1, 0, '2017-01-21 16:00:00', '09:00:00', '0000-00-00', 'pending', 'not_assigned', 'uploaded'),
-(15, 5, 1, 0, '2017-01-21 16:00:00', '13:00:00', '0000-00-00', 'pending', 'not_assigned', 'uploaded'),
-(16, 5, 1, 0, '2017-01-21 16:00:00', '13:01:00', '0000-00-00', 'pending', 'not_assigned', 'uploaded'),
-(17, 1, 1, 0, '2017-01-21 16:00:00', '09:00:00', '0000-00-00', 'pending', 'not_assigned', 'uploaded');
+(5, 1, 1, 1, '2017-01-24 15:19:05', '12:59:00', '2017-01-31', 'approve', 'assigned', 'not_uploaded'),
+(6, 1, 1, 1, '2017-01-24 15:30:47', '12:02:00', '2017-01-11', 'approve', 'assigned', 'not_uploaded'),
+(7, 1, 1, 1, '2017-01-24 15:20:24', '12:59:00', '2016-12-31', 'approve', 'assigned', 'not_uploaded'),
+(8, 1, 1, 1, '2017-01-24 15:33:35', '23:59:00', '0000-00-00', 'approve', 'assigned', 'not_uploaded'),
+(9, 1, 1, 1, '2017-01-25 03:58:54', '09:00:00', '2017-01-16', 'approve', 'assigned', 'not_uploaded'),
+(10, 1, 1, 1, '2017-01-25 05:50:28', '17:00:00', '2017-01-31', 'approve', 'assigned', 'not_uploaded'),
+(11, 3, 1, 1, '2017-01-25 05:49:59', '09:00:00', '2017-01-31', 'approve', 'pending_assignment', 'not_uploaded'),
+(12, 2, 1, 1, '2017-01-25 03:58:07', '12:59:00', '2017-01-31', 'approve', 'pending_assignment', 'not_uploaded'),
+(13, 1, 1, 1, '2017-01-25 14:23:17', '09:00:00', '2017-01-31', 'approve', 'assigned', 'not_uploaded'),
+(14, 2, 1, 1, '2017-01-25 14:56:15', '09:00:00', '2017-01-31', 'approve', 'assigned', 'not_uploaded'),
+(15, 5, 1, 1, '2017-01-25 10:52:43', '13:00:00', '2017-01-31', 'approve', 'assigned', 'not_uploaded'),
+(16, 5, 1, 3, '2017-01-25 04:00:33', '13:01:00', '2017-01-31', 'approve', 'pending_assignment', 'not_uploaded'),
+(17, 1, 1, 1, '2017-01-24 15:34:35', '09:00:00', '2017-01-22', 'approve', 'assigned', 'uploaded'),
+(18, 1, 1, 1, '2017-01-25 06:13:58', '08:00:00', '0000-00-00', 'approve', 'assigned', 'not_uploaded'),
+(19, 1, 1, 2, '2017-01-25 10:51:57', '09:00:00', '0000-00-00', 'approve', 'pending_assignment', 'not_uploaded'),
+(20, 1, 1, 1, '2017-01-26 03:44:15', '09:00:00', '2017-03-02', 'approve', 'assigned', 'not_uploaded');
 
 -- --------------------------------------------------------
 
@@ -255,9 +260,9 @@ ALTER TABLE `clerk`
   ADD UNIQUE KEY `clerk_user` (`clerk_user`);
 
 --
--- Indexes for table `member`
+-- Indexes for table `customer`
 --
-ALTER TABLE `member`
+ALTER TABLE `customer`
   ADD PRIMARY KEY (`client_id`),
   ADD UNIQUE KEY `member_user` (`client_username`);
 
@@ -288,7 +293,7 @@ ALTER TABLE `photographer`
 -- AUTO_INCREMENT for table `admin`
 --
 ALTER TABLE `admin`
-  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `admin_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
 -- AUTO_INCREMENT for table `album`
 --
@@ -300,15 +305,15 @@ ALTER TABLE `album`
 ALTER TABLE `clerk`
   MODIFY `clerk_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 --
--- AUTO_INCREMENT for table `member`
+-- AUTO_INCREMENT for table `customer`
 --
-ALTER TABLE `member`
-  MODIFY `client_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=15;
+ALTER TABLE `customer`
+  MODIFY `client_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=18;
+  MODIFY `order_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
 --
 -- AUTO_INCREMENT for table `package`
 --
