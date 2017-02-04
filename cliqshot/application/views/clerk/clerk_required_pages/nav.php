@@ -23,7 +23,7 @@
                     </li>
 
                      <li <?php     if($page_name == 'pending_order_album') echo "class = 'active' "; ?>>
-                        <a href="pending_order_album"><i class="fa fa-fw fa-picture-o"></i> Pending for Album Orders
+                        <a href="<?php echo site_url('ClerkController/pending_order_album');?>"><i class="fa fa-fw fa-picture-o"></i> Pending for Album Orders
                         
                         <!-- Count Upcoming Assigned Orders of Photographer -->
 
@@ -34,7 +34,7 @@
                     </li>
 
                     <li <?php     if($page_name == 'orders_history') echo "class = 'active' "; ?>>
-                        <a href="orders_history"><i class="fa fa-fw fa-picture-o"></i> My Orders History
+                        <a href="<?php echo site_url('ClerkController/');?>"><i class="fa fa-fw fa-picture-o"></i> My Orders History
                         
                         <!-- Count  Orders History  of Photographer -->
 
@@ -45,12 +45,21 @@
                     </li>
 
                     <li <?php     if($page_name == 'reports') echo "class = 'active' "; ?>>
-                        <a href="reports"><i class="fa fa-fw fa-picture-o"></i> Reports
+                        <a href="<?php echo site_url('ClerkController/reports');?>"><i class="fa fa-fw fa-picture-o"></i> Reports
                         
                         <!-- Count  Orders History  of Photographer -->
 
                         <lablel class = 'label label-info'>5</lablel>
 
+                        </a>
+
+                    </li>
+
+                    <li <?php     if($page_name == 'calendar') echo "class = 'active' "; ?>>
+                        <a href="calendar"><i class="fa fa-fw fa-picture-o"></i> Calendar View
+                        
+                        <!-- Count  Orders History  of Photographer -->
+ 
                         </a>
 
                     </li>

@@ -159,22 +159,22 @@ class PhotographerController extends CI_Controller {
 				redirect('PhotographerController/upcoming_orders');
 	}
 
-	public function view_album_gallery()
+	public function view_album_gallery($order_id)
 	{
-
  
-		$data['uploaded_album_order'] 	= $this->photo_managementModel->get_orders_history($this->photographer_id);
+		$nav_data['page_name'] 		= "view_album_gallery";
 
-		$nav_data['page_name'] 			= "view_album_gallery";
+		$data['album_details'] 		= $this->photo_managementModel->get_album_details($order_id);
 
+		$data['photos'] 			= $this->photo_managementModel->get_photo_albums($data['album_details'][0]->album_id);
+		
+		$this->load->view('photographer/photographer_required_pages/header_view_album_gallery');
 
-//		$this->load->view('photographer/photographer_required_pages/header_view_album_gallery');
-
-//		$this->load->view('photographer/photographer_required_pages/nav', $nav_data);
+		$this->load->view('photographer/photographer_required_pages/nav', $nav_data);
 
 		$this->load->view('photographer/view_album_gallery', $data);
 		
-//*		$this->load->view('photographer/photographer_required_pages/footer');
+		$this->load->view('photographer/photographer_required_pages/footer');
 	
 	}
 
@@ -213,11 +213,23 @@ class PhotographerController extends CI_Controller {
 	
 	}
 
-	public function upload_multiples(){
+	public function uploadPhotos_album(){
 
 		// Count # of uploaded files in array
 
 		$total = count($_FILES['photos_uploaded']['name']);
+
+		$data['album_id']	  		  = '';
+		$data['order_id']	  		  = $this->input->post('order_id');
+		$data['photographer_id']	  = $this->photographer_id; //* $this->input->post('');
+		$data['album_title']	  	  = $this->input->post('album_title');
+		$data['album_desc']	  	  	  = $this->input->post('album_desc');
+		$data['date_uploaded']	  	  = date("Y-m-d");
+
+		//* Insert Album 
+
+		$album_id	 		  =  $this->photo_managementModel->insertAlbumPhotos($data);
+
 
 		// Loop through each file
 		for($i=0; $i<$total; $i++) {
@@ -233,9 +245,8 @@ class PhotographerController extends CI_Controller {
 		    //Setup our new file path
 		   	// File Path should have folder name the same name in album name/title
 		   	 
-		    $newFilePath = "uploadFiles/" . $_FILES['photos_uploaded']['name'][$i];
-			
-
+		    $newFilePath = "uploadFiles/" . uniqid();
+ 
 		    // File name should be uniq and random
 		    
 		    //* Store it in DB
@@ -243,15 +254,24 @@ class PhotographerController extends CI_Controller {
 		    //Upload the file into the temp dir
 		    if($flag = move_uploaded_file($tmpFilePath, $newFilePath)) {
 				
-				echo $flag;
+				$photo_data['photo_id'] = '';
+				$photo_data['photos_img_url'] = $newFilePath;
+				$photo_data['album_id'] =  $album_id;
+				$photo_data['photo_description'] =  '';
 
+				$this->photo_managementModel->uploadAlbumPhotos($photo_data);
 			      //Handle other code here
 
 			    }
+
 			  }
-
-
+ 
 		}
+
+           $this->photo_managementModel->upload_order_status($data['order_id']);
+
+
+           redirect("PhotographerController/orders_history");
 
 	}
 

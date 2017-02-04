@@ -1,14 +1,8 @@
- <!DOCTYPE html>
- <html lang="en">
-    
-    <head>
-        
-        <title>View Album Gallery</title>
 
         <link href="<?php echo base_url('assets/dist/css/lightgallery.css'); ?>" rel="stylesheet">
         <style type="text/css">
             body{
-                background-color: #152836
+                
             }
             .demo-gallery > ul {
               margin-bottom: 0;
@@ -20,8 +14,8 @@
                 width: 200px;
             }
             .demo-gallery > ul > li a {
-              border: 3px solid #FFF;
-              border-radius: 3px;
+              border: 0.5px solid #FFF;
+              border-radius: 1px;
               display: block;
               overflow: hidden;
               position: relative;
@@ -129,48 +123,47 @@
     </head>
     <body class="home">
 
-        <div class="demo-gallery">
-            <ul id="lightgallery" class="list-unstyled row">
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="<?php echo base_url('img/1.jpg'); ?> 375, <?php echo base_url('img/1.jpg'); ?> 480, <?php echo base_url('img/1.jpg'); ?> 800" data-src="<?php echo base_url('img/1.jpg'); ?>" data-sub-html="<h4>Fading Light</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
-                    <a href="">
-                        <img class="img-responsive" src="<?php echo base_url('img/1.jpg'); ?>">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="<?php echo base_url('img/2-375.jpg'); ?> 375, <?php echo base_url('img/2-480.jpg'); ?> 480, <?php echo base_url('img/2.jpg'); ?> 800" data-src="<?php echo base_url('img/2-1600.jpg'); ?>" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-                    <a href="">
-                        <img class="img-responsive" src="<?php echo base_url('img/thumb-2.jpg'); ?>">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="<?php echo base_url('img/13-375.jpg'); ?> 375, <?php echo base_url('img/13-480.jpg'); ?> 480, <?php echo base_url('img/13.jpg'); ?> 800" data-src="<?php echo base_url('img/13-1600.jpg'); ?>" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-                    <a href="">
-                        <img class="img-responsive" src="<?php echo base_url('img/thumb-13.jpg'); ?>">
-                    </a>
-                </li>
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="<?php echo base_url('img/4-375.jpg'); ?> 375, <?php echo base_url('img/4-480.jpg'); ?> 480, <?php echo base_url('img/4.jpg 800'); ?>" data-src="<?php echo base_url('img/4-1600.jpg'); ?>" data-sub-html="<h4>Bowness Bay</h4><p>A beautiful Sunrise this morning taken En-route to Keswick not one as planned but I'm extremely happy I was passing the right place at the right time....</p>">
-                    <a href="">
-                        <img class="img-responsive" src="<?php echo base_url('img/thumb-4.jpg'); ?>">
-                    </a>
-                </li>
-            </ul>
-        </div>
-        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lightgallery.js'); ?>"></script>
-        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-fullscreen.js'); ?>"></script>
-        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-thumbnail.js'); ?>"></script>
-        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-video.js'); ?>"></script>
-        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-autoplay.js'); ?>"></script>
-        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-zoom.js'); ?>"></script>
-        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-hash.js'); ?>"></script>
-        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-pager.js'); ?>"></script> 
-        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/lib/jquery.mousewheel.min.js'); ?>"></script> 
-      
- 
-	    <script type="text/javascript">
-    	
-    	    $(document).ready(function(){
-            	$('#lightgallery').lightGallery();
-        	});
+        <div class="row">
+                <div class="col-lg-12">
 
-        </script>
+
+                    <h2 class="page-header"><i class="fa fa-image"></i> I was broombrooming (December 25, 2016)</h2>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+
+             <ol class="breadcrumb">
+                            <li>
+                                <i class="fa fa-dashboard"></i>  <a href="index.html">My Orders History</a>
+                            </li>
+                            <li class="active">
+                                <i class="fa fa-picture-o"></i> Gallery
+                            </li>
+                        </ol>
+
+            All photos will be processed and stored in CD with both high-resolution and watermarked web-sharing versions.
+
+            Turnover time is between 7 - 10 business days depending on the service selected.
+<br>
+<br>
+
+        <div class="demo-gallery" >
+            <ul id="lightgallery" class="list-unstyled row">
+
+            <?php foreach($photos as $photos_row) { ?>
+
+                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="<?php echo base_url($photos_row->photos_img_url); ?> 375, <?php echo base_url($photos_row->photos_img_url); ?> 480, <?php echo base_url($photos_row->photos_img_url); ?> 800" data-src="<?php echo base_url($photos_row->photos_img_url); ?>" data-sub-html="<h4>I was broombrooming</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
+                    <a href="">
+                        <img class="img-thumbnail" src="<?php echo base_url($photos_row->photos_img_url); ?>" alt="">
+                    </a>
+                </li>
+
+            <?php } ?>
+
+            </ul>
+
+        </div>
+      
 
 
 	</form>

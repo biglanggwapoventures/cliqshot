@@ -28,7 +28,7 @@
 
 						<td>	
 						 	<a href= "approve_assignment" class = 'btn btn-primary'> View Order Details</a>
-						 	<a href= "view_album_gallery" class = 'btn btn-primary'> View Album Gallery</a>
+						 	<a href= "view_album_gallery/<?php echo $row->order_id; ?>" class = 'btn btn-primary'> View Album Gallery</a>
 
 
 

@@ -9,7 +9,7 @@ $("document").ready(function(){
 
 				var package_id=  ($(this).attr('id'));
 
-					$.post(  "CustomerController/get_package_info_ajax", { package_id: package_id}, 
+					$.post(  "http://localhost/cliqshotroy/cliqshot/index.php/CustomerController/get_package_info_ajax", { package_id: package_id}, 
 
 						function(data, status){
 

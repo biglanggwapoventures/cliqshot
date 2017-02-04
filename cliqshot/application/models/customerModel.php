@@ -63,7 +63,16 @@
                 return $result;
         }
 
+       public function get_acct_info($user_name)
+        {
+                $this->db->where("username", $user_name);
+                $query = $this->db->get('user');
 
+                $result =  $query->row_array();
+               
+                 
+                return $result;
+       }
 }
 
 ?>

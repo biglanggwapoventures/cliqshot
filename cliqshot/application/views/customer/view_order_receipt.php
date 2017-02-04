@@ -51,22 +51,32 @@
                             </table>
 
 
-<div class="col-lg-3">
+                                <div class="col-lg-3">
 
-<form action = "insert_orders" method="POST">
+                                <form action = "insert_orders" method="POST">
 
-<input type = 'hidden' name = "package_id" value= '<?php echo $package_id; ?>' />
-<input type = 'hidden' name = "time_ordered" value= '<?php echo $time_ordered; ?>' />
-<input type = 'hidden' name = "event_date" value= '<?php echo $event_date; ?>' />
+                                    <input type = 'hidden' name = "package_id"      value= '<?php echo $package_id; ?>' />
+                                    <input type = 'hidden' name = "time_ordered"    value= '<?php echo $time_ordered; ?>' />
+                                    <input type = 'hidden' name = "event_date"      value= '<?php echo $event_date; ?>' />
 
 
-<button type="submit" class="btn btn-primary">Confirm</button>
+                                    <button type="submit" class="btn btn-primary">Confirm</button>
+                                 </form>
 
-</form>
+                                   <form action = "view_order_receipt_print" method="POST">
 
-</div>
+                                    <input type = 'hidden' name = "package_id"      value= '<?php echo $package_id; ?>' />
+                                    <input type = 'hidden' name = "time_ordered"    value= '<?php echo $time_ordered; ?>' />
+                                    <input type = 'hidden' name = "event_date"      value= '<?php echo $event_date; ?>' />
 
-<p>Note: Please confirm within 24 hours. Pay reservation fee first.</p>
+                                    <br>
+                                    <button type="submit" class="btn btn-info"> Print </button>
+
+                                    </form>
+
+                                </div>
+
+                                <p>Note: Please confirm within 24 hours. Pay reservation fee first.</p>
 
 
                                                     </div>

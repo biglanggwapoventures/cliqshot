@@ -1,19 +1,36 @@
+<style>
+div.img {
+    margin: 25px;
+    border: 2px solid #ccc;
+    float: left;
+    width: 180px;
+}
+
+div.img:hover {
+    border: 1px solid #777;
+}
+
+div.img img {
+    width: 100%;
+    height: auto;
+}
+
+div.desc {
+    padding: 15px;
+    text-align: center;
+}
+</style>
+
 
 
                 <!-- Page Heading -->
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">
-                            <i class="fa fa-calendar"></i>  Set an Appointment
+                            <i class="fa fa-calendar"></i>  Photography Services and Price Guide
 
                         </h3>
-                        <ol class="breadcrumb">
-
-                            <li>
-                                <i class="fa fa-picture-o"></i> Select Photo Services</a>
-                            </li>
-                            
-                        </ol>
+                      
                         <div class="row">
                     <div class="col-lg-12">
 
@@ -36,29 +53,24 @@
 
 
                             <h4 class="page-header">
-                                <i class="fa fa-picture-o"></i>  Photography Services and Price Guide
+                                
 
                             </h4>
 
-                            <div class="col-md-12">
+                                      
+                                  <div class="col-md-13">
                             
-                               <div class="panel panel-red">
-  
-  
+
                                       
                                     <?php
                                       
 
                                      foreach($get_packages as $row) {  ?>
                                     
+                                    <div class = 'col-lg-3'>
+                                      <div class="img">
 
-                                      <div class = 'col-md-4'>
-
-                                        <h4> <?php echo $row->package_name; ?> </4>
-
-                                        <img src="<?php echo base_url() . '/packages_imgs/' . $row->package_img; ?>" class="img-circle" alt="Cinque Terre" width="150" height="150">
-
-                                         <a href = "#"  
+                                 <a href = "#"  
 
                                          data-toggle="modal" 
 
@@ -66,12 +78,17 @@
 
                                          id = "<?php echo $row->package_id; ?>"
 
-                                         class="btn btn-info view_det_package">View Details</a> 
-                                       
-                                        </div>      
+                                         class="view_det_package">
 
+
+                                 <img src="<?php echo base_url() . '/packages_imgs/' . $row->package_img; ?>">
+                                </a>
+                                 <div class="desc"><h7><b> <?php echo $row->package_name; ?> </b></h7></div>
+                                </div>
+                                </div>
 
                                       <?php } ?>
+
 
                               
 
@@ -81,7 +98,5 @@
                             </div>
                     </div>
                                                   
-                    <?php $this->load->view('customer/list_packages_bottom'); ?>                    
-
-
+                    
                     <?php $this->load->view('customer/view_package_modal'); ?>

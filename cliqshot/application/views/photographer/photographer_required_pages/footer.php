@@ -45,6 +45,18 @@ Turnover time is between 7 - 10 business days depending on the service selected.
     </div>
     <!-- /#wrapper -->
 
+
+
+      
+ 
+      <script type="text/javascript">
+      
+          $(document).ready(function(){
+              $('#lightgallery').lightGallery();
+          });
+
+        </script>
+
   
 <!-- jQuery -->
 <script src="<?php echo base_url();?>assets/vendor/jquery/jquery.min.js"></script>
@@ -85,6 +97,27 @@ function doconfirm()
 
 
 
+  <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lightgallery.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-fullscreen.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-thumbnail.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-video.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-autoplay.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-zoom.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-hash.js'); ?>"></script>
+        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/demo/js/lg-pager.js'); ?>"></script> 
+        <script src="<?php echo base_url('assets/lightGallery-master/lightGallery-master/lib/jquery.mousewheel.min.js'); ?>"></script> 
+      
+ 
+      <script type="text/javascript">
+      
+          $(document).ready(function(){
+              $('#lightgallery').lightGallery();
+          });
+
+        </script>
+
+
+
 
 
 </body>
@@ -92,6 +125,3 @@ function doconfirm()
 </html>
 
 
-</body>
-
-</html>

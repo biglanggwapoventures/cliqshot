@@ -526,7 +526,7 @@ class AdminController extends CI_Controller
 		
 		$data['data_services']	= $this->photoServicesModel->tb_services()->result();
 
-		$nav_data['page_name'] 			= "users";
+		$nav_data['page_name'] 			= "services";
 
 		$this->load->view('admin/admin_required_pages/nav', $nav_data );
 
@@ -545,7 +545,7 @@ class AdminController extends CI_Controller
 
 		if($this->form_validation->run() == FALSE)
 		{
-			$nav_data['page_name'] 			= "users";
+			$nav_data['page_name'] 			= "services";
 
 		$this->load->view('admin/admin_required_pages/nav', $nav_data );
 			$this->load->view('admin/Va_photoservices-create');
@@ -582,7 +582,7 @@ class AdminController extends CI_Controller
 		//GET REQUIRED DATA FROM DB
 		$data['data_services'] = $this->photoServicesModel->package_id($package_id)->row();
 
-				$nav_data['page_name'] 			= "users";
+				$nav_data['page_name'] 			= "services";
 
 		$this->load->view('admin/admin_required_pages/nav', $nav_data );
 
@@ -591,7 +591,7 @@ class AdminController extends CI_Controller
 	public function update_photoservices_process()
 	{
 
-			$nav_data['page_name'] 			= "users";
+			$nav_data['page_name'] 			= "services";
 
 		$this->load->view('admin/admin_required_pages/nav', $nav_data );
 
@@ -610,7 +610,7 @@ class AdminController extends CI_Controller
 
 
 		//DELETE
-	public function delete_services($package_id)
+	public function delete_service($package_id)
 	{
 				$this->photoServicesModel->delete_service($package_id);
 		redirect(site_url('AdminController/read_photoservices'));

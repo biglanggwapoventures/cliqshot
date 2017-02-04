@@ -23,7 +23,7 @@
 </table>
 
 
-<form action="upload_multiples" method="POST"  enctype="multipart/form-data">
+<form action="uploadPhotos_album" method="POST"  enctype="multipart/form-data">
 
 	<table class= 'table table-striped'>
 
@@ -32,6 +32,8 @@
 		<tr><td>Album Description: <td> <textarea name="album_desc">
 				
 										</textarea>
+
+		<input type="hidden" name="order_id" value = "<?php echo $order_id; ?>" >
 
 		<tr><td>Album Thumbnail: <td><input type = 'file' name="album_thumbnail">
 

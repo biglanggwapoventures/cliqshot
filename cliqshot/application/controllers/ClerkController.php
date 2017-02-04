@@ -25,6 +25,7 @@ class ClerkController extends CI_Controller {
         parent::__construct();
 
 		$this->load->model('ClerkModel');
+		$this->load->model('chartsModel');
 
 		$this->load->library('session');
 		
@@ -222,6 +223,20 @@ class ClerkController extends CI_Controller {
 		$this->load->view('clerk/clerk_required_pages/footer');	
 	}
 
+	public function view_fpdf()
+	{
+
+ 
+		$data['uploaded_album_order'] 		= $this->photo_managementModel->get_orders_history();
+
+		$nav_data['page_name'] 			= "orders_history";
+
+
+		$this->load->view('fpdf181/fpdf');
+ 
+		$this->load->view('customer/view_order_receipt_pdf', $data);
+		
+ 	}
 	public function view_album_gallery()
 	{
 
@@ -244,20 +259,45 @@ class ClerkController extends CI_Controller {
 	{
 
  
-		$data['uploaded_album_order'] 	= $this->photo_managementModel->get_orders_history();
+		// $data['uploaded_album_order'] 	= $this->photo_managementModel->get_orders_history();
 
  		$nav_data['page_name'] 			= "reports";
 
-		$data= 'data';
 
  		$this->load->view('clerk/clerk_required_pages/header');
 
  		$this->load->view('clerk/clerk_required_pages/nav', $nav_data);
 
+		$data['monthlyReports'] = $this->chartsModel->get_monthly_reports();
+		$data['packageReports'] = $this->chartsModel->get_report_per_package();
+		$data['photographerReports'] = $this->chartsModel->get_report_per_photographer();
+
+//		print_r()
+
 		$this->load->view('clerk/reports', $data);
 		
  		$this->load->view('clerk/clerk_required_pages/footer');
 	
+	}
+
+	public function calendar()
+	{
+
+ 
+		// $data['uploaded_album_order'] 	= $this->photo_managementModel->get_orders_history();
+
+ 		$nav_data['page_name'] 			= "calendar";
+
+		$data= 'data';
+
+ 		//$this->load->view('clerk/clerk_required_pages/header');
+
+ 		//$this->load->view('clerk/clerk_required_pages/nav', $nav_data);
+
+		$this->load->view('clerk/calendar_view', $data);
+		
+	 // $this->load->view('clerk/clerk_required_pages/footer'); 
+
 	}
 
 }
