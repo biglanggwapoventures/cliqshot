@@ -10,9 +10,9 @@
 			<thead>
 
 			<tr>
-				<td>Order #
-				<td>Package Name
+				
 				<td>Customer Name
+				<td>Package Name
 				<td>Date Ordered
 				<td>Order Status
 
@@ -21,14 +21,15 @@
 					<?php foreach($uploaded_album_order as $row) : ?>
 
 					<tr>
-						<td><?php echo $row->order_id; ?>
-						<td><?php echo $row->package_name; ?>
+						
 						<td><?php echo $row->client_fullname; ?>
+						<td><?php echo $row->package_name; ?>
 						<td><?php echo $row->date_ordered; ?>
 
 						<td>	
 						 	<a href= "approve_assignment" class = 'btn btn-primary'> View Order Details</a>
-						 	<a href= "view_album_gallery/<?php echo $row->order_id; ?>" class = 'btn btn-primary'> View Album Gallery</a>
+						 	<a href= "view_album_gallery/<?php echo $row->order_id; ?>" class = 'btn btn-success'> View Album Gallery</a>
+						 	<a href= "view_album_gallery/<?php echo $row->order_id; ?>" class = 'btn btn-danger'> Delete Album</a>
 
 
 

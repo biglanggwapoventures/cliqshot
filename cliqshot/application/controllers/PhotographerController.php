@@ -26,12 +26,13 @@ class PhotographerController extends CI_Controller {
 
         parent::__construct();	
 
-        $this->photographer_id = 1; //  $this->session->userdata('this->photographer_id');
 
 		$this->load->model('photo_managementModel');
 
 		$this->load->library('session');
-		
+
+		$this->photographer_id =  $this->session->userdata('photographer_id');
+
 		//* $data['sales_daily_trans'] 		=	$this->inventoryModel->get_sales_daily_trans();
 
 		//* $this->nav_data['ing_requests'] =  $this->inventoryModel->get_ingredient_requests();
@@ -97,8 +98,7 @@ class PhotographerController extends CI_Controller {
 	{
 
  
-		$data['upcoming_orders'] 	= $this->photo_managementModel->get_upcoming_orders($this->photographer_id);
-
+		$data['pending_order_album'] 	= $this->photo_managementModel->get_pending_album($this->photographer_id);
 		$nav_data['page_name'] 			= "upcoming_orders";
 
 
@@ -296,6 +296,10 @@ class PhotographerController extends CI_Controller {
         // $config['max_height']           = 768;
 
 
+		// Send Email for the customer notification in uploading the albums...
+
+		$this->emailUploadNotification();
+		
         $this->load->library('upload', $config);
 
                 if ( ! $this->upload->do_upload('prod_image')) {
@@ -320,6 +324,24 @@ class PhotographerController extends CI_Controller {
 		
 		$this->load->view('required_pages/footer');
 	
+	}
+
+	public function emailUploadNotification(){
+
+		$this->load->library('email');
+
+		$this->email->from('your@example.com', 'Your Name');
+		$this->email->to('someone@example.com');
+		$this->email->cc('another@another-example.com');
+		$this->email->bcc('them@their-example.com');
+
+		$this->email->subject('Email Test');
+		$this->email->message('Testing the email class.');
+
+		$this->email->send();
+
+
+
 	}
 
 

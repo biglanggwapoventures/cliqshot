@@ -28,8 +28,7 @@
     <!-- /#wrapper -->
 
 
-
-   <!-- jQuery -->
+<!-- jQuery -->
 <script src="<?php echo base_url();?>assets/vendor/jquery/jquery.min.js"></script>
 
 <script src="<?php echo base_url();?>/assets/js/custom.js"></script>
@@ -40,8 +39,6 @@
 <!-- Metis Menu Plugin JavaScript -->
 <script src="<?php echo base_url();?>assets/vendor/metisMenu/metisMenu.min.js"></script>
 
-<!-- Custom Theme JavaScript -->
-<script src="<?php echo base_url();?>assets/dist/js/sb-admin-2.js"></script>
 
 <!-- DataTables JavaScript -->
 <script src="<?php echo base_url();?>assets/vendor/datatables/js/jquery.dataTables.min.js"></script>
@@ -50,6 +47,7 @@
 
 <!-- Custom Theme JavaScript -->
 <script src="<?php echo base_url();?>assets/dist/js/sb-admin-2.js"></script>
+
 
 <!-- Page-Level Demo Scripts - Tables - Use for reference -->
 <script>
@@ -70,6 +68,12 @@ function doconfirm()
     }
 }
 </script>
+
+<link href="<?php echo base_url();?>assets/css/dcalendar.picker.css" rel="stylesheet">
+
+<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<script src="<?php echo base_url();?>assets/js/dcalendar.picker.js"></script>
 
 
 </body>

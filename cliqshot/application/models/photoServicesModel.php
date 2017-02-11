@@ -45,11 +45,10 @@ class PhotoServicesModel extends CI_Model {
 		$this->db->update('package', $data);
 	}
 
-	function delete_service($service_id)
+	function delete_service($package_id)
 	{
 		$this->db->delete('package', array(
-							'package_id' => $package_id,
-							'package_id !=' => 1
+							'package_id' => $package_id
 						));
 	}
 

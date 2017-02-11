@@ -4,16 +4,16 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header">Update Client</h2>
+                    <h2 class="page-header">Update Customer</h2>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            Form update Client
+                            Form update Customer
                         </div>
                         <div class="panel-body">
                             <div class="row">

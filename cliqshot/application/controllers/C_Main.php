@@ -126,7 +126,8 @@ class C_Main extends CI_Controller
 				{
 					$row_data = array(
 						'client_id'   => $row['client_id'],
-						'client_username' => $row['client_username']
+						'client_username' => $row['client_username'],
+						'client_fullname'   => $row['client_fullname']
 					);
 					$this->session->set_userdata($row_data);
 					redirect('CustomerController');
@@ -178,8 +179,8 @@ class C_Main extends CI_Controller
 			$data['client_email'] 	= $this->input->post('email');
 			$this->AdminModel->create_customer($data);
 
-			$pesan['success']  = "Registrasion Success!";
-			$this->load->view('login/V_Login',$pesan);
+			$pesan['success']  = "Registration Success!";
+			$this->load->view('login/V_Login2',$pesan);
 		}
 	}
 

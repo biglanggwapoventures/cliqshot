@@ -8,7 +8,7 @@
 
 <h2>Upload Photo Album</h2>
 
-<h4>Order Info</h4>
+<h3>Order Info</h3>
 
 <?php //* print_r($order_info); ?>
 
@@ -27,9 +27,9 @@
 
 	<table class= 'table table-striped'>
 
-		<tr><td>Album Title: <td><input type="text" name="album_title">
+		<tr><td>Album Title: <td><input type="text" name="album_title" class="form-control" >
 
-		<tr><td>Album Description: <td> <textarea name="album_desc">
+		<tr><td>Album Description: <td> <textarea name="album_desc" class="form-control" >
 				
 										</textarea>
 

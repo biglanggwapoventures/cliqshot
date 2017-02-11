@@ -1,15 +1,21 @@
  <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-                    
+<!-- 
+                    <li <?php     if($page_name == 'list_packages') echo "class = 'active' "; ?>>
+                        <a href="<?php echo site_url('ClerkController/list_packages');?>"><i class="fa fa-fw fa-picture-o"></i> 
+                        List of Packages</a>
+                    </li> -->
+
+
                     <li <?php     if($page_name == 'pending_orders') echo "class = 'active' "; ?>>
                         <a href="<?php echo site_url('ClerkController/pending_orders');?>"><i class="fa fa-fw fa-picture-o"></i> 
-                        Pending Appointment</a>
+                        Pending Orders</a>
                     </li>
 
 
                     <li <?php     if($page_name == 'approved_orders') echo "class = 'active' "; ?>>
                         <a href="<?php echo site_url('ClerkController/approved_orders');?>"><i class="fa fa-fw fa-picture-o"></i> 
-                        Unassigned Appointment Events</a>
+                        Approved Orders</a>
                     </li>
 
            <!--           <li <?php     if($page_name == 'assigned_orders') echo "class = 'active' "; ?>>
@@ -34,7 +40,7 @@
                     </li>
 
                     <li <?php     if($page_name == 'orders_history') echo "class = 'active' "; ?>>
-                        <a href="<?php echo site_url('ClerkController/');?>"><i class="fa fa-fw fa-picture-o"></i> My Orders History
+                        <a href="<?php echo site_url('ClerkController/orders_history');?>"><i class="fa fa-fw fa-picture-o"></i> My Orders History
                         
                         <!-- Count  Orders History  of Photographer -->
 

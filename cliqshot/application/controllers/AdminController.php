@@ -345,6 +345,9 @@ class AdminController extends CI_Controller
 		//GET REQUIRED DATA FROM DB
 		$data['data_photographer'] = $this->AdminModel->photographer_id($photographer_id)->row();
 
+			$nav_data['page_name'] 			= "users";
+
+		$this->load->view('admin/admin_required_pages/nav', $nav_data );
 	
 				$this->load->view('admin/Va_photographer-update', $data);
 	}
@@ -383,7 +386,7 @@ class AdminController extends CI_Controller
 		//DELETE
 	public function delete_photographer($photographer_id)
 	{
-				$this->AdminModel->delete_photographer($photographer_id);
+		$this->AdminModel->delete_photographer($photographer_id);
 		redirect(site_url('AdminController/read_photographer'));
 	}
 

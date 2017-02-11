@@ -72,19 +72,7 @@
 				Login <i class="m-icon-swapright m-icon-white"></i>
 				</button>
 			</div>
-			<div class="forget-password">
-				<h4>Forgot your password ?</h4>
-				<p>
-					no worries, click <a href="javascript:;"  id="forget-password">here</a>
-					to reset your password.
-				</p>
-			</div>
-			<div class="create-account">
-				<p>
-					Don't have an account yet ?&nbsp;
-					<?php echo anchor('C_Main/register','Create an Account'); ?>
-				</p>
-			</div>
+			
 		</form>
     <?php echo form_close(); ?>
 		<!-- END LOGIN FORM -->

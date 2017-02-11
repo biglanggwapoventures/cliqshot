@@ -50,7 +50,7 @@
                                         <td>
                                             <a href="<?=site_url('AdminController/update_photographer/'.$photographer->photographer_id);?>"><i class="fa fa-edit fa-fw" style="color: green;"></i></a>
                                             &nbsp;|&nbsp;
-                                            <a href="<?=site_url('AdminController/delete_photographer/'.$photographer->photographer_id);?>" onClick="return doconfirm();"><i class="fa fa-trash fa-fw" style="color: red;"></i></a>
+                                            <a href="<?=site_url('AdminController/delete_photographer/'.$photographer->photographer_id);?>"><i class="fa fa-trash fa-fw" style="color: red;"></i></a>
                                         </td>
                                     </tr>
                                     <?php $no++; } ?>

@@ -5,7 +5,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-lg-12">
-                    <h1 class="page-header">Client</h1>
+                    <h1 class="page-header">Customer</h1>
                 </div>
             </div>
 
@@ -22,7 +22,7 @@
                 <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
-                            Client List
+                            Customer List
                         </div>
                         <!-- /.panel-heading -->
                         <div class="panel-body">
@@ -31,7 +31,7 @@
                                     <tr>
                                         <th>No.</th>
                                         <th>Username</th>
-                                        <th>Client Name</th>
+                                        <th>Customer Name</th>
                                         <th>Address</th>
                                         <th>Email</th>
                                         <th>Contact Number</th>

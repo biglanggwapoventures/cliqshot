@@ -154,10 +154,12 @@
 
 			//* number_format($customer_info['Name']);
 
-			$pdf->Cell(200, 25, 'Customer Name: ' . ' Intensity Man', 0, 0,'L');
+			$pdf->Cell(200, 25, 'Customer Name: ' . ' Unknown', 0, 0,'L');
 			$pdf->Ln(10);
 
 			$pdf->Cell(200, 25,'Date  of Event: ' .   date("M d, Y", strtotime($event_date)) , 0,0,'L');
+
+			$pdf->Cell(200, 25,'Time  of Event: ' .   date("h:i A", strtotime($time_ordered)) , 0,0,'L');
  
 			//* This Month's 1st day until this date 
 

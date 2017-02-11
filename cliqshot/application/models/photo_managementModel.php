@@ -64,19 +64,22 @@
                 $this->db->where('photographer_id', $photographer_id);
                 $this->db->where('assign_status', 'assigned');
                 $this->db->where('event_date <=', date("Y-m-d"));
+                $this->db->where('photographer_id', $photographer_id);
 
                 $query = $this->db->get('orders');
 
                 return $query->result();
         }
 
-        public function get_pending_album()
+        public function get_pending_album($photographer_id)
         {
 
                  $this->db->where('assign_status', 'assigned');
                  $this->db->where('event_date >', date("Y-m-d"));
 
                 $this->db->where('uploaded_status', 'not_uploaded');
+
+                $this->db->where('photographer_id', $photographer_id);
 
                 $this->db->join('package', 'package.package_id = orders.package_id');
 
@@ -87,7 +90,7 @@
                 return $query->result();
         }
 
-        public function get_orders_history()
+        public function get_orders_history($photographer_id)
         {
 
                 $this->db->where('uploaded_status', 'uploaded');
@@ -96,6 +99,7 @@
                 $this->db->join('package', 'package.package_id = orders.package_id');
 
                 $this->db->join('customer', 'customer.client_id = orders.user_id');
+                $this->db->where('photographer_id', $photographer_id);
 
                 $query = $this->db->get("orders");
 

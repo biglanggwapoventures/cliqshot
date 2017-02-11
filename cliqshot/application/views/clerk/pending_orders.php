@@ -40,17 +40,16 @@
                                     
 
 
-                                        <tr><td><?php echo $row->order_id; ?>
+                                        <tr> <td><?php echo $row->client_fullname; ?>
                                             <td><?php echo $row->package_name; ?>
                                             <td><?php echo date("M, d Y", strtotime($row->date_ordered)); ?>
                                             <td><?php echo date("M, d Y", strtotime($row->event_date)); ?>
-                                            <td><?php echo date("H:m", strtotime($row->time_ordered)); ?>
+                                            <td><?php echo date("h:i a", strtotime($row->time_ordered)); ?>
                                             <td><?php echo $row->order_status; ?>
                                             <td>
 
                                                 <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-success btn-sm' > Approve Order</a>
-                                                <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-info btn-sm' > Reschedule Order</a>
-                                                <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-danger btn-sm' > Cancel Ordered</a>
+                                                <a href= "#" class= 'btn btn-danger btn-sm' > Cancel Ordered</a>
 
 
 

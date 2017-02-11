@@ -44,12 +44,19 @@
                                             <td><?php echo date("M, d Y", strtotime($row->date_ordered)); ?>
                                             <td><?php echo date("M, d Y", strtotime($row->event_date)); ?>
                                             <td><?php echo date("H:m", strtotime($row->time_ordered)); ?>
-                                            <td><?php echo $row->order_status; ?>
+                                            <td><?php echo $row->payment_status; ?>
+                                           
                                             <td>
+
+                                                <?php  if( $row->payment_status == 'unpaid') { ?>
+
+                                                    <a href= "paid_order/<?php echo $row->order_id; ?>" class= 'btn btn-primary btn-sm' > Paid (Cash) </a>
+
+                                                <?php } ?>
 
                                                 <a href= "select_photographer/<?php echo $row->order_id; ?>" class= 'btn btn-success btn-sm' > Select  a Photographer</a>
                                                 <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-info btn-sm' > View Order</a>
-                                               
+                                            
 
 
                                       <?php } ?>

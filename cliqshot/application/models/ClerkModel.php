@@ -138,6 +138,8 @@
                 $this->db->where("order_status", "pending");
         
                 $this->db->join('package', 'package.package_id= orders.package_id');
+
+                $this->db->join('customer', 'customer.client_id = orders.user_id');
  
                 $query = $this->db->get('orders');
                 
@@ -146,6 +148,21 @@
                
 
                 return $result;
+        }   
+
+        public function get_orders_history()
+        {
+
+                $this->db->where('uploaded_status', 'uploaded');
+
+
+                $this->db->join('package', 'package.package_id = orders.package_id');
+
+                $this->db->join('customer', 'customer.client_id = orders.user_id');
+ 
+                $query = $this->db->get("orders");
+
+                return $query->result();
         }
 
          public function approve_order($order_id)
@@ -155,6 +172,12 @@
               $this->db->update('orders');
         } 
 
+         public function paid_order($order_id)
+        {
+              $this->db->set('payment_status', "paid");
+              $this->db->where('order_id', $order_id);
+              $this->db->update('orders');
+        } 
           public function assign_photographer($order_id, $photographer_id)
         {
               $this->db->set('photographer_id', $photographer_id);

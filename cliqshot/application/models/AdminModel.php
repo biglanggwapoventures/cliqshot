@@ -109,8 +109,7 @@ class AdminModel extends CI_Model {
 	function delete_customer($client_id)
 	{
 		$this->db->delete('customer', array(
-							'client_id' => $client_id,
-							'client_id !=' => 1
+							'client_id' => $client_id
 						));
 	}
 
@@ -172,8 +171,7 @@ class AdminModel extends CI_Model {
 	function delete_photographer($photographer_id)
 	{
 		$this->db->delete('photographer', array(
-							'photographer_id' => $photographer_id,
-							'photographer_id !=' => 1
+							'photographer_id' => $photographer_id
 						));
 	}
 
@@ -233,8 +231,7 @@ class AdminModel extends CI_Model {
 	function delete_clerk($clerk_id)
 	{
 		$this->db->delete('clerk', array(
-							'clerk_id' => $clerk_id,
-							'clerk_id !=' => 1
+							'clerk_id' => $clerk_id
 						));
 	}
 

@@ -20,6 +20,9 @@ class ClerkController extends CI_Controller {
 	 */
 
 
+	private $user_id;
+
+
 	public function __construct(){
 
         parent::__construct();
@@ -28,7 +31,8 @@ class ClerkController extends CI_Controller {
 		$this->load->model('chartsModel');
 
 		$this->load->library('session');
-		
+				$this->clerk_id = $this->session->userdata('clerk_id');
+
 		//* $data['sales_daily_trans'] 		=	$this->inventoryModel->get_sales_daily_trans();
 
 		//* $this->nav_data['ing_requests'] =  $this->inventoryModel->get_ingredient_requests();
@@ -58,16 +62,33 @@ class ClerkController extends CI_Controller {
 
 		$this->load->view('clerk/clerk_required_pages/header');
 		
-		$nav_data['page_name'] 			= "package_lists";
+		$nav_data['page_name'] 			= "pending_orders";
 
 		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
 
-		$this->load->view('customer/list_packages', $data);
+		$this->load->view('clerk/pending_orders', $data);
 		
 		$this->load->view('clerk/clerk_required_pages/footer');
 	
 	}
 
+	public function list_packages(){
+
+
+		$data['packages'] = $this->ClerkModel->get_packages();
+
+		$this->load->view('clerk/clerk_required_pages/header');
+
+		$nav_data['page_name'] 			= "list_packages";
+
+		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
+
+		$this->load->view('clerk/list_packages', $data);
+		
+		$this->load->view('clerk/clerk_required_pages/footer');
+
+	
+	}
 		public function pending_orders(){
 
 
@@ -112,10 +133,18 @@ class ClerkController extends CI_Controller {
 
 				$this->ClerkModel->approve_order($order_id);	
 
-
 				redirect('ClerkController/approved_orders');
+
 		}
 
+		public function paid_order($order_id){
+
+
+				$this->ClerkModel->paid_order($order_id);	
+
+ 				redirect('ClerkController/approved_orders');
+
+		}
 
 		public function select_photographer($order_id){
 
@@ -187,7 +216,7 @@ class ClerkController extends CI_Controller {
 	{
 
  
-		$data['pending_order_album'] 	= $this->photo_managementModel->get_pending_album();
+		$data['pending_order_album'] 	= $this->ClerkModel->get_pending_orders();
 
 		$nav_data['page_name'] 			= "pending_order_album";
 
@@ -208,13 +237,12 @@ class ClerkController extends CI_Controller {
 	{
 
  
-		$data['uploaded_album_order'] 		= $this->photo_managementModel->get_orders_history();
+		$data['uploaded_album_order'] 		= $this->ClerkModel->get_orders_history();
 
 		$nav_data['page_name'] 			= "orders_history";
 
 
 		$this->load->view('clerk/clerk_required_pages/header');
-
  
 		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
 

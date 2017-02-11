@@ -48,7 +48,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="cliqshot_white.png" style="width:150px;height:35px;"></a>
+                <a class="navbar-brand" href="index.html"><img src="<?php echo base_url('img/cliqshot_white.png') ?>" style="width:150px;height:37px;"></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -57,13 +57,10 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('client_username') ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> View Profile</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            <a href="<?php echo site_url('CustomerController/update_customer/'.$this->session->userdata('client_id').'');?>"><i class="fa fa-fw fa-gear""></i> Edit Profile</a>
                         </li>
                         <li class="divider"></li>
                         <li>

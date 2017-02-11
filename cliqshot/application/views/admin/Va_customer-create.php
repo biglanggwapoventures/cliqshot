@@ -4,17 +4,17 @@
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
-                    <h2 class="page-header">Add Client</h2>
+                    <h2 class="page-header">Add Customer</h2>
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <font color="red"><?php echo validation_errors();?></font>
                     <div class="panel panel-primary">
                         <div class="panel-heading">
-                            Form add New Client
+                            Form add New Customer
                         </div>
                         <div class="panel-body">
                             <div class="row">

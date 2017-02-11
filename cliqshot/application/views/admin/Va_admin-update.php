@@ -1,11 +1,6 @@
 <?php $this->load->view('admin/admin_required_pages/header');?>
 <?php $this->load->view('admin/admin_required_pages/nav');?>
 
-
-        
-                    <br>
-                    <br>
-                    
         <div id="page-wrapper">
             <div class="row">
                 <div class="col-lg-12">
@@ -15,7 +10,7 @@
             </div>
             <!-- /.row -->
             <div class="row">
-                <div class="col-lg-6">
+                <div class="col-lg-12">
                     <div class="panel panel-default">
                         <div class="panel-heading">
                             Form update Admin

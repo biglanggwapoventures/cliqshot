@@ -38,7 +38,11 @@
 		<!-- BEGIN LOGIN FORM -->
     <?php echo form_open("C_Main/register"); ?>
 		<form class="form-vertical login-form" action="" method="post">
-      <font color="red"><?php echo validation_errors();?></font>
+    <div class="alert alert-error" role="alert">
+        <button class="close" data-dismiss="alert"></button>
+        <span><?php echo validation_errors();?></span>
+      </div>
+      
       <h3 >Sign Up</h3>
       <p>Enter your personal details below:</p>
       <div class="control-group">
@@ -57,6 +61,16 @@
           <div class="input-icon left">
             <i class="icon-envelope"></i>
             <input class="m-wrap placeholder-no-fix" type="text" placeholder="Email" name="email"/>
+          </div>
+        </div>
+      </div>
+      <div class="control-group">
+        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
+        <label class="control-label visible-ie8 visible-ie9">Contact Number</label>
+        <div class="controls">
+          <div class="input-icon left">
+            <i class="icon-phone"></i>
+            <input class="m-wrap placeholder-no-fix" type="text" placeholder="Contact Number" name="contact_number"/>
           </div>
         </div>
       </div>
