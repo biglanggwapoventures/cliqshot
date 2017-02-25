@@ -32,8 +32,8 @@
 
 						<td>
 							<a href= "upload_order_album?order_id=<?php echo $row->order_id; ?>" class = 'btn btn-primary'> Upload </a>
-	 						<a href= "approve_assignment" class = 'btn btn-info'> View Order Details</a>
-	 
+<!-- 	 						<a href= "approve_assignment" class = 'btn btn-info'> View Order Details</a>
+ -->	 
 
 
 

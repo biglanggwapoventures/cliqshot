@@ -37,7 +37,7 @@
                 <center>
                 <h3><?php echo $package_info['package_name']; ?></h3>
                 <hr>
-                <p><?php echo $package_info['package_desc']; ?></p>
+                <p><b>Description: </b><?php echo $package_info['package_desc']; ?></p>
                 <hr>
                 <h3>P <?php echo number_format($package_info['package_price']); ?></h3>
                 </center>
@@ -57,7 +57,7 @@
 
     <input type = 'hidden' name = "package_id" value= '<?php echo $package_id; ?>' />
     <h4> <i class="fa fa-calendar"></i> Date of Appointment</h4>
-                
+    <hr>            
                  <div class='input-group date' id='datetimepicker1'>
                     <input class="form-control" type ='date' name ='event_date' required='required' />
                     <span class="input-group-addon">
@@ -65,77 +65,44 @@
                     </span>
                 </div>
 
+    <br>
 
     <h4> <i class="fa fa-clock-o"></i> Time of Appointment</h4>
+    <hr>
                 
-                 <div class='input-group date' id='datetimepicker1'>
-                    <input class="form-control" type = 'time' name = 'time_ordered' required='required' />
-                    <span class="input-group-addon">
-                        <span class="glyphicon glyphicon-clock"></span>
-                    </span>
+                <?php echo form_radio('time_ordered', '09:00 AM'); ?> 09:00 AM<br>
+                <?php echo form_radio('time_ordered', '09:30 AM'); ?> 09:30 AM<br>
+                <?php echo form_radio('time_ordered', '10:00 AM'); ?> 10:00 AM<br>
+                <?php echo form_radio('time_ordered', '10:30 AM'); ?> 10:30 AM<br>
+                <?php echo form_radio('time_ordered', '11:00 AM'); ?> 11:00 AM<br>
+                <?php echo form_radio('time_ordered', '11:30 AM'); ?> 11:30 AM<br>
+                <?php echo form_radio('time_ordered', '12:00 PM'); ?> 12:00 PM<br>
+                <?php echo form_radio('time_ordered', '12:30 PM'); ?> 12:30 PM<br>
+                <?php echo form_radio('time_ordered', '01:00 PM'); ?> 01:00 PM<br>
+                <?php echo form_radio('time_ordered', '01:30 PM'); ?> 01:30 PM<br>
+                <?php echo form_radio('time_ordered', '02:00 PM'); ?> 02:00 PM<br>
+                <?php echo form_radio('time_ordered', '02:30 PM'); ?> 02:30 PM<br>
+                <?php echo form_radio('time_ordered', '03:00 PM'); ?> 03:00 PM<br> 
+                <?php echo form_radio('time_ordered', '03:30 PM'); ?> 03:30 PM<br>      
+                <?php echo form_radio('time_ordered', '04:00 PM'); ?> 04:00 PM<br>      
+                <?php echo form_radio('time_ordered', '04:30 PM'); ?> 04:30 PM<br>      
+                <?php echo form_radio('time_ordered', '05:00 PM'); ?> 05:00 PM<br>           
+                
+                
+               
                 </div>
-                
-  <!--<table class="table table-hover">
-                                <thead>
-                                    <tr>
-                                        <th>Time</th>
-                                        <th>Availability</th>
-                                        
-                                    </tr>
-                                </thead>
-                        <br> 
-                         <h3><i class="fa fa-clock"></i> Time of Appointment</h3>
-                                <tbody>
-                                    <tr>
-                                        <td><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 08:00 AM-09:00 AM </td>
-                                        <td><font color="green">AVAILABLE</font></td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <fieldset disabled>
-                                        <td><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 09:00 AM-10:00 AM </td>
-                                        <td><font color="red">NOT AVAILABLE</font></td>
-                                        </fieldset>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 10:00 AM-11:00 PM </td>
-                                        <td><font color="green">AVAILABLE</font></td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 11:00 AM-12:00 PM </td>
-                                        <td><font color="red">NOT AVAILABLE</font></td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 12:00 PM-01:00 PM </td>
-                                        <td><font color="green">AVAILABLE</font></td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 01:00 PM-02:00 PM </td>
-                                        <td><font color="green">AVAILABLE</font></td>
-                                         
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 02:00 PM-03:00 PM</td>
-                                        <td><font color="red">NOT AVAILABLE</font></td>
-                                        
-                                    </tr>
-                                    <tr>
-                                        <td><input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked> 03:00 PM-04:00 PM </td>
-                                        <td><font color="green">AVAILABLE</font></td>
-                                        
-                                    </tr>
-                                </tbody>
-                                <br>
+                </div>
 
-                            </table>  -->
-                         
-                </div>
-                </div>
+               
+
+
                  <div class="col-lg-8">
+                 <?php if($error == true): ?>
+                    <div class="alert alert-danger alert-dismissable">
+                    <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                      <strong>Sorry</strong> Date and time already taken
+                    </div>
+                <?php endif; ?>
                 </div>                
 
                 <div class="col-lg-4">
@@ -145,9 +112,9 @@
 
                             
                             </div>
-                </div>
+                            </div>
 
-</form>
+                        </form>
 
 
 
@@ -156,20 +123,6 @@
 
 
             </div>
-
-                                    
-                                 
-
-                                <!--   <form action = "view_order_receipt_print" method="POST">
-
-                                    <input type = 'hidden' name = "package_id"      value= '<?php //echo $package_id; ?>' />
-                                    <input type = 'hidden' name = "time_ordered"    value= '<?php //echo $time_ordered; ?>' />
-                                    <input type = 'hidden' name = "event_date"      value= '<?php //echo $event_date; ?>' />
-
-                                    <br>
-                                    <button type="submit" class="btn btn-info"> Print </button>
-
-                                    </form> -->
 
                                 
 

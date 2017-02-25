@@ -20,7 +20,8 @@
                             <div class="row">
                                 <!-- /.col-lg-6 (nested) -->                                
                                 <div class="col-lg-12">
-                                    <?php echo form_open("AdminController/create_photoservices_process"); ?>
+                                    <?php echo form_open_multipart("AdminController/create_photoservices_process"); ?>
+                                       
                                         <div class="form-group">
                                             <label class="control-label" for="package_name">Package Name</label>
                                             <input type="text" name="package_name" class="form-control" required>
@@ -30,8 +31,8 @@
                                             <textarea type="text" name="package_desc" class="form-control" required></textarea> 
                                         </div>
                                         <div class="form-group">
-                                            <label class="control-label" for="packageimg">Package Image</label>
-                                            <input type="file" name="package_img" class="form-control" required>
+                                            <label class="control-label" for="file">Package Image</label>
+                                            <input type="file" name="file" class="form-control" required>
                                         </div>
                                         <div class="form-group">
                                             <label class="control-label" for="packageprice">Package Price</label>
@@ -40,6 +41,7 @@
                                         
                                         <input type="reset" values="reset" class="btn btn-danger">
                                         <input type="submit" values="submit" class="btn btn-success">
+                                        
                                     <?php echo form_close(); ?>
                                 </div>
                                 <!-- /.col-lg-6 (nested) -->

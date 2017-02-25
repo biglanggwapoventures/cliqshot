@@ -29,8 +29,8 @@
 	 						<a href= "approve_assignment" class = 'btn btn-danger'> Cancel </a>
 	 
 							<td>
-	 						<a href= "approve_assignment" class = 'btn btn-info'> View Order Details</a>
-
+<!-- 	 						<a href= "approve_assignment" class = 'btn btn-info'> View Order Details</a>
+ -->
 
 
 					<?php endforeach; ?> 

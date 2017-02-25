@@ -35,8 +35,6 @@
 
 		<input type="hidden" name="order_id" value = "<?php echo $order_id; ?>" >
 
-		<tr><td>Album Thumbnail: <td><input type = 'file' name="album_thumbnail">
-
 		<tr><td>Upload Photos: <td><input type="file" name="photos_uploaded[]" multiple>
 
 

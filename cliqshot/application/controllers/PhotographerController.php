@@ -55,7 +55,16 @@ class PhotographerController extends CI_Controller {
 	public function index()
 	{
 
-	 		redirect(base_url("index.php/PhotographerController/upcoming_orders"));
+		$this->load->view('photographer/photographer_required_pages/header');
+		
+		$nav_data['page_name'] 			= "home";
+
+		$this->load->view('photographer/photographer_required_pages/nav', $nav_data );
+
+		$this->load->view('photographer/home');
+		
+		$this->load->view('photographer/photographer_required_pages/footer');
+	 		
 
 	}
 
@@ -97,8 +106,9 @@ class PhotographerController extends CI_Controller {
 	public function upcoming_orders()
 	{
 
+
  
-		$data['pending_order_album'] 	= $this->photo_managementModel->get_pending_album($this->photographer_id);
+		$data['pending_order_album'] 	= $this->photo_managementModel->get_upcoming_orders($this->photographer_id);
 		$nav_data['page_name'] 			= "upcoming_orders";
 
 
@@ -162,13 +172,14 @@ class PhotographerController extends CI_Controller {
 	public function view_album_gallery($order_id)
 	{
  
-		$nav_data['page_name'] 		= "view_album_gallery";
+		$nav_data['page_name'] 		= "orders_history";
 
 		$data['album_details'] 		= $this->photo_managementModel->get_album_details($order_id);
+		$data['order_info']	 		  =  $this->photo_managementModel->get_order_info($order_id);
 
 		$data['photos'] 			= $this->photo_managementModel->get_photo_albums($data['album_details'][0]->album_id);
 		
-		$this->load->view('photographer/photographer_required_pages/header_view_album_gallery');
+		$this->load->view('photographer/photographer_required_pages/header');
 
 		$this->load->view('photographer/photographer_required_pages/nav', $nav_data);
 
@@ -181,7 +192,7 @@ class PhotographerController extends CI_Controller {
 	public function upload_order_album()
 	{
 		$order_id =  $this->input->get('order_id');
-		$data['get_packages']         = $this->photo_managementModel->get_packages();
+	
 		$data['order_id']	  		  = $order_id;
 		$data['order_info']	 		  =  $this->photo_managementModel->get_order_info($order_id);
 
@@ -221,7 +232,7 @@ class PhotographerController extends CI_Controller {
 
 		$data['album_id']	  		  = '';
 		$data['order_id']	  		  = $this->input->post('order_id');
-		$data['photographer_id']	  = $this->photographer_id; //* $this->input->post('');
+		$data['photographer_id']	  = $this->photographer_id;
 		$data['album_title']	  	  = $this->input->post('album_title');
 		$data['album_desc']	  	  	  = $this->input->post('album_desc');
 		$data['date_uploaded']	  	  = date("Y-m-d");
@@ -280,7 +291,7 @@ class PhotographerController extends CI_Controller {
 	public function insert_album()
 	{
 
-		//* $data['get_packages'] = $this->photographyModel->get_packages();
+		
 
 		$config['file_name']        	= $id;
 
@@ -289,11 +300,7 @@ class PhotographerController extends CI_Controller {
 		$config['allowed_types']        = 'gif|jpg|png|jpeg';
         
 
-        // $config['max_size']             = 100;
-        
-        // $config['max_width']            = 1024;
-        
-        // $config['max_height']           = 768;
+     
 
 
 		// Send Email for the customer notification in uploading the albums...
@@ -327,21 +334,104 @@ class PhotographerController extends CI_Controller {
 	}
 
 	public function emailUploadNotification(){
+ 
 
-		$this->load->library('email');
+            $config['protocol']    = 'smtp';
 
-		$this->email->from('your@example.com', 'Your Name');
-		$this->email->to('someone@example.com');
-		$this->email->cc('another@another-example.com');
-		$this->email->bcc('them@their-example.com');
+			$config['smtp_host'] = 'ssl://smtp.gmail.com'; 
 
-		$this->email->subject('Email Test');
-		$this->email->message('Testing the email class.');
-
-		$this->email->send();
+            $config['smtp_port']    = '465';
+			
+			$config['newline'] = "\r\n";
 
 
+            $config['smtp_user']    = 'cliqshot.capstone@gmail.com';
 
+            $config['smtp_pass']    = 'cliqshot123';
+
+            $config['charset']    = 'utf-8';
+ 
+
+			$config['mailtype'] = 'html';
+
+            $config['validation'] = TRUE; // bool whether to validate email or not      
+
+			$this->load->library('email', $config);
+
+			$this->email->initialize($config);  
+
+			$message = "Your Appointment is Confirmed. Here are the details: \n
+			Package Name: Portraits \n
+			Appointment/Booking Date: March 20, 2017"; 
+
+            $this->email->from('cliqshot.capstone@gmail.com', 'Sample Email');
+            $this->email->to('iroyanthony@gmail.com'); 
+
+
+            $this->email->subject('Email Test');
+
+            $this->email->message($message);  
+
+            $this->email->send();
+
+            echo $this->email->print_debugger();
+
+
+	}
+
+
+
+	public function calendar()
+	{
+
+
+		
+		$nav_data['page_name'] 			= "calendar";
+
+		$data['calendar_orders']		= $this->photo_managementModel->get_all_approved_orders();	
+
+
+		$this->load->view('photographer/photographer_required_pages/header');
+
+		$this->load->view('photographer/photographer_required_pages/nav', $nav_data);
+
+		$this->load->view('photographer/calendar', $data);
+
+	
+	}
+
+
+
+	public function start_photo_session($order_id)
+	{
+
+			$this->photo_managementModel->start_photo_session($order_id);	
+
+ 			redirect('PhotographerController/upcoming_orders');
+	}
+
+
+	public function end_photo_session($order_id)
+	{
+
+
+			$this->photo_managementModel->end_photo_session($order_id);	
+
+ 			redirect('PhotographerController/pending_order_album');
+	}
+
+
+
+	public function download() {
+		$this->load->library('zip');
+		$this->load->helper('file');
+		$path = './packages_imgs/';
+
+		$files = get_filenames($path);
+		foreach ($files as $f) {
+				$this->zip->read_file($path.$f, true);
+		}
+		$this->zip->download('Download_all_files');
 	}
 
 

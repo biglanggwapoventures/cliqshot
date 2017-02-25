@@ -1,191 +1,127 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
-<!-- BEGIN HEAD -->
-<head>
-	<meta charset="utf-8" />
-	<title>Cliqshot Register</title>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<meta content="" name="description" />
-	<meta content="" name="author" />
-	<!-- BEGIN GLOBAL MANDATORY STYLES -->
-	<link href="<?php echo base_url();?>assets/login/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/css/style-metro.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/css/style.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
-	<link href="<?php echo base_url();?>assets/login/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-	<link rel="stylesheet" type="text/css" href="<?php echo base_url();?>assets/login/assets/plugins/select2/select2_metro.css" />
-	<!-- END GLOBAL MANDATORY STYLES -->
-	<!-- BEGIN PAGE LEVEL STYLES -->
-	<link href="<?php echo base_url();?>assets/login/assets/css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
-	<!-- END PAGE LEVEL STYLES -->
-	<link rel="shortcut icon" href="favicon.ico" />
-</head>
-<!-- END HEAD -->
-<!-- BEGIN BODY -->
-<body class="login">
-	<!-- BEGIN LOGO -->
-	<div class="logo">
-			<img src="<?php echo base_url();?>assets/login/assets/img/cliqshot_white.png" style="width:350px;height:55px;">
-	</div>
-	<!-- END LOGO -->
-	<!-- BEGIN LOGIN -->
-	<div class="content">
-		<!-- BEGIN LOGIN FORM -->
-    <?php echo form_open("C_Main/register"); ?>
-		<form class="form-vertical login-form" action="" method="post">
-    <div class="alert alert-error" role="alert">
-        <button class="close" data-dismiss="alert"></button>
-        <span><?php echo validation_errors();?></span>
-      </div>
-      
-      <h3 >Sign Up</h3>
-      <p>Enter your personal details below:</p>
-      <div class="control-group">
-        <label class="control-label visible-ie8 visible-ie9">Full Name</label>
-        <div class="controls">
-          <div class="input-icon left">
-            <i class="icon-font"></i>
-            <input class="m-wrap placeholder-no-fix" type="text" placeholder="Full Name" name="fullname"/>
-          </div>
-        </div>
-      </div>
-      <div class="control-group">
-        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-        <label class="control-label visible-ie8 visible-ie9">Email</label>
-        <div class="controls">
-          <div class="input-icon left">
-            <i class="icon-envelope"></i>
-            <input class="m-wrap placeholder-no-fix" type="text" placeholder="Email" name="email"/>
-          </div>
-        </div>
-      </div>
-      <div class="control-group">
-        <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-        <label class="control-label visible-ie8 visible-ie9">Contact Number</label>
-        <div class="controls">
-          <div class="input-icon left">
-            <i class="icon-phone"></i>
-            <input class="m-wrap placeholder-no-fix" type="text" placeholder="Contact Number" name="contact_number"/>
-          </div>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label visible-ie8 visible-ie9">Address</label>
-        <div class="controls">
-          <div class="input-icon left">
-            <i class="icon-ok"></i>
-            <input class="m-wrap placeholder-no-fix" type="text" placeholder="Address" name="address"/>
-          </div>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label visible-ie8 visible-ie9">Birthday</label>
-        <div class="controls">
-          <div class="input-icon left">
-            <i class="icon-calendar"></i>
-            <input class="m-wrap placeholder-no-fix" type="date" placeholder="Birthday" name="birthdate"/>
-          </div>
-        </div>
-      </div>
+<html lang="en">
 
-      <p>Enter your account details below:</p>
-      <div class="control-group">
-        <label class="control-label visible-ie8 visible-ie9">Username</label>
-        <div class="controls">
-          <div class="input-icon left">
-            <i class="icon-user"></i>
-            <input class="m-wrap placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
-          </div>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label visible-ie8 visible-ie9">Password</label>
-        <div class="controls">
-          <div class="input-icon left">
-            <i class="icon-lock"></i>
-            <input class="m-wrap placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password"/>
-          </div>
-        </div>
-      </div>
-      <div class="control-group">
-        <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
-        <div class="controls">
-          <div class="input-icon left">
-            <i class="icon-ok"></i>
-            <input class="m-wrap placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="passconf"/>
-          </div>
-        </div>
-      </div>
-      <div class="control-group">
-        <div class="controls">
-          <label class="checkbox">
-          <input type="checkbox" name="tnc"/> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
-          </label>
-          <div id="register_tnc_error"></div>
-        </div>
-      </div>
-      <div class="form-actions">
-        <button id="register-back-btn" type="button" class="btn">
-        <i class="m-icon-swapleft"></i>  Back
-        </button>
-        <button type="submit" id="register-submit-btn" class="btn green pull-right">
+    <head>
 
-        Sign Up <i class="m-icon-swapright m-icon-white"></i>
-        </button>
-      </div>
-    </form>
-    <?php echo form_close(); ?>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Cliqshot Register</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/form-elements.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url(); ?>assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url(); ?>assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url(); ?>assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="<?php echo base_url(); ?>assets/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body>
+
+        <!-- Top content -->
+        <div class="top-content">
+            
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <img src="<?php echo base_url(); ?>assets/img/cliqshot_white.png" style="width:250px;height:55px;">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-4 form-box">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Sign Up <i class="fa fa-lock"></i> </h3>
+                                    <div class="alert alert-error" role="alert">
+                                    <button class="close" data-dismiss="alert"></button>
+                                     <span><?php echo validation_errors();?></span>
+                                     </div>
+                                    
+                                </div>
+                                
+                            </div>
+
+                            <div class="form-bottom">
+                                <form role="form" action="register" method="post" class="login-form">
+                                <p>Enter your personal details below:</p>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="fullname">Full Name</label>
+                                        <input type="text" name="fullname" placeholder="Full Name..." class="form-username form-control" id="form-username">
+                                    </div>
+
+                                     <div class="form-group">
+                                        <label class="sr-only" for="email">Email Address</label>
+                                        <input type="text" name="email" placeholder="Email Address..." class="form-username form-control" id="form-username">
+                                    </div>
+                                    
+                                    <div class="form-group">
+                                        <label class="sr-only" for="contact_number">Contact Number</label>
+                                        <input type="text" name="contact_number" placeholder="Contact Number..." class="form-username form-control" id="form-username">
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label class="sr-only" for="address">Address</label>
+                                        <input type="text" name="address" placeholder="Address..." class="form-username form-control" id="form-username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="birthdate">Birthdate</label>
+                                        <input type="date" name="birthdate" placeholder="Birthdate..." class="form-username form-control" id="form-username">
+                                    </div>
+                                   
+                                    <hr>
+                                    <p>Enter your account details below:</p>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="username">Username</label>
+                                        <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="password">Password</label>
+                                        <input type="password" name="password" placeholder="Password..." class="form-username form-control" id="form-username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="passconf">Re-Type your Password</label>
+                                        <input type="password" name="passconf" placeholder="Re-Type your Password..." class="form-password form-control" id="form-password">
+                                    </div>
+                                    <button type="submit" class="btn">Sign in!</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+            </div>
+            
+        </div>
 
 
+        <!-- Javascript -->
+        <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/js/jquery.backstretch.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/js/scripts.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
 
-		<!-- END LOGIN FORM -->
+    </body>
 
-
-	</div>
-	<!-- END LOGIN -->
-	<!-- BEGIN COPYRIGHT -->
-	<div class="copyright">
-		2017 Capstone Project
-	</div>
-	<!-- END COPYRIGHT -->
-	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-	<!-- BEGIN CORE PLUGINS -->   <script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
-	<!--[if lt IE 9]>
-	<script src="assets/plugins/excanvas.min.js"></script>
-	<script src="assets/plugins/respond.min.js"></script>
-	<![endif]-->
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
-	<!-- END CORE PLUGINS -->
-	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="<?php echo base_url();?>assets/login/assets/plugins/select2/select2.min.js"></script>
-	<!-- END PAGE LEVEL PLUGINS -->
-	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	<script src="<?php echo base_url();?>assets/login/assets/scripts/app.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/scripts/login-soft.js" type="text/javascript"></script>
-	<!-- END PAGE LEVEL SCRIPTS -->
-	<script>
-		jQuery(document).ready(function() {
-		  App.init();
-		  Login.init();
-		});
-	</script>
-	<!-- END JAVASCRIPTS -->
-
-</body>
-<!-- END BODY -->
 </html>

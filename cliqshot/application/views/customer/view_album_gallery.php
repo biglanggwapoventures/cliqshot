@@ -1,5 +1,5 @@
 
-        <link href="<?php echo base_url('assets/dist/css/lightgallery.css'); ?>" rel="stylesheet">
+        <link href="<?php echo base_url('assets/inside/dist/css/lightgallery.css'); ?>" rel="stylesheet">
         <style type="text/css">
             body{
                 
@@ -124,26 +124,35 @@
     <body class="home">
 
         <div class="row">
-                <div class="col-lg-12">
+                <div class="col-lg-10">
 
 
-                    <h2 class="page-header"><i class="fa fa-image"></i> I was broombrooming (December 25, 2016)</h2>
+                    <h2 class="page-header"><i class="fa fa-image"></i> <?php echo $album_details[0]->album_title; ?></h2>
+
                 </div>
+
+                <div class="col-lg-2">
+                <br>
+                <br>  
+
+                   <a href= "<?php echo base_url('PhotographerController/download'); ?>" class = 'btn btn-primary'> Download Album</a>
+
+                   
+                </div>
+
+
                 <!-- /.col-lg-12 -->
             </div>
 
              <ol class="breadcrumb">
                             <li>
-                                <i class="fa fa-dashboard"></i>  <a href="index.html">Album Package</a>
+                                <i class="fa fa-home"></i>  <a href="CustomerController/index">Home</a>
                             </li>
                             <li class="active">
                                 <i class="fa fa-picture-o"></i> Gallery
                             </li>
                         </ol>
 
-            All photos will be deleted after 3 months and stored in CD with both high-resolution and watermarked.
-
-            Turnover time is between 7 - 10 business days depending on the service selected.
 <br>
 <br>
 

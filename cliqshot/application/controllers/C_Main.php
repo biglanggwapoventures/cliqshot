@@ -19,7 +19,7 @@ class C_Main extends CI_Controller
 		}
 		elseif($this->session->userdata('clerk_user'))
 		{
-			$this->load->view('clerk/Vc_dashboard');
+			$this->load->view('clerk/home');
 		}
 		elseif($this->session->userdata('photographer_user'))
 		{
@@ -88,7 +88,7 @@ class C_Main extends CI_Controller
 				else
 				{
 					//$data['error']='Wrong Password!';
-					$this->load->view('V_Login');
+					redirect('C_Main/login');
 				}
 
 			}
@@ -106,7 +106,7 @@ class C_Main extends CI_Controller
 						'clerk_user' => $row['clerk_user']
 					);
 					$this->session->set_userdata($row_data);
-					redirect('ClerkController/pending_orders');
+					redirect('ClerkController');
 				}
 				else
 				{
@@ -127,7 +127,9 @@ class C_Main extends CI_Controller
 					$row_data = array(
 						'client_id'   => $row['client_id'],
 						'client_username' => $row['client_username'],
-						'client_fullname'   => $row['client_fullname']
+						'client_fullname' => $row['client_fullname'],
+						'client_birthdate' => $row['client_birthdate'],
+						'client_email' => $row['client_contact']
 					);
 					$this->session->set_userdata($row_data);
 					redirect('CustomerController');
@@ -135,7 +137,7 @@ class C_Main extends CI_Controller
 				else
 				{
 					//$data['error']='Wrong Password!';
-					$this->load->view('V_Login');
+					$this->load->view('login/V_Login');
 				}
 
 			}
@@ -143,7 +145,7 @@ class C_Main extends CI_Controller
 		else
 		{
 			//$data['error']='Wrong Username!';
-			$this->load->view('V_Login');
+			$this->load->view('login/V_Login');
 		}
 
 	}
@@ -179,7 +181,7 @@ class C_Main extends CI_Controller
 			$data['client_email'] 	= $this->input->post('email');
 			$this->AdminModel->create_customer($data);
 
-			$pesan['success']  = "Registration Success!";
+			$pesan['success']  = "Registrasion Success!";
 			$this->load->view('login/V_Login2',$pesan);
 		}
 	}

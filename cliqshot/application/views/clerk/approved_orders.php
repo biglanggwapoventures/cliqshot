@@ -4,7 +4,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h3 class="page-header">
-                            <i class="fa fa-calendar"></i>  Approved Orders
+                            <i class="fa fa-check"></i>  Approved Orders
 
                         </h3>
 
@@ -23,58 +23,51 @@
                                     <thead>
 
                                         <tr>
-                                            <td>Order Id
-                                            <td>Package Name
-                                            <td>Date Ordered
-                                            <td>Event Date
-                                            <td>Event Time
-                                            <td>Status
-                                            <td>Options
+                                            <td><b>No.</b>
+                                            <td><b>Customer Name</b>
+                                            <td><b>Package Name</b>
+                                            <td><b>Date Ordered</b>
+                                            <td><b>Event Date</b>
+                                            <td><b>Event Time</b>
+                                            <td><b>Status</b>
+                                            <td><b>Options</b>
                                     </thead>
                                       
-                                    <?php
+                                    <?php $no=1;
                                       
 
                                      foreach($my_orders as $row) {  ?>
                                     
 
 
-                                        <tr><td><?php echo $row->order_id; ?>
+                                        <tr><td><b><?="$no.";?></b></td>
+                                            <td><?php echo $row->client_fullname; ?>
                                             <td><?php echo $row->package_name; ?>
                                             <td><?php echo date("M, d Y", strtotime($row->date_ordered)); ?>
                                             <td><?php echo date("M, d Y", strtotime($row->event_date)); ?>
-                                            <td><?php echo date("H:m", strtotime($row->time_ordered)); ?>
+                                            <td><?php echo $row->time_ordered; ?>
                                             <td><?php echo $row->payment_status; ?>
                                            
                                             <td>
 
-                                                <?php  if( $row->payment_status == 'unpaid') { ?>
-
-                                                    <a href= "paid_order/<?php echo $row->order_id; ?>" class= 'btn btn-primary btn-sm' > Paid (Cash) </a>
-
-                                                <?php } ?>
-
-                                                <a href= "select_photographer/<?php echo $row->order_id; ?>" class= 'btn btn-success btn-sm' > Select  a Photographer</a>
-                                                <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-info btn-sm' > View Order</a>
-                                            
+                                                <a href= "select_photographer/<?php echo $row->order_id; ?>" class= 'btn btn-success btn-sm' > Select Photographer</a>
+<!--                                                 <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-info btn-sm' > View Order</a>
+ -->                                            
 
 
-                                      <?php } ?>
+                                      <?php  $no++; } ?>
 
                               
                                             </table>
                                          <!-- /.table-responsive -->
                                         </div>
+                                        <br>
+                                        <br>
+                                        <br>
+                                        <br>
+
                                         <!-- /.panel-body -->
                                         </div>
                                     <!-- /.panel -->
 
                                
-
-
-
-                               </div>
-
-                            </div>
-                    </div>
-                                                  

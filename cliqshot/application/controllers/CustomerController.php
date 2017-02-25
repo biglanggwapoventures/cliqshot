@@ -1,4 +1,4 @@
-F<?php
+<?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class CustomerController extends CI_Controller {
@@ -57,7 +57,6 @@ class CustomerController extends CI_Controller {
 	public function index()
 	{
 
-		$data['get_packages'] = $this->photo_managementModel->get_packages();
 
 
 		$this->load->view('customer/customer_required_pages/header');
@@ -66,7 +65,7 @@ class CustomerController extends CI_Controller {
 
 		$this->load->view('customer/customer_required_pages/nav', $nav_data );
 
-		$this->load->view('customer/home', $data);
+		$this->load->view('customer/home');
 		
 		$this->load->view('customer/customer_required_pages/footer');
 	
@@ -90,14 +89,12 @@ class CustomerController extends CI_Controller {
 	
 	}
 
-	public function view_order_receipt()
-	{
+	public function appointment_schedule()
+	{	
+		$orders_data['error'] = false;
 		$package_id =  $this->input->post('package_id');
  
 		$orders_data['package_id'] 			= $package_id ;
-		$orders_data['date_ordered'] 		=  date("Y-m-d");
-		$orders_data['time_ordered'] 		=  $this->input->post('time_ordered');
-		$orders_data['event_date'] 			=  $this->input->post('event_date');
 		$orders_data['package_info'] 		=  $this->customerModel->get_package_info($package_id);
 
 
@@ -151,12 +148,16 @@ class CustomerController extends CI_Controller {
 		$orders_data['time_ordered'] 		=  $this->input->post("time_ordered");
 		$orders_data['event_date'] 			=  $this->input->post("event_date");
 		$orders_data['order_status'] 		=  "pending";
+		$orders_data['payment_status'] 		=  "unpaid";
+
 
 		 $this->customerModel->insert_orders($orders_data);
 
 		//* $data['get_packages'] = $this->photographyModel->get_packages();
+
+		  $this->session->set_flashdata('approve', 'You have successfully appoint a photo package.');
  		
- 		redirect(base_url("index.php/CustomerController/my_appointments"));
+ 		redirect(base_url("CustomerController/my_appointments"));
 
 	
 	}
@@ -167,7 +168,7 @@ class CustomerController extends CI_Controller {
 		$user_id =  $this->user_id;
 
  		$data['my_orders'] = $this->customerModel->get_my_orders($user_id);
- 
+
 		$this->load->view('customer/customer_required_pages/header');
 
 		$nav_data['page_name'] 			= "my_appointments";
@@ -181,86 +182,115 @@ class CustomerController extends CI_Controller {
 	
 	}
 
-	public function paypal_payment(){
+
+
+
+	public function payment_process()
+	{
+
+
+		$order_id 							=  $this->input->get('order_id');
+ 		
+ 		$order_info 					= $this->customerModel->get_order_info($order_id);
+		
+		$orders_data['date_ordered'] 		=  $order_info['date_ordered'];
+
+		$orders_data['time_ordered'] 		=  $order_info['time_ordered'];
+
+		$orders_data['event_date'] 			=  $order_info['event_date'];
+
+		$orders_data['package_info'] 		=  $this->customerModel->get_package_info($order_info['package_id']);
+
+		$orders_data['customer_info'] 		=  $this->customerModel->get_acct_info($order_info['user_id']);
+
+
+		
+		$this->load->view('customer/customer_required_pages/header');
+		
+		$nav_data['page_name'] 			= "my_appointments";
+
+		$this->load->view('customer/customer_required_pages/nav', $nav_data );
+
+		$this->load->view('customer/paymentprocess', $orders_data);
+
+		$this->load->view('customer/customer_required_pages/footer');
+
+		//* $data['get_packages'] = $this->photographyModel->get_packages();
+
+	}
+
+
+
+	 public function payment_slip($order_id)
+	{
+
+
 				
 
-		// Database variables
-		$host = "localhost"; //database location
-		$user = ""; //database username
-		$pass = ""; //database password
-		$db_name = ""; //database name
+    		 	$config['upload_path'] = './payment_slips/';
+   		     	$config['allowed_types'] = 'gif|jpg|png|jpeg';
+    		 	$config['max_size'] = '0'; // Unlimited
+              	$config['max_width']  = '0'; // Unlimited
+              	$config['max_height']  = '0'; // Unlimited
+    		 
 
-		// PayPal settings
-
-
-		$item_id 	 = $_POST['prod_id'];
-		$item_amount = $_POST['prod_price'];
-
-
-		$paypal_email 	= 'intensity67@gmail.com';
-		$return_url 	= 'http://localhost/OSX_Ecommerce/payment-successful.php?&prod_id='.$item_id;
-		$cancel_url 	= 'http://domain.com/payment-cancelled.html';
-		$notify_url 	= 'localhost/payment/payment_notif_sample.php?id=1';
-
-		  
-
-		// Check if paypal request or response
-		if (!isset($_POST["txn_id"]) && !isset($_POST["txn_type"])){
-
-		    $querystring = '';
-
-		    // Firstly Append paypal account to querystring
-		    
-		    $querystring .= "?business=".urlencode($paypal_email)."&";
-		 
-		    // Append amount& currency (£) to quersytring so it cannot be edited in html
-		 
-		    // The item name and amount can be brought in dynamically by querying the $_POST['item_number'] variable. 
-
-		    //* Reference: http://stackoverflow.com/questions/10459854/php-issue-in-passing-an-array-to-paypal
+    		 $this->load->library('upload', $config);
+    		 $this->upload->initialize($config);
+				
+				if (!$this->upload->do_upload('proof')) {
+    			$error = array('error' => $this->upload->display_errors());
+    			echo $error['error'];
+					}
 
 
-		    // $querystring .= "custom=".urlencode(1)."&";
-		    // $querystring .= "item_name_1=".urlencode('sad')."&";
-		    // $querystring .= "amount_1=".urlencode($item_amount)."&";
-		    // $querystring .= "quantity_1=".urlencode(1)."&";
+    		 $this->upload->do_upload('proof');
+    		  
 
-		    // $querystring .= "custom=".urlencode(1)."&";
-		    // $querystring .= "item_name_2=".urlencode('sad')."&";
-		    // $querystring .= "amount_2=".urlencode($item_amount)."&"; 
-		    // $querystring .= "quantity_2=".urlencode(1)."&";
+ 			 $file_data = $this->upload->data();
+  		  	$data['payment_slip'] = $file_data['file_name'];
+  		  	$data['bank_account'] = $this->input->post('bank_account');
+  		
 
-		    //loop for posted values and append to querystring
-		    // foreach($_POST as $key => $value) {
-		    //     $value = urlencode(stripslashes($value));
-		    //     $querystring .= "$key=$value&";
-		    // }
+ 			$this->customerModel->get_payment_slip($data, $order_id);
 
-		    
+ 			//$this->session->set_flashdata('success',true);
+ 			$this->session->set_flashdata('uploaded', 'You have successfully uploaded your deposit slip proof. Please wait for 24 hours
+ 				until the clerk will approve your appointment');
+ 			redirect(site_url('CustomerController/my_appointments'));
 
-		 
-		    // Append paypal return addresses
-		    $querystring .= "return=".urlencode(stripslashes($return_url))."&";
-		    $querystring .= "cancel_return=".urlencode(stripslashes($cancel_url))."&";
-		    $querystring .= "notify_url=".urlencode($notify_url);
-		    $querystring .= "METHOD=GetExpressCheckoutDetails&TOKEN=";
-		 
-		    // Append querystring with custom field
-		    //$querystring .= "&custom=".USERID;
-		 
-		    // Redirect to paypal IPN
-		    header('location:https://www.sandbox.paypal.com/cgi-bin/webscr'.$querystring);
-
-		    exit();
-
-		} else {
-
-		   // Response from PayPal
-
+ 		 
 
 		}
 
+
+
+
+
+
+
+
+
+
+	public function my_calendar(){
+
+
+		$user_id =  $this->user_id;
+
+ 		$data['calendar_orders'] = $this->customerModel->get_all_my_approved_orders($user_id);
+
+		$this->load->view('customer/customer_required_pages/header');
+
+		$nav_data['page_name'] 			= "my_calendar";
+
+		$this->load->view('customer/customer_required_pages/nav', $nav_data );
+
+		$this->load->view('customer/my_calendar', $data);
+
+
+	
 	}
+
+
 
 	public function get_package_info_ajax()
 	{
@@ -278,27 +308,66 @@ class CustomerController extends CI_Controller {
 	{
 
 		$package_id =  $this->input->post('package_id');
- 
-		$orders_data['package_id'] 			= $package_id ;
-		$orders_data['date_ordered'] 		=  date("Y-m-d");
-		$orders_data['time_ordered'] 		=  $this->input->post('time_ordered');
-		$orders_data['event_date'] 			=  $this->input->post('event_date');
-		$orders_data['package_info'] 		=  $this->customerModel->get_package_info($package_id);
+
+		$result = $this->customerModel->checkDateAvailability($this->input->post('event_date'),$this->input->post('time_ordered'));
+ 	
+		if($result == 'exist'){
+
+			$orders_data['error'] = true;
+			$package_id =  $this->input->post('package_id');
+	 
+			$orders_data['package_id'] 			= $package_id ;
+			$orders_data['package_info'] 		=  $this->customerModel->get_package_info($package_id);
 
 
-		$this->load->view('customer/customer_required_pages/header');
+			$this->load->view('customer/customer_required_pages/header');
+			
+			$nav_data['page_name'] 			= "package_lists";
+
+			$this->load->view('customer/customer_required_pages/nav', $nav_data );
+
+			$this->load->view('customer/view_order_receipt', $orders_data);
+
+			$this->load->view('customer/customer_required_pages/footer');
+
+		// * $data['get_packages'] = $this->photographyModel->get_packages();
+
+		} else if($result == 'okay'){
+
+			$orders_data['package_id'] 			= $package_id ;
+			$orders_data['date_ordered'] 		=  date("Y-m-d");
+			$orders_data['time_ordered'] 		=  $this->input->post('time_ordered');
+			$orders_data['event_date'] 			=  $this->input->post('event_date');
+			$orders_data['package_info'] 		=  $this->customerModel->get_package_info($package_id);
+
+			$this->load->view('customer/customer_required_pages/header');
 		
-		$nav_data['page_name'] 			= "package_lists";
+			$nav_data['page_name'] 			= "package_lists";
 
-		$this->load->view('customer/customer_required_pages/nav', $nav_data );
+			$this->load->view('customer/customer_required_pages/nav', $nav_data );
 
-		$this->load->view('customer/billing_order', $orders_data);
+			$this->load->view('customer/billing_order', $orders_data);
 
-		$this->load->view('customer/customer_required_pages/footer');
+			$this->load->view('customer/customer_required_pages/footer');
 
-		//* $data['get_packages'] = $this->photographyModel->get_packages();
+			
+
+		}
+
+		
+
+
+		
 	}
 
+
+
+
+
+
+
+
+	
 
 		public function cash_billing()
 	{
@@ -410,5 +479,59 @@ class CustomerController extends CI_Controller {
 		}
 	}
 
+	public function compressor(){
 
-}
+		ob_start('ob_gzhandler');
+
+		ob_flush();
+		
+	}
+
+
+	   public function delete_order_flag($order_id)
+    {
+
+           	$data['customerModel'] =$this->customerModel->delete_order_flag($order_id);
+
+            redirect('CustomerController/my_appointments');
+    }
+
+
+
+
+    public function reschedule_appointment($order_id)
+	{
+		//GET REQUIRED DATA FROM DB
+		$data['resched'] = $this->customerModel->reschedule_appointment($order_id)->row();
+
+		$this->load->view('customer/customer_required_pages/header');
+
+		$nav_data['page_name'] 			= "home";
+
+		$this->load->view('customer/customer_required_pages/nav' , $nav_data);
+
+        $this->load->view('customer/reschedule_appointment', $data);
+
+        $this->load->view('customer/customer_required_pages/footer');
+	}
+
+
+
+
+
+
+		
+		}
+
+
+
+
+
+
+
+
+	
+
+
+
+

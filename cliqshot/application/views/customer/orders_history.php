@@ -10,11 +10,10 @@
 			<thead>
 
 			<tr>
-				<td>Album Title
-				<td>Package Name
+				<td><b>Package Name</b>
 				
-				<td>Date Ordered
-				<td>Order Status
+				<td><b>Session Date</b>
+				<td><b>Option</b>
 
 				<tbody>
 						
@@ -22,14 +21,14 @@
 
 					<tr>
 
-						<td>Static Name
+						
 						<td><?php echo $row->package_name; ?>
 
-						<td><?php echo $row->date_ordered; ?>
+						<td><?php echo $row->event_date; ?>
 
 						<td>	
-						 	<a href= "approve_assignment" class = 'btn btn-primary'> View Order Details</a>
-						 	<a href= "view_album_gallery/<?php echo $row->order_id; ?>" class = 'btn btn-primary'> View Album Gallery</a>
+<!-- 						 	<a href= "approve_assignment" class = 'btn btn-primary'> View Order Details</a>
+ -->						 	<a href= "view_album_gallery/<?php echo $row->order_id; ?>" class = 'btn btn-primary'> View Album Gallery</a>
 
 
 

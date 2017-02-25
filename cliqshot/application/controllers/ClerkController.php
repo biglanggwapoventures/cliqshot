@@ -33,6 +33,8 @@ class ClerkController extends CI_Controller {
 		$this->load->library('session');
 				$this->clerk_id = $this->session->userdata('clerk_id');
 
+				$data['count_pending']  = $this->ClerkModel->pending_count()->result();
+
 		//* $data['sales_daily_trans'] 		=	$this->inventoryModel->get_sales_daily_trans();
 
 		//* $this->nav_data['ing_requests'] =  $this->inventoryModel->get_ingredient_requests();
@@ -57,16 +59,15 @@ class ClerkController extends CI_Controller {
 	public function index()
 	{
 
-		$data['get_packages'] = $this->photo_managementModel->get_packages();
-
-
 		$this->load->view('clerk/clerk_required_pages/header');
 		
-		$nav_data['page_name'] 			= "pending_orders";
+
+
+		$nav_data['page_name'] 			= "home";
 
 		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
 
-		$this->load->view('clerk/pending_orders', $data);
+		$this->load->view('clerk/home');
 		
 		$this->load->view('clerk/clerk_required_pages/footer');
 	
@@ -111,7 +112,7 @@ class ClerkController extends CI_Controller {
 		public function approved_orders(){
 
 
-		$data['my_orders'] = $this->ClerkModel->get_approved_orders();
+		$data['my_orders'] = $this->ClerkModel->get_approved_orders_1();
 
 
 		$this->load->view('clerk/clerk_required_pages/header');
@@ -128,14 +129,106 @@ class ClerkController extends CI_Controller {
 	}
 
 
+	public function payment_status(){
+
+
+		$data['my_orders'] = $this->ClerkModel->get_approved_orders();
+
+
+		$this->load->view('clerk/clerk_required_pages/header');
+
+		$nav_data['page_name'] 			= "payment_status";
+
+		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
+
+		$this->load->view('clerk/payment_status', $data);
+		
+		$this->load->view('clerk/clerk_required_pages/footer');
+
+	
+	}
+
+
+	public function deposit_status(){
+
+
+		$data['my_orders'] = $this->ClerkModel->get_deposit_slips();
+
+
+		$this->load->view('clerk/clerk_required_pages/header');
+
+		$nav_data['page_name'] 			= "deposit_status";
+
+		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
+
+		$this->load->view('clerk/deposit_status', $data);
+		
+		$this->load->view('clerk/clerk_required_pages/footer');
+
+	
+	}
+
+
 		public function approve_order($order_id){
 
 
-				$this->ClerkModel->approve_order($order_id);	
+				$this->ClerkModel->approve_order($order_id);
 
-				redirect('ClerkController/approved_orders');
+				$order_info = $this->ClerkModel->get_order_info_for_email($order_id);
+
+ 				$this->emailUploadNotification($order_info);
+
+				redirect('ClerkController/payment_status');
 
 		}
+
+
+		public function emailUploadNotification($order_info){
+ 
+
+            $config['protocol']    = 'smtp';
+
+			$config['smtp_host'] = 'ssl://smtp.gmail.com'; 
+
+            $config['smtp_port']    = '465';
+			
+			$config['newline'] = "\r\n";
+
+
+            $config['smtp_user']    = 'cliqshot.capstone@gmail.com';
+
+            $config['smtp_pass']    = 'cliqshot123';
+
+            $config['charset']    = 'utf-8';
+ 
+
+			$config['mailtype'] = 'html';
+
+            $config['validation'] = TRUE; // bool whether to validate email or not      
+
+			$this->load->library('email', $config);
+
+			$this->email->initialize($config);  
+
+			$message = "Your Appointment is Confirmed. Here are the details: \n
+			Package Name: Portraits \n
+			Appointment/Booking Date: March 20, 2017"; 
+
+            $this->email->from('cliqshot.capstone@gmail.com', 'Sample Email');
+
+            $this->email->to($order_info['client_email']); 
+
+
+            $this->email->subject('Order Approved');
+
+            $this->email->message($message);  
+
+            $this->email->send();
+
+            echo $this->email->print_debugger();
+
+
+	}
 
 		public function paid_order($order_id){
 
@@ -145,6 +238,47 @@ class ClerkController extends CI_Controller {
  				redirect('ClerkController/approved_orders');
 
 		}
+
+
+		public function view_details($order_id)
+
+		{
+
+
+		$order_id 							=  $this->input->get('order_id');
+ 		
+ 		$order_info 					= $this->ClerkModel->get_order_info($order_id);
+		
+		$orders_data['date_ordered'] 		=  $order_info['date_ordered'];
+
+		$orders_data['time_ordered'] 		=  $order_info['time_ordered'];
+
+		$orders_data['event_date'] 			=  $order_info['event_date'];
+
+		$orders_data['package_info'] 		=  $this->ClerkModel->get_package_info($order_info['package_id']);
+
+		$orders_data['customer_info'] 		=  $this->ClerkModel->get_acct_info($order_info['user_id']);
+
+
+		
+		$this->load->view('clerk/clerk_required_pages/header');
+
+		$nav_data['page_name'] 			= "select_photographer";
+
+		$this->load->view('clerk/clerk_required_pages/nav', $nav_data);
+
+		$this->load->view('clerk/view_details', $orders_data);
+
+		$this->load->view('clerk/clerk_required_pages/footer');
+
+		
+
+
+
+		}
+
+
+
 
 		public function select_photographer($order_id){
 
@@ -270,6 +404,7 @@ class ClerkController extends CI_Controller {
 
  
 		$data['uploaded_album_order'] 	= $this->photo_managementModel->get_orders_history();
+		$data['uploaded_album_order'] 	= $this->photo_managementModel->get_orders_history();
 
 		$nav_data['page_name'] 			= "view_album_gallery";
 
@@ -311,20 +446,31 @@ class ClerkController extends CI_Controller {
 	public function calendar()
 	{
 
- 
-		// $data['uploaded_album_order'] 	= $this->photo_managementModel->get_orders_history();
 
- 		$nav_data['page_name'] 			= "calendar";
 
-		$data= 'data';
+ 		$data['calendar_orders'] = $this->ClerkModel->get_all_my_approved_orders();
 
- 		//$this->load->view('clerk/clerk_required_pages/header');
+		$this->load->view('clerk/clerk_required_pages/header');
 
- 		//$this->load->view('clerk/clerk_required_pages/nav', $nav_data);
+		$nav_data['page_name'] 			= "calendar";
+
+		$this->load->view('clerk/clerk_required_pages/nav', $nav_data );
 
 		$this->load->view('clerk/calendar_view', $data);
-		
-	 // $this->load->view('clerk/clerk_required_pages/footer'); 
+
+
+
+	}
+
+
+
+
+	public function reschedule_appointment($order_id)
+	{
+
+		$this->ClerkModel->reschedule_appointment($order_id);
+
+		redirect('ClerkController/payment_status');
 
 	}
 

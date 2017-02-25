@@ -26,8 +26,8 @@
 						<td><?php echo $row->client_fullname; ?>
 						<td><?php echo $row->date_ordered; ?>
 						<td>	
-						 	<a href= "approve_assignment" class = 'btn btn-primary'> View Order Details</a>
-						 	<a href= "view_album_gallery" class = 'btn btn-primary'> View Album Gallery</a>
+<!-- 						 	<a href= "approve_assignment" class = 'btn btn-primary'> View Order Details</a>
+ -->						 	<a href= "view_album_gallery" class = 'btn btn-primary'> View Album Gallery</a>
 
 
 

@@ -11,16 +11,16 @@
 
     <title>Cliqshot | Photographer</title>
 
-     <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
+     <link href="<?php echo base_url();?>assets/inside/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="<?php echo base_url();?>assets/css/sb-admin.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/inside/css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="<?php echo base_url();?>assets/css/plugins/morris.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/inside/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>assets/inside/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->

@@ -137,6 +137,120 @@
                         </a>
                     </div>
                 </div>
+
+
+
+
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h3 class="page-header">
+ 
+                        </h3>
+
+                         <div class="row">
+                            
+                            <div class="col-md-12">
+                            
+                                <div class="panel panel-default">
+                        <div class="panel-heading">
+                            
+                            REPORTS
+
+                        
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+
+                           
+                             <h2>Summary of Package Sale</h2>
+
+                             <table class="table table-striped"> 
+                                 
+                                    <tr><td>Package Name <td> # Times Ordered <td> Total Sales
+                                    
+                                    <?php foreach($packageReports as $row) { ?>
+
+                                    <tr><td><?php echo $row['package_name']; ?> 
+                                        <td><?php echo $row['tot_orders']; ?>  
+                                        <td>P <?php echo number_format($row['packageTotal'], 2); ?>  
+                                   
+                                    <?php } ?>
+                             </table>
+
+                            <h2>Summary Monthly Sales</h2>
+                            <table class="table table-striped table-condensed"> 
+                                 
+                                    <tr>
+                                        <td>Month
+                                        <td> Total Orders 
+                                        <td> Total Sales 
+
+                                    <?php foreach($monthlyReports as $row) { ?>
+
+                                    <tr><td><?php echo $row['month']; ?> 
+                                        <td><?php echo $row['tot_orders']; ?>  
+                                        <td>P <?php echo number_format($row['packageTotal'], 2); ?>  
+                                   
+                                    <?php } ?>
+                              
+                                 
+                             </table>
+
+                            
+                            
+                            <h2>Summary Sales by Photographer</h2>
+                            <table class="table table-striped table-condensed"> 
+                                 
+                                    <tr><td>Photographer <td> Total Services <td> Total Sales    
+                               
+                                    <?php foreach($photographerReports as $row) { ?>
+
+                                    <tr><td><?php echo $row['photographer_user']; ?> 
+                                        <td><?php echo $row['tot_orders']; ?>  
+                                        <td>P <?php echo number_format($row['packageTotal'], 2); ?>  
+                                   
+                                    <?php } ?>
+                                 
+                             </table>                              
+
+                           
+            
+
+
+
+
+<script src="<?php echo base_url();?>assets/dashboard/jquery-2.1.4.min.js"></script>
+<script src="<?php echo base_url();?>assets/dashboard/Chart.js"></script>
+
+
+
+  <h2>Summary of Package Sale</h2>
+
+                             <table class="table table-striped"> 
+                                 
+                                    <tr><td>Package Name <td> # Times Ordered <td> Total Sales
+                                    
+                                    <?php foreach($packageReports as $row) { ?>
+
+                                    <tr><td><?php echo $row['package_name']; ?> 
+                                        <td><?php echo $row['tot_orders']; ?>  
+                                        <td>P <?php echo number_format($row['packageTotal'], 2); ?>  
+                                   
+                                    <?php } ?>
+                             </table>
+
+
+
+
+
+
+        
+    
+                                                  
+
+
+
             </div>
             <!-- /.row -->
         </div>

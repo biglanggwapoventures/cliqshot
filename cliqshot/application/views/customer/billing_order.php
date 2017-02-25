@@ -13,11 +13,8 @@
                             <li>
                                 <i class="fa fa-calendar"></i> Set Date and Time Schedule
                             </li>
-                            <li>
-                                <i class="fa fa-money"></i> Payment Information
-                            </li>
-                             <li class="active">
-                                <i class="fa fa-money"></i> Money Remittance
+                            <li class="active">
+                                <i class="fa fa-money"></i> Confirm Appointment
                             </li>
                         </ol>
 
@@ -54,20 +51,18 @@
                                     <input type = 'hidden' name = "package_id"      value= '<?php echo $package_id; ?>' />
                                     <input type = 'hidden' name = "time_ordered"    value= '<?php echo $time_ordered; ?>' />
                                     <input type = 'hidden' name = "event_date"      value= '<?php echo $event_date; ?>' />
+
                                     
 
-               <h3><b>REFERENCE NUMBER</b>: UR123F89</h3>
-               <hr>
-                <h4><b>Photo Service</b>: <?php echo $package_info['package_name']; ?></h4>
+                <h3><b>Photo Service</b>: <?php echo $package_info['package_name']; ?></h3>
                 <hr>
                 <p><h5><b>Date Reserved</b>: <?php echo date("M d, Y", strtotime($event_date)); ?></p></h5>
-                <p><h5><b>Time Reserved</b>: <?php echo date("h:i a", strtotime($time_ordered)); ?></p></h5>
+                <p><h5><b>Time Reserved</b>: <?php echo $time_ordered; ?></p></h5>
                 <hr>
                 <p><h5><b>Date Ordered</b>: <?php echo date("M d, Y h:i a", strtotime($date_ordered)); ?></p></h5>
+                <hr>
+                
                 <br>
-                <br>
-                <b>Price of Reservation</b>:<h3>P <?php echo number_format($package_info['package_price']); ?></h3>
-              
              
                 
                 

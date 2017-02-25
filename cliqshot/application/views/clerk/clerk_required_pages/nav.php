@@ -1,22 +1,51 @@
  <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
-<!-- 
-                    <li <?php     if($page_name == 'list_packages') echo "class = 'active' "; ?>>
-                        <a href="<?php echo site_url('ClerkController/list_packages');?>"><i class="fa fa-fw fa-picture-o"></i> 
-                        List of Packages</a>
-                    </li> -->
+
+                   
+
+                    <li <?php     if($page_name == 'home') echo "class = 'active' "; ?>>
+                        <a href="<?php echo site_url('ClerkController/index');?>"><i class="fa fa-fw fa-home"></i> 
+                        Home</a>
+                    </li>
+
 
 
                     <li <?php     if($page_name == 'pending_orders') echo "class = 'active' "; ?>>
                         <a href="<?php echo site_url('ClerkController/pending_orders');?>"><i class="fa fa-fw fa-picture-o"></i> 
-                        Pending Orders</a>
+                        Pending Appointment
+
+
+                         <!--<?php foreach($count_pending AS $pending){ ?>
+                         <lablel class = 'label label-primary'>5</lablel>
+                         <?php } ?> -->
+                         </a>
+
                     </li>
+
+
+                    
+                      <li <?php     if($page_name == 'payment_status') echo "class = 'active' "; ?>>
+                        <a href="<?php echo site_url('ClerkController/payment_status');?>"><i class="fa fa-fw fa-money"></i> 
+                        Payment Status</a>
+                    </li>
+
+
+                    <li <?php     if($page_name == 'deposit_status') echo "class = 'active' "; ?>>
+                        <a href="deposit_status"><i class="fa fa-fw fa-picture-o"></i> Customer Deposit Slip
+                        
+ 
+                        </a>
+
+                    </li>
+
 
 
                     <li <?php     if($page_name == 'approved_orders') echo "class = 'active' "; ?>>
-                        <a href="<?php echo site_url('ClerkController/approved_orders');?>"><i class="fa fa-fw fa-picture-o"></i> 
-                        Approved Orders</a>
+                        <a href="<?php echo site_url('ClerkController/approved_orders');?>"><i class="fa fa-fw fa-check"></i> 
+                        Approved Appointment</a>
                     </li>
+
+
 
            <!--           <li <?php     if($page_name == 'assigned_orders') echo "class = 'active' "; ?>>
                         <a href="<?php echo site_url('ClerkController/assigned_orders');?>"><i class="fa fa-fw fa-picture-o"></i> 
@@ -24,51 +53,22 @@
                     </li>
  -->
                     <li <?php     if($page_name == 'upcoming_orders') echo "class = 'active' "; ?>>
-                        <a href="<?php echo site_url('ClerkController/upcoming_orders');?>"><i class="fa fa-fw fa-picture-o"></i> 
+                        <a href="<?php echo site_url('ClerkController/upcoming_orders');?>"><i class="fa fa-fw fa-camera"></i> 
                         Scheduled Photography Sessions </a>
                     </li>
 
-                     <li <?php     if($page_name == 'pending_order_album') echo "class = 'active' "; ?>>
-                        <a href="<?php echo site_url('ClerkController/pending_order_album');?>"><i class="fa fa-fw fa-picture-o"></i> Pending for Album Orders
-                        
-                        <!-- Count Upcoming Assigned Orders of Photographer -->
-
-                        <lablel class = 'label label-success'>3</lablel>
-
-                        </a>
-
-                    </li>
-
-                    <li <?php     if($page_name == 'orders_history') echo "class = 'active' "; ?>>
-                        <a href="<?php echo site_url('ClerkController/orders_history');?>"><i class="fa fa-fw fa-picture-o"></i> My Orders History
-                        
-                        <!-- Count  Orders History  of Photographer -->
-
-                        <lablel class = 'label label-info'>5</lablel>
-
-                        </a>
-
-                    </li>
-
-                    <li <?php     if($page_name == 'reports') echo "class = 'active' "; ?>>
-                        <a href="<?php echo site_url('ClerkController/reports');?>"><i class="fa fa-fw fa-picture-o"></i> Reports
-                        
-                        <!-- Count  Orders History  of Photographer -->
-
-                        <lablel class = 'label label-info'>5</lablel>
-
-                        </a>
-
-                    </li>
 
                     <li <?php     if($page_name == 'calendar') echo "class = 'active' "; ?>>
-                        <a href="calendar"><i class="fa fa-fw fa-picture-o"></i> Calendar View
+                        <a href="calendar"><i class="fa fa-fw fa-calendar"></i> Calendar View
                         
                         <!-- Count  Orders History  of Photographer -->
  
                         </a>
 
                     </li>
+
+
+
 
                 </ul>
             </div>

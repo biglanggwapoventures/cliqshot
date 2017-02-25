@@ -26,8 +26,8 @@
 						<td><?php echo $row->order_id; ?>
 
 						<td>
-	 						<a href= "approve_assignment" class = 'btn btn-info'> View Order Details</a>
-	 
+<!-- 	 						<a href= "approve_assignment" class = 'btn btn-info'> View Order Details</a>
+ -->	 
 
 
 

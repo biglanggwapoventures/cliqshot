@@ -1,5 +1,5 @@
 
-		<form action = '<?php echo site_url(); ?>/CustomerController/view_order_receipt' method = 'POST'>
+		<form action = '<?php echo site_url(); ?>/CustomerController/appointment_schedule' method = 'POST'>
 
 
  <div class='modal-body'>
@@ -15,7 +15,7 @@
 			 <br>
 			 
 
-                        <h3 class="media-heading"><?php echo $package_info['package_name']; ?></h3>
+                        <h3 class="media-heading"><i class="fa fa-fw fa-camera"></i>  <?php echo $package_info['package_name']; ?></h3>
                     </center>
 
 
@@ -28,9 +28,6 @@
                     <p class="text-left"><strong>Description: </strong>
                    <?php echo $package_info['package_desc'] ?>
 </p>
-                    <p class="text-left"><strong>Hour: </strong>
-                    3 hours</p>
-
                     <p class="text-left"><strong>Amount: </strong>
                         P <?php echo number_format($package_info['package_price'] , 2); ?></p>
 

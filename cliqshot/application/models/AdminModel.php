@@ -14,6 +14,7 @@ class AdminModel extends CI_Model {
 	{
 		$this->db->select('*')
 				 ->from('admin')
+				 ->where ('flag','1')
 				 ->order_by('admin_user','asc');
 		return $this->db->get();
 	}
@@ -21,7 +22,8 @@ class AdminModel extends CI_Model {
 	function admin_count()
 	{
 		$this->db->select('COUNT(admin_id) AS admin_count')
-				 ->from('admin');
+				 ->from('admin')
+				 ->where ('flag','1');
 		return $this->db->get();
 	}
 
@@ -47,10 +49,10 @@ class AdminModel extends CI_Model {
 
 	function delete_admin($admin_id)
 	{
-		$this->db->delete('admin', array(
-							'admin_id' => $admin_id,
-							'admin_id !=' => 1
-						));
+
+		$this->db->set('flag', "0");
+                $this->db->where('admin_id', $admin_id);
+                $this->db->update('admin');
 	}
 
 
@@ -75,6 +77,7 @@ class AdminModel extends CI_Model {
 	{
 		$this->db->select('*')
 				 ->from('customer')
+				 ->where('flag', '1')
 				 ->order_by('client_username','asc');
 		return $this->db->get();
 	}
@@ -82,6 +85,7 @@ class AdminModel extends CI_Model {
 	function customer_count()
 	{
 		$this->db->select('COUNT(client_id) AS customer_count')
+				 ->where('flag', '1')
 				 ->from('customer');
 		return $this->db->get();
 	}
@@ -107,10 +111,12 @@ class AdminModel extends CI_Model {
 	}
 
 	function delete_customer($client_id)
-	{
-		$this->db->delete('customer', array(
-							'client_id' => $client_id
-						));
+	{	
+
+		$this->db->set('flag', "0");
+                $this->db->where('client_id', $client_id);
+                $this->db->update('customer');
+
 	}
 
 
@@ -137,6 +143,7 @@ class AdminModel extends CI_Model {
 	{
 		$this->db->select('*')
 				 ->from('photographer')
+				 ->where('flag','1')
 				 ->order_by('photographer_user','asc');
 		return $this->db->get();
 	}
@@ -144,7 +151,8 @@ class AdminModel extends CI_Model {
 	function photographer_count()
 	{
 		$this->db->select('COUNT(photographer_id) AS photographer_count')
-				 ->from('photographer');
+				 ->from('photographer')
+				 ->where('flag', '1');
 		return $this->db->get();
 	}
 
@@ -170,9 +178,13 @@ class AdminModel extends CI_Model {
 
 	function delete_photographer($photographer_id)
 	{
-		$this->db->delete('photographer', array(
-							'photographer_id' => $photographer_id
-						));
+
+				$this->db->set('flag', "0");
+                $this->db->where('photographer_id', $photographer_id);
+                $this->db->update('photographer');
+
+
+
 	}
 
 
@@ -197,6 +209,7 @@ class AdminModel extends CI_Model {
 	{
 		$this->db->select('*')
 				 ->from('clerk')
+				 ->where('flag', '1')
 				 ->order_by('clerk_user','asc');
 		return $this->db->get();
 	}
@@ -204,7 +217,8 @@ class AdminModel extends CI_Model {
 	function clerk_count()
 	{
 		$this->db->select('COUNT(clerk_id) AS clerk_count')
-				 ->from('clerk');
+				 ->from('clerk')
+				 ->where('flag', '1');
 		return $this->db->get();
 	}
 
@@ -230,9 +244,10 @@ class AdminModel extends CI_Model {
 
 	function delete_clerk($clerk_id)
 	{
-		$this->db->delete('clerk', array(
-							'clerk_id' => $clerk_id
-						));
+
+		$this->db->set('flag', "0");
+                $this->db->where('clerk_id', $clerk_id);
+                $this->db->update('clerk');
 	}
 
 
@@ -251,12 +266,81 @@ class AdminModel extends CI_Model {
 
 
 
+
+/*==================== PHOTO PACKAGES MODULE ====================*/
+
+
+
 	function services_count()
 	{
 		$this->db->select('COUNT(package_id) AS services_count')
-				 ->from('package');
+				 ->from('package')
+				 ->where('flag', '1');
 		return $this->db->get();
 	}
+
+	function tb_services()
+	{
+		$this->db->select('*')
+				 ->from('package')
+				 ->where('flag','1')
+				 ->order_by('package_name','asc');
+		return $this->db->get();
+	}
+
+	function package_id($package_id)
+	{
+		$this->db->select('*')
+				 ->from('package')
+				 ->where('package_id', $package_id);
+		return $this->db->get();
+	}
+
+	//CREATE, UPDATE, DELETE
+	function create_service($data)
+	{
+		$this->db->insert('package', $data);
+	}
+
+	function update_service($package_id, $data)
+	{
+		$this->db->where('package_id', $package_id);
+		$this->db->update('package', $data);
+	}
+
+	function delete_service($package_id)
+	{
+		 $this->db->set('flag', "0");
+                $this->db->where('package_id', $package_id);
+                $this->db->update('package');
+                 redirect('AdminController/read_photoservices');
+	}
+
+
+	// Used for paginationsample
+	function paging_service($limit=array())
+	{
+		$this->db->select('*');
+		$this->db->from('package');
+		$this->db->order_by('package_name', 'asc');
+
+		if ($limit != NULL)
+		$this->db->limit($limit['perpage'], $limit['offset']);
+
+		return $this->db->get();
+	}
+
+
+   function delete_order_flag($order_id)
+    {
+ 
+
+          $this->db->set('flag', "0");
+                $this->db->where('order_id', $order_id);
+                $this->db->update('orders');
+                 redirect('CustomerController/my_appointments');
+
+    }
 
 
 

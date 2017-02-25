@@ -9,8 +9,8 @@ class AdminController extends CI_Controller
 		
 
 		$this->load->model('AdminModel');
-		$this->load->model('photoServicesModel');
-		
+		$this->load->model('AdminModel');
+		$this->load->model('chartsModel');
 	}
 
 	public function index()
@@ -20,6 +20,11 @@ class AdminController extends CI_Controller
 		$data['count_clerk'] = $this->AdminModel->clerk_count()->result();
 		$data['count_customer'] = $this->AdminModel->customer_count()->result();
 		$data['count_services'] = $this->AdminModel->services_count()->result();
+
+
+		$data['monthlyReports'] = $this->chartsModel->get_monthly_reports();
+		$data['packageReports'] = $this->chartsModel->get_report_per_package();
+		$data['photographerReports'] = $this->chartsModel->get_report_per_photographer();
 
 
 
@@ -40,6 +45,9 @@ class AdminController extends CI_Controller
 		
 	}
 
+
+
+
 	/*==================== MODULES ADMIN ====================*/
 	//CREATE
 	public function create_admin()
@@ -48,8 +56,7 @@ class AdminController extends CI_Controller
 		$data['data_admin']		= $this->AdminModel->tb_admin()->result();
 		$data['data_photographer']		= $this->AdminModel->tb_photographer()->result();
 		$data['data_clerk']		= $this->AdminModel->tb_clerk()->result();
-		$data['data_customer']	= $this->AdminModel->tb_customer
-		()->result();
+		$data['data_customer']	= $this->AdminModel->tb_customer()->result();
 
 		
 		$nav_data['page_name'] 			= "users";
@@ -507,7 +514,8 @@ class AdminController extends CI_Controller
 		//DELETE
 	public function delete_clerk($clerk_id)
 	{
-				$this->AdminModel->delete_clerk($clerk_id);
+
+		$this->AdminModel->delete_clerk($clerk_id);
 
 		redirect(site_url('AdminController/read_clerk'));
 	}
@@ -527,7 +535,7 @@ class AdminController extends CI_Controller
 
 
 		
-		$data['data_services']	= $this->photoServicesModel->tb_services()->result();
+		$data['data_services']	= $this->AdminModel->tb_services()->result();
 
 		$nav_data['page_name'] 			= "services";
 
@@ -536,8 +544,52 @@ class AdminController extends CI_Controller
 
 		$this->load->view('admin/Va_photoservices-create', $data);
 	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 	public function create_photoservices_process()
 	{
+
+
+
+			  $config['upload_path'] = './packages_imgs/';
+        	  $config['allowed_types'] = 'jpg';
+              $config['max_size'] = '0'; // Unlimited
+              $config['max_width']  = '0'; // Unlimited
+              $config['max_height']  = '0'; // Unlimited
+
+              $this->load->library('upload', $config);
+
+             // Alternately you can set preferences by calling the initialize function. Useful if you auto-load the class:
+              $this->upload->initialize($config);
+				
+				if (!$this->upload->do_upload('file')) {
+    			$error = array('error' => $this->upload->display_errors());
+    			echo $error['error'];
+					}
+
+
+               $this->upload->do_upload('file');
+    		   $data_upload_files = $this->upload->data();
+			   $image = $data_upload_files[full_path]; 
+
+
+
 			$this->form_validation->set_rules('package_name','PACKAGE NAME','required|is_unique[package.package_name]',
 									array(
 													'is_unique' => 'This %s already exists.'
@@ -551,24 +603,44 @@ class AdminController extends CI_Controller
 			$nav_data['page_name'] 			= "services";
 
 		$this->load->view('admin/admin_required_pages/nav', $nav_data );
-			$this->load->view('admin/Va_photoservices-create');
+		$this->load->view('admin/Va_photoservices-create');
 		}
 		else
 		{
+			$file_data = $this->upload->data();
 			$data['package_name'] 	= $this->input->post('package_name');
 			$data['package_desc'] 	= $this->input->post('package_desc');
-			$data['package_img'] 	= $this->input->post('package_img');
+			$data['package_img'] 	= $file_data['file_name'];
 			$data['package_price'] 	= $this->input->post('package_price');
-			$this->photoServicesModel->create_service($data);
+			$this->AdminModel->create_service($data);
 			redirect(site_url('AdminController/read_photoservices'));
 		}
 	}
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 		//READ
 	public function read_photoservices()
 	{
-		$data['data_services'] = $this->photoServicesModel->tb_services()->result();
+		$data['data_services'] = $this->AdminModel->tb_services()->result();
 
 		$nav_data['page_name'] 			= "services";
 
@@ -583,7 +655,7 @@ class AdminController extends CI_Controller
 	public function update_services($package_id)
 	{
 		//GET REQUIRED DATA FROM DB
-		$data['data_services'] = $this->photoServicesModel->package_id($package_id)->row();
+		$data['data_services'] = $this->AdminModel->package_id($package_id)->row();
 
 				$nav_data['page_name'] 			= "services";
 
@@ -606,7 +678,7 @@ class AdminController extends CI_Controller
 			$data['package_img'] 	= $this->input->post('package_img');
 			$data['package_price'] 	= $this->input->post('package_price');
 			$package_id 	 			= $this->input->post('package_id');
-					$this->photoServicesModel->update_service($package_id, $data);
+					$this->AdminModel->update_service($package_id, $data);
 			redirect(site_url('AdminController/read_photoservices'));
 		}
 	}
@@ -615,41 +687,13 @@ class AdminController extends CI_Controller
 		//DELETE
 	public function delete_service($package_id)
 	{
-				$this->photoServicesModel->delete_service($package_id);
-		redirect(site_url('AdminController/read_photoservices'));
+
+
+			$this->AdminModel->delete_service($package_id);
+
+            redirect(site_url('AdminController/read_photoservices'));
+
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -659,3 +703,14 @@ class AdminController extends CI_Controller
 
 }
 ?>
+
+
+
+
+
+
+
+
+
+
+

@@ -9,21 +9,21 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>Cliqshot | Client</title>
+    <title>Cliqshot | Customer</title>
 
     <!-- Bootstrap Core CSS -->
 
 
-     <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
+     <link href="<?php echo base_url();?>assets/inside/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="<?php echo base_url();?>assets/css/sb-admin.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/inside/css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="<?php echo base_url();?>assets/css/plugins/morris.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/inside/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>assets/inside/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -31,8 +31,13 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
- 
+     
+    <!-- jQuery -->
+    <script src="<?php echo base_url();?>assets/inside/vendor/jquery/jquery.min.js"></script>
+
 </head>
+
+
 
 <body>
 
@@ -54,10 +59,10 @@
             <ul class="nav navbar-right top-nav">
                
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('client_username') ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ><i class="fa fa-user"></i> <?php echo $this->session->userdata('client_username') ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> View Profile</a>
+                            <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-fw fa-user"></i> View Profile</a>
                         </li>
                         <li>
                             <a href="<?php echo site_url('CustomerController/update_customer/'.$this->session->userdata('client_id').'');?>"><i class="fa fa-fw fa-gear""></i> Edit Profile</a>
@@ -70,3 +75,10 @@
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+
+
+<!-- Modal -->
+
+
+
+

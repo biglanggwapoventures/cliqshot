@@ -10,18 +10,18 @@
 	<meta content="" name="description" />
 	<meta content="" name="author" />
 	<!-- BEGIN GLOBAL MANDATORY STYLES -->
-	<link href="<?php echo base_url();?>assets/login/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/css/style-metro.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/css/style.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
-	<link href="<?php echo base_url();?>assets/login/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo base_url();?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo base_url();?>assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo base_url();?>assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo base_url();?>assets/css/style-metro.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo base_url();?>assets/css/style.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo base_url();?>assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo base_url();?>assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
+	<link href="<?php echo base_url();?>assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
 	<link rel="stylesheet" type="text/css" href="assets/plugins/select2/select2_metro.css" />
 	<!-- END GLOBAL MANDATORY STYLES -->
 	<!-- BEGIN PAGE LEVEL STYLES -->
-	<link href="<?php echo base_url();?>assets/login/assets/css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
+	<link href="<?php echo base_url();?>assets/css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
 	<!-- END PAGE LEVEL STYLES -->
 	<link rel="shortcut icon" href="favicon.ico" />
 </head>
@@ -30,7 +30,7 @@
 <body class="login">
 	<!-- BEGIN LOGO -->
 	<div class="logo">
-			<img src="<?php echo base_url();?>assets/login/assets/img/cliqshot_white.png" style="width:350px;height:55px;">
+			<img src="<?php echo base_url();?>assets/img/cliqshot_white.png" style="width:350px;height:55px;">
 	</div>
 	<!-- END LOGO -->
 	<!-- BEGIN LOGIN -->
@@ -64,14 +64,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="form-actions">
-				<label class="checkbox">
-				<input type="checkbox" name="remember" value="1"/> Remember me
-				</label>
-				<button type="submit" class="btn blue pull-right">
-				Login <i class="m-icon-swapright m-icon-white"></i>
-				</button>
-			</div>
+			
 			
 		</form>
     <?php echo form_close(); ?>
@@ -92,7 +85,7 @@
 				<button type="button" id="back-btn" class="btn">
 				<i class="m-icon-swapleft"></i> Back
 				</button>
-				<button type="submit" class="btn blue pull-right">
+				<button type="submit" class="btn red pull-right">
 				Submit <i class="m-icon-swapright m-icon-white"></i>
 				</button>
 			</div>
@@ -106,29 +99,29 @@
 	</div>
 	<!-- END COPYRIGHT -->
 	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-	<!-- BEGIN CORE PLUGINS -->   <script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+	<!-- BEGIN CORE PLUGINS -->   <script src="<?php echo base_url();?>assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>
+	<script src="<?php echo base_url();?>assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
 	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
+	<script src="<?php echo base_url();?>assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
+	<script src="<?php echo base_url();?>assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
+	<script src="<?php echo base_url();?>assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
 	<!--[if lt IE 9]>
 	<script src="assets/plugins/excanvas.min.js"></script>
 	<script src="assets/plugins/respond.min.js"></script>
 	<![endif]-->
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
+	<script src="<?php echo base_url();?>assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
+	<script src="<?php echo base_url();?>assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
+	<script src="<?php echo base_url();?>assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
+	<script src="<?php echo base_url();?>assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
 	<!-- END CORE PLUGINS -->
 	<!-- BEGIN PAGE LEVEL PLUGINS -->
 	<script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="<?php echo base_url();?>assets/login/assets/plugins/select2/select2.min.js"></script>
+	<script src="<?php echo base_url();?>assets/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="<?php echo base_url();?>assets/plugins/select2/select2.min.js"></script>
 	<!-- END PAGE LEVEL PLUGINS -->
 	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	<script src="<?php echo base_url();?>assets/login/assets/scripts/app.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/scripts/login-soft.js" type="text/javascript"></script>
+	<script src="<?php echo base_url();?>assets/scripts/app.js" type="text/javascript"></script>
+	<script src="<?php echo base_url();?>assets/scripts/login-soft.js" type="text/javascript"></script>
 	<!-- END PAGE LEVEL SCRIPTS -->
 
 

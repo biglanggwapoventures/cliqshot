@@ -24,37 +24,37 @@
                                     <thead>
 
                                         <tr>
-                                            <td>Order Id
-                                            <td>Package Name
-                                            <td>Date Ordered
-                                            <td>Event Date
-                                            <td>Event Time
-                                            <td>Status
-                                            <td>Options
+                                            <td><b>No.</b>
+                                            <td><b>Customer Name</b>
+                                            <td><b>Package Name</b>
+                                            <td><b>Date Ordered</b>
+                                            <td><b>Session Date</b>
+                                            <td><b>Session Time</b>
+                                            <td><b>Status</b>
+                                            
                                     </thead>
                                       
-                                    <?php
+                                    <?php $no=1;
                                       
 
                                      foreach($my_orders as $row) {  ?>
                                     
 
 
-                                        <tr> <td><?php echo $row->client_fullname; ?>
+                                        <tr><td><b><?="$no.";?></b></td> 
+                                            <td><?php echo $row->client_fullname; ?>
                                             <td><?php echo $row->package_name; ?>
                                             <td><?php echo date("M, d Y", strtotime($row->date_ordered)); ?>
                                             <td><?php echo date("M, d Y", strtotime($row->event_date)); ?>
-                                            <td><?php echo date("h:i a", strtotime($row->time_ordered)); ?>
+                                            <td><?php echo $row->time_ordered; ?>
                                             <td><?php echo $row->order_status; ?>
-                                            <td>
-
-                                                <a href= "approve_order/<?php echo $row->order_id; ?>" class= 'btn btn-success btn-sm' > Approve Order</a>
-                                                <a href= "#" class= 'btn btn-danger btn-sm' > Cancel Ordered</a>
+                                           
+                                               
 
 
 
 
-                                      <?php } ?>
+                                      <?php $no++; } ?>
 
                               
                                     </table>

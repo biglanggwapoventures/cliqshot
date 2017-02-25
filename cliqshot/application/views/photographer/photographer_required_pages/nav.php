@@ -18,8 +18,54 @@
 
                     </li> -->
 
-                    <li <?php     if($page_name == 'upcoming_orders') echo "class = 'active' "; ?>>
-                        <a href="upcoming_orders"><i class="fa fa-fw fa-picture-o"></i> My Scheduled Photography Sessions
+
+
+                       <li <?php     if($page_name == 'home') echo "class = 'active' "; ?>>
+                        <a href="<?php echo site_url('PhotographerController/index');?>"><i class="fa fa-fw fa-home"></i> Home
+
+                        
+
+
+                        </a>
+
+                       </li>
+
+                       
+
+
+
+                       <li <?php     if($page_name == 'upcoming_orders') echo "class = 'active' "; ?>>
+                        <a href="<?php echo site_url('PhotographerController/upcoming_orders');?>"><i class="fa fa-fw fa-list"></i> Scheduled Photography Sessions
+
+                        
+
+
+                        </a>
+
+                       </li>
+
+                     <li <?php     if($page_name == 'pending_order_album') echo "class = 'active' "; ?>>
+                        <a href="<?php echo site_url('PhotographerController/pending_order_album');?>"><i class="fa fa-fw fa-picture-o"></i> Pending for Album Orders
+
+
+                        </a>
+
+                    </li>
+
+                    <li <?php     if($page_name == 'orders_history') echo "class = 'active' "; ?>>
+                        <a href="<?php echo site_url('PhotographerController/orders_history');?>"><i class="fa fa-fw fa-picture-o"></i> My Orders History
+                        
+                        <!-- Count  Orders History  of Photographer -->
+
+
+                        </a>
+
+                    </li>
+
+
+
+                     <li <?php     if($page_name == 'calendar') echo "class = 'active' "; ?>>
+                        <a href="<?php echo site_url('PhotographerController/calendar');?>"><i class="fa fa-fw fa-calendar"></i> Appointment Calendar
 
                         
                         <!-- Count Upcoming Assigned Orders of Photographer -->
@@ -28,29 +74,8 @@
 
                         </a>
 
-                    </li>
+                         </li>
 
-                     <li <?php     if($page_name == 'pending_order_album') echo "class = 'active' "; ?>>
-                        <a href="pending_order_album"><i class="fa fa-fw fa-picture-o"></i> Pending for Album Orders
-                        
-                        <!-- Count Upcoming Assigned Orders of Photographer -->
-
-                        <lablel class = 'label label-success'>3</lablel>
-
-                        </a>
-
-                    </li>
-
-                    <li <?php     if($page_name == 'orders_history') echo "class = 'active' "; ?>>
-                        <a href="orders_history"><i class="fa fa-fw fa-picture-o"></i> My Orders History
-                        
-                        <!-- Count  Orders History  of Photographer -->
-
-                        <lablel class = 'label label-info'>5</lablel>
-
-                        </a>
-
-                    </li>
 
 
  

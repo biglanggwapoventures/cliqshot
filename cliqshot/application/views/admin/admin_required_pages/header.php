@@ -14,16 +14,16 @@
     <!-- Bootstrap Core CSS -->
 
 
-   <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
+   <link href="<?php echo base_url();?>assets/inside/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="<?php echo base_url();?>assets/css/sb-admin.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/inside/css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="<?php echo base_url();?>assets/css/plugins/morris.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/inside/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>assets/inside/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -49,7 +49,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="<?php echo base_url('img/cliqshot_white.png') ?>" style="width:150px;height:35px;"></a>
+                <a class="navbar-brand" href="index.html"><img src="<?php echo base_url('img/cliqshot_white.png') ?>" style="width:150px;height:40px;"></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -58,15 +58,7 @@
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('admin_user') ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
-                        </li>
+
                         <li class="divider"></li>
                         <li>
                             <a href="<?php echo site_url('C_Main/logout');?>"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
@@ -118,5 +110,25 @@
 
 
 
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Modal Header</h4>
+      </div>
+      <div class="modal-body">
+        <p>Some text in the modal.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 

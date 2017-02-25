@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Appointment Dashboard</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="stylesheet" href="css/bootstrap.min.css" />
+<link rel="stylesheet" href="css/bootstrap-responsive.min.css" />
+<link rel="stylesheet" href="css/fullcalendar.css" />
+<link rel="stylesheet" href="css/matrix-style.css" />
+<link rel="stylesheet" href="css/matrix-media.css" />
+<link href="font-awesome/css/font-awesome.css" rel="stylesheet" />
+<link href='http://fonts.googleapis.com/css?family=Open+Sans:400,700,800' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href="css/bootstrap-datetimepicker.css">
+</head>
+<body>
+
+<!--Header-part-->
+
+<!--close-Header-part--> 
+
+<!--top-Header-menu-->
+
+
+<!--start-top-serch-->
+
+<!--close-top-serch--> 
+
+<!--sidebar-menu-->
+
+
+<div id="content">
+  
+  <div class="container-fluid">
+    <hr>
+    <div class="row-fluid">
+      <div class="span12">
+        <div class="widget-box widget-calendar">
+          <div class="widget-title"> <span class="icon"><i class="icon-calendar"></i></span>
+            <h5>Calendar</h5>
+            <div class="buttons"> <a id="add-event" data-toggle="modal" href="#modal-add-event" class="btn btn-inverse btn-mini"><i class="icon-plus icon-white"></i> Create Appointment</a>
+              <div class="modal hide" id="modal-add-event">
+                <div class="modal-header">
+                  <button type="button" class="close" data-dismiss="modal">×</button>
+                  <h3>Create Appointment</h3>
+                </div>
+                <div class="modal-body">
+
+                <form>
+                  <label>Enter Appointment name:</label>
+                  <p>
+                    <input id="event-name" type="text" />
+                  </p>
+                  <hr>
+                   <div class="form-group input-append date form_datetime">
+                      <label>Date and Time of Appointment:</label>
+                      <input size="16" type="text" value="" readonly>
+                      <span class="add-on"><i class="icon-th"></i></span>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                       <label>Type of Packages: </label> 
+                       <select>
+                         <option>Package A</option>
+                         <option>Package B</option>
+                         <option>Package C</option>
+                         <option>Package D</option>
+                         <option>Package E</option>
+                       </select>
+                  </div>
+                  <hr>
+                  <div class="form-group">
+                        <label>Payment Method:</label>
+                         <input width="130" height="50" type="image" src="http://kappapsiatlanticprovince.webs.com/paypal.png" border="0" name="submit" alt="PayPal - The safer, easier way to pay online!">
+
+<button class="btn btn-primary" href="#" data-toggle="popover" title="Popover Header" data-content="Acct #: 123-4123-123">Bank Deposit</button>
+
+                  </div>
+
+                </form>  
+
+
+
+
+                </div>
+                <div class="modal-footer"> <a href="#" class="btn" data-dismiss="modal">Cancel</a> <a href="#" id="add-event-submit" class="btn btn-primary">Add Appointment</a> </div>
+              </div>
+            </div>
+          </div>
+          <div class="widget-content">
+            <div class="panel-left">
+              <div id="fullcalendar"></div>
+            </div>
+            <div id="external-events" class="panel-right">
+              <div class="panel-title">
+                <h5>Drag Events to the calander</h5>
+              </div>
+              <div class="panel-content">
+                <div class="external-event ui-draggable label label-inverse">My Event 1</div>
+                <div class="external-event ui-draggable label label-inverse">My Event 2</div>
+                <div class="external-event ui-draggable label label-inverse">My Event 3</div>
+                <div class="external-event ui-draggable label label-inverse">My Event 4</div>
+                <div class="external-event ui-draggable label label-inverse">My Event 5</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!--Footer-part-->
+
+<!--end-Footer-part-->
+<script src="js/jquery.min.js"></script> 
+
+<script src="js/bootstrap.min.js"></script> 
+<script src="js/fullcalendar.min.js"></script> 
+<script src="js/matrix.js"></script> 
+<script type="text/javascript" src='js/bootstrap-datetimepicker.js'></script>
+<script src="js/matrix.calendar.js"></script>
+    <script type="text/javascript" src="bootstrap-datetimepicker.de.js" charset="UTF-8"></script>
+<script type="text/javascript">
+    $(".form_datetime").datetimepicker({
+        format: "dd MM yyyy - hh:ii",
+        autoclose: true,
+        todayBtn: true,
+        pickerPosition: "bottom-left"
+    });
+</script>    
+<script>
+$(document).ready(function(){
+    $('[data-toggle="popover"]').popover();
+});
+</script>        
+</body>
+</html>

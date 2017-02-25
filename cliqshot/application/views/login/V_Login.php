@@ -1,146 +1,101 @@
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
-<!-- BEGIN HEAD -->
-<head>
-	<meta charset="utf-8" />
-	<title>Welcome to Cliqshot!</title>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<meta content="" name="description" />
-	<meta content="" name="author" />
-	<!-- BEGIN GLOBAL MANDATORY STYLES -->
-	<link href="<?php echo base_url();?>assets/login/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/css/style-metro.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/css/style.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-	<link href="<?php echo base_url();?>assets/login/assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
-	<link href="<?php echo base_url();?>assets/login/assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-	<link rel="stylesheet" type="text/css" href="assets/plugins/select2/select2_metro.css" />
-	<!-- END GLOBAL MANDATORY STYLES -->
-	<!-- BEGIN PAGE LEVEL STYLES -->
-	<link href="<?php echo base_url();?>assets/login/assets/css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
-	<!-- END PAGE LEVEL STYLES -->
-	<link rel="shortcut icon" href="favicon.ico" />
-</head>
-<!-- END HEAD -->
-<!-- BEGIN BODY -->
-<body class="login">
-	<!-- BEGIN LOGO -->
-	<div class="logo">
-			<img src="<?php echo base_url();?>assets/login/assets/img/cliqshot_white.png" style="width:350px;height:55px;">
-	</div>
-	<!-- END LOGO -->
-	<!-- BEGIN LOGIN -->
-	<div class="content">
-		<!-- BEGIN LOGIN FORM -->
-    <?php echo form_open("C_Main/login"); ?>
-		<form class="form-vertical login-form" action="#" method="post">
-			<h3 class="form-title">Login to your account</h3>
-			<div class="alert alert-error hide">
-				<button class="close" data-dismiss="alert"></button>
-				<span>Enter any username and password.</span>
-			</div>
-			<div class="control-group">
-				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-				<label class="control-label visible-ie8 visible-ie9">Username</label>
-				<div class="controls">
-					<div class="input-icon left">
-						<i class="icon-user"></i>
-						<input class="m-wrap placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
-					</div>
-				</div>
+<html lang="en">
 
-			</div>
-			<div class="control-group">
-				<label class="control-label visible-ie8 visible-ie9">Password</label>
-				<div class="controls">
-					<div class="input-icon left">
-						<i class="icon-lock"></i>
-						<input class="m-wrap placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password"/>
-					</div>
-				</div>
-			</div>
-			<div class="form-actions">
-				
-				<button type="submit" class="btn blue pull-right">
-				Login <i class="m-icon-swapright m-icon-white"></i>
-				</button>
-			</div>
-			<div class="forget-password">
-				<h4>Forgot your password ?</h4>
-				<p>
-					no worries, click <a href="javascript:;"  id="forget-password">here</a>
-					to reset your password.
-				</p>
-			</div>
-			<div class="create-account">
-				<p>
-					Don't have an account yet ?&nbsp;
-					<?php echo anchor('C_Main/register','Create an Account'); ?>
-				</p>
-			</div>
-		</form>
-    <?php echo form_close(); ?>
-		<!-- END LOGIN FORM -->
-		<!-- BEGIN FORGOT PASSWORD FORM -->
-		<form class="form-vertical forget-form" action="index.html" method="post">
-			<h3 >Forget Password ?</h3>
-			<p>Enter your e-mail address below to reset your password.</p>
-			<div class="control-group">
-				<div class="controls">
-					<div class="input-icon left">
-						<i class="icon-envelope"></i>
-						<input class="m-wrap placeholder-no-fix" type="text" placeholder="Email" autocomplete="off" name="email" />
-					</div>
-				</div>
-			</div>
-			<div class="form-actions">
-				<button type="button" id="back-btn" class="btn">
-				<i class="m-icon-swapleft"></i> Back
-				</button>
-				<button type="submit" class="btn blue pull-right">
-				Submit <i class="m-icon-swapright m-icon-white"></i>
-				</button>
-			</div>
-		</form>
-		<!-- END FORGOT PASSWORD FORM -->
-	</div>
-	<!-- END LOGIN -->
-	<!-- BEGIN COPYRIGHT -->
-	<div class="copyright">
-		2017 Capstone Project
-	</div>
-	<!-- END COPYRIGHT -->
-	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-	<!-- BEGIN CORE PLUGINS -->   <script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
-	<!--[if lt IE 9]>
-	<script src="assets/plugins/excanvas.min.js"></script>
-	<script src="assets/plugins/respond.min.js"></script>
-	<![endif]-->
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
-	<!-- END CORE PLUGINS -->
-	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="<?php echo base_url();?>assets/login/assets/plugins/select2/select2.min.js"></script>
-	<!-- END PAGE LEVEL PLUGINS -->
-	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	<script src="<?php echo base_url();?>assets/login/assets/scripts/app.js" type="text/javascript"></script>
-	<script src="<?php echo base_url();?>assets/login/assets/scripts/login-soft.js" type="text/javascript"></script>
-	<!-- END PAGE LEVEL SCRIPTS -->
+    <head>
+
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Welcome to Cliqshot!</title>
+
+        <!-- CSS -->
+        <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:400,100,300,500">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/bootstrap/css/bootstrap.min.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/font-awesome/css/font-awesome.min.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/form-elements.css">
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/css/style.css">
+
+        <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+
+        <!-- Favicon and touch icons -->
+        <link rel="shortcut icon" href="<?php echo base_url(); ?>assets/ico/favicon.png">
+        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="<?php echo base_url(); ?>assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="114x114" href="<?php echo base_url(); ?>assets/ico/apple-touch-icon-114-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" sizes="72x72" href="<?php echo base_url(); ?>assets/ico/apple-touch-icon-72-precomposed.png">
+        <link rel="apple-touch-icon-precomposed" href="<?php echo base_url(); ?>assets/ico/apple-touch-icon-57-precomposed.png">
+
+    </head>
+
+    <body scroll="no" style="overflow: hidden" >
+
+        <!-- Top content -->
+        <div class="top-content">
+            
+            <div class="inner-bg">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-sm-8 col-sm-offset-2 text">
+                            <img src="<?php echo base_url(); ?>assets/img/cliqshot_white.png" style="width:250px;height:55px;">
+                            
+                        </div>
+                    </div>
+                    
+                    <div class="row">
+                        <div class="col-sm-4 col-sm-offset-4 form-box">
+                            <div class="form-top">
+                                <div class="form-top-left">
+                                    <h3>Login to our site <i class="fa fa-lock"></i> </h3>
+                                    
+                                </div>
+                                
+                            </div>
+                            <div class="form-bottom">
+                                <form role="form" action="C_Main/login" method="post" class="login-form">
+                                    <div class="form-group">
+                                        <label class="sr-only" for="username">Username</label>
+                                        <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="sr-only" for="password">Password</label>
+                                        <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
+                                    </div>
+                                    <button type="submit" class="btn">Sign in!</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-6 col-sm-offset-3 social-login">
+                        
+                            <div class="social-login-buttons">
+                                
+                                <a class="btn btn-link-2" href="C_Main/Register">
+                                    <i class="fa fa-fw fa-user"></i> Create an Account
+                                </a>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+        </div>
 
 
-</body>
-<!-- END BODY -->
+        <!-- Javascript -->
+        <script src="<?php echo base_url(); ?>assets/js/jquery-1.11.1.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="<?php echo base_url(); ?>assets/js/jquery.backstretch.min.js"></script>
+        
+        <!--[if lt IE 10]>
+            <script src="assets/js/placeholder.js"></script>
+        <![endif]-->
+
+    </body>
+
 </html>

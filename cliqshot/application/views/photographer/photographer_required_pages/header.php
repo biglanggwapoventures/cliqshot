@@ -11,16 +11,19 @@
 
     <title>Cliqshot | Photographer</title>
 
-     <link href="<?php echo base_url();?>assets/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Bootstrap Core CSS -->
+
+
+     <link href="<?php echo base_url();?>assets/inside/css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Custom CSS -->
-    <link href="<?php echo base_url();?>assets/css/sb-admin.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/inside/css/sb-admin.css" rel="stylesheet">
 
     <!-- Morris Charts CSS -->
-    <link href="<?php echo base_url();?>assets/css/plugins/morris.css" rel="stylesheet">
+    <link href="<?php echo base_url();?>assets/inside/css/plugins/morris.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
-    <link href="<?php echo base_url();?>assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="<?php echo base_url();?>assets/inside/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -28,8 +31,13 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+     
+    <!-- jQuery -->
+    <script src="<?php echo base_url();?>assets/inside/vendor/jquery/jquery.min.js"></script>
 
 </head>
+
+
 
 <body>
 
@@ -45,21 +53,19 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html"><img src="<?php echo base_url('img/cliqshot_white.png') ?>" style="width:150px;height:35px;"></a>
+                <a class="navbar-brand" href="index.html"><img src="<?php echo base_url('img/cliqshot_white.png') ?>" style="width:150px;height:37px;"></a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                
-               
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo $this->session->userdata('photographer_user') ?> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" ><i class="fa fa-user"></i> <?php echo $this->session->userdata('photographer_user') ?> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> View Profile</a>
+                            <a href="#" data-toggle="modal" data-target="#myModal"><i class="fa fa-fw fa-user"></i> View Profile</a>
                         </li>
-                       
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Edit Profile</a>
+                            <a href="<?php echo site_url('CustomerController/update_customer/'.$this->session->userdata('client_id').'');?>"><i class="fa fa-fw fa-gear""></i> Edit Profile</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -69,4 +75,10 @@
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
- 
+
+
+<!-- Modal -->
+
+
+
+

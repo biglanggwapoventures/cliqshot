@@ -34,6 +34,21 @@
         }
 
 
+        public function get_all_approved_orders()
+        {
+
+                $this->db->where('order_status', 'approve');
+
+                $this->db->join('package', 'package.package_id = orders.package_id');
+
+                $this->db->join('customer', 'customer.client_id = orders.user_id');
+
+                $query = $this->db->get('orders');
+
+                return $query->result();
+
+        }
+
         public function get_pending_assignment($photographer_id)
         {
 
@@ -57,25 +72,34 @@
         public function get_upcoming_orders($photographer_id)
         {
 
+
+                $this->db->where('assign_status', 'assigned');
+                 
+                $this->db->where('event_date >', date("Y-m-d"));
+
+                $this->db->where('uploaded_status', 'not assigned');
+
+                $this->db->where('photographer_id', $photographer_id);
+
                 $this->db->join('package', 'package.package_id = orders.package_id');
 
                 $this->db->join('customer', 'customer.client_id = orders.user_id');
 
-                $this->db->where('photographer_id', $photographer_id);
-                $this->db->where('assign_status', 'assigned');
-                $this->db->where('event_date <=', date("Y-m-d"));
-                $this->db->where('photographer_id', $photographer_id);
-
                 $query = $this->db->get('orders');
 
                 return $query->result();
+
         }
 
         public function get_pending_album($photographer_id)
         {
 
+
+
                  $this->db->where('assign_status', 'assigned');
                  $this->db->where('event_date >', date("Y-m-d"));
+
+                $this->db->where('photo_session_status', 'finish');
 
                 $this->db->where('uploaded_status', 'not_uploaded');
 
@@ -169,6 +193,26 @@
               $this->db->set('uploaded_status',            "uploaded");
               $this->db->where('order_id',           $order_id);
               $this->db->update('orders');
+        } 
+
+
+
+           public function start_photo_session($order_id)
+        {
+              $this->db->set('photo_session_status',"ongoing");
+              $this->db->where('order_id', $order_id);
+              $this->db->update('orders');
+        } 
+
+
+           public function end_photo_session($order_id)
+        {
+
+
+             $this->db->set('photo_session_status',"finish"); 
+             $this->db->set('uploaded_status',"not_uploaded"); 
+             $this->db->update('orders');
+          
         } 
 
 }

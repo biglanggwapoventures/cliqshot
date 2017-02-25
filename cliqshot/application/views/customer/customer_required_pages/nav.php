@@ -21,6 +21,17 @@
                         My Appointments</a>
                     </li>
 
+                    <li <?php     if($page_name == 'my_calendar') echo "class = 'active' "; ?>>
+                        <a href="<?php echo site_url('CustomerController/my_calendar');?>"><i class="fa fa-fw fa-picture-o"></i> 
+                        My Calendar</a>
+                    </li>
+
+                    <!-- 
+                     <li>
+                        <a href="#"><i class="fa fa-fw fa-picture-o"></i> 
+                        Appointment History</a>
+                    </li>
+ -->
                 </ul>
             </div>
 

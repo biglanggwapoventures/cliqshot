@@ -14,6 +14,7 @@ class PhotoServicesModel extends CI_Model {
 	{
 		$this->db->select('*')
 				 ->from('package')
+				 ->where('flag','1')
 				 ->order_by('package_name','asc');
 		return $this->db->get();
 	}
@@ -21,7 +22,8 @@ class PhotoServicesModel extends CI_Model {
 	function services_count()
 	{
 		$this->db->select('COUNT(package_id) AS package_count')
-				 ->from('package');
+				 ->from('package')
+				 ->where('flag', '1');
 		return $this->db->get();
 	}
 
@@ -47,9 +49,10 @@ class PhotoServicesModel extends CI_Model {
 
 	function delete_service($package_id)
 	{
-		$this->db->delete('package', array(
-							'package_id' => $package_id
-						));
+		 $this->db->set('flag', "0");
+                $this->db->where('package_id', $package_id);
+                $this->db->update('package');
+                 redirect('AdminController/read_photoservices');
 	}
 
 
@@ -65,6 +68,23 @@ class PhotoServicesModel extends CI_Model {
 
 		return $this->db->get();
 	}
+
+
+   function delete_order_flag($order_id)
+    {
+ 
+
+          $this->db->set('flag', "0");
+                $this->db->where('order_id', $order_id);
+                $this->db->update('orders');
+                 redirect('CustomerController/my_appointments');
+
+    }
+
+
+
+
+
 
 
 

@@ -24,43 +24,47 @@
                                     <thead>
 
                                         <tr>
-                                            <td>Order Id
-                                            <td>Package Name
-                                            <td>Date Ordered
-                                            <td>Event Date
-                                            <td>Event Time
-                                            <td>Assigned To
+                                            <td><b>No.</b></td>
+                                            <td><b>Customer Name</b>
+                                            <td><b>Package Name</b>
+                                            <td><b>Date Ordered</b>
+                                            <td><b>Event Date</b>
+                                            <td><b>Event Time</b>
+                                            <td><b>Assigned To</b></td>
 
                                     </thead>
                                       
-                                    <?php
+                                    <?php $no=1;
                                       
 
                                      foreach($my_orders as $row) {  ?>
                                     
-
-
-                                        <tr><td><?php echo $row->order_id; ?>
+                                            <tr>
+                                            <td><?="$no.";?></td>
+                                            <td><?php echo $row->client_fullname; ?>
                                             <td><?php echo $row->package_name; ?>
-                                            <td><?php echo date("M, d Y", strtotime($row->date_ordered)); ?>
-                                            <td><?php echo date("M, d Y", strtotime($row->event_date)); ?>
-                                            <td><?php echo date("H:m", strtotime($row->time_ordered)); ?>
-                                            <td><?php echo $row->photographer_user; ?>
+                                            <td><?php echo date("M d, Y", strtotime($row->date_ordered)); ?>
+                                            <td><?php echo date("M d, Y", strtotime($row->event_date)); ?>
+                                            <td><?php echo $row->time_ordered; ?>
+                                            <td><?php echo $row->photographer_nama; ?>
                                            
 
 
-                                      <?php } ?>
+                                      <?php $no++;  } ?>
+
 
                               
                                     </table>
 
+
+
                                </div>
 
-                            </div>
-                    </div>
 
-                      </div>
+                                    <br>
+                                    <br>
+                                    <br>
 
-                            </div>
 
+                 
                                                   

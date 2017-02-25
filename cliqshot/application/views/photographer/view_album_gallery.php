@@ -1,5 +1,5 @@
 
-        <link href="<?php echo base_url('assets/dist/css/lightgallery.css'); ?>" rel="stylesheet">
+        <link href="<?php echo base_url('assets/inside/dist/css/lightgallery.css'); ?>" rel="stylesheet">
         <style type="text/css">
             body{
                 
@@ -127,7 +127,11 @@
                 <div class="col-lg-12">
 
 
-                    <h2 class="page-header"><i class="fa fa-image"></i> I was broombrooming (December 25, 2016)</h2>
+                    <h2 class="page-header"><i class="fa fa-image"></i> 
+                        <?php echo $album_details[0]->album_title; ?> 
+          
+                    </h2>
+                    
                 </div>
                 <!-- /.col-lg-12 -->
             </div>
@@ -141,9 +145,6 @@
                             </li>
                         </ol>
 
-            All photos will be processed and stored in CD with both high-resolution and watermarked web-sharing versions.
-
-            Turnover time is between 7 - 10 business days depending on the service selected.
 <br>
 <br>
 
@@ -152,7 +153,14 @@
 
             <?php foreach($photos as $photos_row) { ?>
 
-                <li class="col-xs-6 col-sm-4 col-md-3" data-responsive="<?php echo base_url($photos_row->photos_img_url); ?> 375, <?php echo base_url($photos_row->photos_img_url); ?> 480, <?php echo base_url($photos_row->photos_img_url); ?> 800" data-src="<?php echo base_url($photos_row->photos_img_url); ?>" data-sub-html="<h4>I was broombrooming</h4><p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>">
+                <li class="col-xs-6 col-sm-4 col-md-3" 
+                
+                data-src="<?php echo base_url($photos_row->photos_img_url); ?>" 
+
+                data-sub-html="<h4><?php echo $album_details[0]->album_title; ?> </h4>
+                               <p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>"
+
+                >
                     <a href="">
                         <img class="img-thumbnail" src="<?php echo base_url($photos_row->photos_img_url); ?>" alt="">
                     </a>

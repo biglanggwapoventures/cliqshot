@@ -49,20 +49,44 @@
         {
 
 
+               $this->db->where('order_flag',1);
+
 
                 $this->db->where("user_id", $user_id);
+
     
                 $this->db->join('package', 'package.package_id= orders.package_id');
 
                 $this->db->join('customer', 'customer.client_id = orders.user_id');
+
  
                 $query = $this->db->get('orders');
+
+
+                
                 
                 $result =  $query->result();
 
                
 
                 return $result;
+        }
+
+        public function get_all_my_approved_orders($user_id)
+        {
+
+                $this->db->where('order_status', 'approve');
+
+                $this->db->where('user_id', $user_id);
+
+                $this->db->join('package', 'package.package_id = orders.package_id');
+
+                $this->db->join('customer', 'customer.client_id = orders.user_id');
+
+                $query = $this->db->get('orders');
+
+                return $query->result();
+
         }
 
         public function get_order_info($order_id)
@@ -149,6 +173,14 @@
         $this->db->update('customer', $data);
     }
 
+     function update_paypal_payment($order_id, $payment_type)
+    {
+        $data['payment_select'] = $payment_select;
+        
+        $this->db->where(array('order_id' => $order_id));
+        $this->db->update('orders',  $data);
+    }
+
     function client_id($client_id)
     {
         $this->db->select('*')
@@ -156,6 +188,75 @@
                  ->where('client_id', $client_id);
         return $this->db->get();
     }
+
+
+
+     function delete_order_flag($order_id)
+    {
+ 
+
+          $this->db->set('order_flag', "0");
+                $this->db->where('order_id', $order_id);
+                $this->db->update('orders');
+                 redirect('CustomerController/my_appointments');
+
+    }
+
+
+
+    function reschedule_appointment($order_id)
+    {
+        $this->db->select('*')
+                 ->from('orders')
+                 ->where('order_id', $order_id);
+         
+        return $this->db->get();
+    }
+
+
+    public function get_payment_slip($data,$order_id)
+    {
+
+
+
+
+        $this->db->set( ['payment_status'=> 'pending deposit slip', 'payment_slip'=> $data['payment_slip'],'bank_account'=> $data['bank_account'] ] )
+
+        ->where('order_id',$order_id)
+        ->update('orders');
+
+
+    }
+
+
+        function order_id($order_id)
+    {
+        $this->db->select('*')
+                 ->from('orders')
+                 ->where('order_id', $order_id);
+        return $this->db->get();
+    }
+
+    public function checkDateAvailability($date,$time){
+
+       
+
+        $query = $this->db->select('*')
+        ->from('orders')
+        ->where('event_date',$date)
+        ->where('time_ordered',$time)
+        ->get();    
+
+        if($query->num_rows() > 0){
+           return 'exist';
+        }else{
+            return 'okay';
+        }
+
+
+    }
+   
+
 
 }
 
