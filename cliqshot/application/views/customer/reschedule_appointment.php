@@ -36,9 +36,9 @@
     </div>
     <div class="panel-body">
 
-<form action = "payment_information" method="POST">
+<form action = "<?= site_url('CustomerController/rescheduleAppointment') ?>" method="POST">
 
-    <input type = 'hidden' name = "package_id" value= '<?php echo $package_id; ?>' />
+    <input type = 'hidden' name = "appointment_id" value= '<?php echo $this->uri->segment(3); ?>' />
     <h4> <i class="fa fa-calendar"></i> Date of Appointment</h4>
                 
                  <div class='input-group date' id='datetimepicker1'>
@@ -52,23 +52,25 @@
 
     <h4> <i class="fa fa-clock-o"></i> Time of Appointment</h4>
                 
-                <?php echo form_radio('time_ordered', '09:00 AM'); ?> 09:00 AM<br>
-                <?php echo form_radio('time_ordered', '09:30 AM'); ?> 09:30 AM<br>
-                <?php echo form_radio('time_ordered', '10:00 AM'); ?> 10:00 AM<br>
-                <?php echo form_radio('time_ordered', '10:30 AM'); ?> 10:30 AM<br>
-                <?php echo form_radio('time_ordered', '11:00 AM'); ?> 11:00 AM<br>
-                <?php echo form_radio('time_ordered', '11:30 AM'); ?> 11:30 AM<br>
-                <?php echo form_radio('time_ordered', '12:00 PM'); ?> 12:00 PM<br>
-                <?php echo form_radio('time_ordered', '12:30 PM'); ?> 12:30 PM<br>
-                <?php echo form_radio('time_ordered', '01:00 PM'); ?> 01:00 PM<br>
-                <?php echo form_radio('time_ordered', '01:30 PM'); ?> 01:30 PM<br>
-                <?php echo form_radio('time_ordered', '02:00 PM'); ?> 02:00 PM<br>
-                <?php echo form_radio('time_ordered', '02:30 PM'); ?> 02:30 PM<br>
-                <?php echo form_radio('time_ordered', '03:00 PM'); ?> 03:00 PM<br> 
-                <?php echo form_radio('time_ordered', '03:30 PM'); ?> 03:30 PM<br>      
-                <?php echo form_radio('time_ordered', '04:00 PM'); ?> 04:00 PM<br>      
-                <?php echo form_radio('time_ordered', '04:30 PM'); ?> 04:30 PM<br>      
-                <?php echo form_radio('time_ordered', '05:00 PM'); ?> 05:00 PM<br>           
+                <select class="form-control" name="time_ordered">
+                    <option value="09:00 AM">09:00 AM</option>
+                    <option value="09:30 AM">09:30 AM</option>
+                    <option value="10:00 AM">10:00 AM</option>
+                    <option value="10:30 AM">10:30 AM</option>
+                    <option value="11:00 AM">11:00 AM</option>
+                    <option value="11:30 AM">11:30 AM</option>
+                    <option value="12:00 PM">12:00 PM</option>
+                    <option value="12:30 PM">12:30 PM</option>
+                    <option value="01:00 PM">01:00 PM</option>
+                    <option value="01:30 PM">01:30 PM</option>
+                    <option value="02:00 PM">02:00 PM</option>
+                    <option value="02:30 PM">02:30 PM</option>
+                    <option value="03:00 PM">03:00 PM</option>
+                    <option value="03:30 PM">03:30 PM</option>
+                    <option value="04:00 PM">04:00 PM</option>
+                    <option value="04:30 PM">04:30 PM</option>
+                    <option value="05:00 PM">05:00 PM</option>
+                </select>      
                 
                 
   <!--<table class="table table-hover">
@@ -167,5 +169,6 @@
 
 
                                 
-
-                               
+<?php if($this->session->flashdata('error')): ?>
+<script> alert('Time is already taken'); </script>        
+<?php endif;?>

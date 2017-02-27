@@ -403,16 +403,33 @@ class CustomerController extends CI_Controller {
 
 			
 
-		}
-
-		
-
-
-		
+		}		
 	}
 
+		public function rescheduleAppointment(){
 
+			echo "<pre>";
+			print_r($this->input->post());
 
+			$date = $this->input->post('event_date');
+			$time = $this->input->post('time_ordered');
+			$appointment = $this->input->post('appointment_id');
+			
+			$result = $this->customerModel->checkOrdersForReschedule($date,$time);
+
+			if($result == true){
+
+				$this->session->set_flashdata('error',true);
+				redirect('CustomerController/reschedule_appointment/'.$appointment);
+				
+
+			}else{
+				$this->customerModel->updateAppointment($time,$date,$appointment);
+				redirect('CustomerController/my_appointments');
+
+			}
+
+		}
 
 
 

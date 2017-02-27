@@ -201,6 +201,10 @@
                               
                                  
                              </table>
+                                         <!--CHART for SALES -->
+                                <div class="col-md-12">
+                                    <div id="salescontainer" style="height: 300px; width: 100%;"></div>
+                                </div>
 
                             
                             
@@ -220,27 +224,14 @@
                              </table>                              
 
                            
-                          <h2>Summary of Package Sale</h2>
-
-                             <table class="table table-striped"> 
-                                 
-                                    <tr><td>Package Name <td> # Times Ordered <td> Total Sales
-                                    
-                                    <?php foreach($packageReports as $row) { ?>
-
-                                    <tr><td><?php echo $row['package_name']; ?> 
-                                        <td><?php echo $row['tot_orders']; ?>  
-                                        <td>P <?php echo number_format($row['packageTotal'], 2); ?>  
-                                   
-                                    <?php } ?>
-                             </table>
+                               <!--CHART for SALES -->
+                                <div class="col-md-12">
+                                    <div id="photographercontainer" style="height: 300px; width: 100%;"></div>
+                                </div>
 
 
-                             <!--CHART for SALES -->
-                        <div class="col-md-12">
-                             <div id="salescontainer" style="height: 300px; width: 100%;"></div>
-                        </div>
 
+                
 
 
                        

@@ -257,6 +257,28 @@
 
 
     }
+
+   public function checkOrdersForReschedule($date,$time){
+
+
+        $query = $this->db->select('*')
+        ->from('orders')
+        ->where('event_date',$date)
+        ->where('time_ordered',$time)
+        ->get();    
+
+        if($query->num_rows() > 0){
+           return true;
+        }else{
+            return false;
+        }
+
+   }
+
+   public function updateAppointment($time,$date,$orderID){
+
+            $this->db->set(['time_ordered'=> $time, 'event_date'=>$date])->where('order_id',$orderID)->update('orders');
+   }
    
 
 

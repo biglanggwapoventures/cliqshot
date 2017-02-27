@@ -120,6 +120,27 @@ window.onload = function () {
     })
 
 
+    $.getJSON('<?= base_url("Chartcontroller/getInstanceofPhotographer") ?>')
+    
+    .done(function(packageFrequency){
+        var options = {
+        title: {
+            text: "Most Frequent Photographer"
+        },
+                animationEnabled: true,
+        data: [
+            {
+                type: "column", //change it to line, area, bar, pie, etc
+                dataPoints:  packageFrequency
+
+            }
+        ]
+    };
+
+    $("#photographercontainer").CanvasJSChart(options);                
+    })
+
+    
 
 }
 </script>

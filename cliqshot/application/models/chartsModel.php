@@ -69,4 +69,16 @@
                 ->get()
                 ->result() ? : [];
         }
+
+
+        public function getMostFrequentPhotographer(){
+
+                return $this->db->select('*, COUNT(p.package_id) as packagePerMonth, SUM(p.package_price) as packageSalesPerMonth')
+                ->from('orders as o')
+                ->join('package as p','p.package_id = o.package_id')
+                ->join('photographer as ph','ph.photographer_id = o.photographer_id')
+                ->group_by('ph.photographer_id',false)
+                ->get()
+                ->result() ? : [];
+        }
 }

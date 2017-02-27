@@ -40,6 +40,24 @@ class Chartcontroller extends CI_Controller{
 		echo json_encode($data);
 
 		}
+
+		public function getInstanceofPhotographer(){
+
+		$this->load->model('chartsModel','CM');
+
+		$chart = $this->CM->getMostFrequentPhotographer();
+		$data = [];
+
+		foreach($chart as $row):
+			$label = $row->photographer_nama;
+			$y = intval($row->packagePerMonth);
+			$data[] = compact('label','y');	
+
+		endforeach;
+
+		echo json_encode($data);
+
+		}
 		
 
 }

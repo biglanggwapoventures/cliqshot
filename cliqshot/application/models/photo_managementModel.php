@@ -10,7 +10,7 @@
         public function get_packages()
         {
 
-                $query = $this->db->get('package');
+                $query = $this->db->get_where('package',['flag' => 0]);
 
                 return $query->result();
         }
