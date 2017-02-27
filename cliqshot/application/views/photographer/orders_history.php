@@ -1,3 +1,4 @@
+
 <h2>Orders History</h2>
 
 
@@ -28,8 +29,8 @@
 
 						<td>	
 <!-- 						 	<a href= "approve_assignment" class = 'btn btn-primary'> View Order Details</a>
- -->						 	<a href= "view_album_gallery/<?php echo $row->order_id; ?>" class = 'btn btn-success'> View Album Gallery</a>
- 							<a href= "<?php echo base_url('PhotographerController/download'); ?>" class = 'btn btn-primary'> Download as ZIP</a>
+ -->						 <a href= "view_album_gallery/<?php echo $row->order_id; ?>" class = 'btn btn-success'> View Album Gallery</a>
+ 							<a data-url="<?= base_url("PhotographerController/zip_album/{$row->order_id}")?>"  class = 'btn btn-primary dl'> Download as ZIP</a>
 						 	<a href= "view_album_gallery/<?php echo $row->order_id; ?>" class = 'btn btn-danger'> Delete Album</a>
 
 
@@ -46,5 +47,12 @@
 
 </form>
 
-
-``
+<script>
+	$(document).ready(function(){
+		$('.dl').click(function(e){
+			e.preventDefault();
+			var w = window.open($(this).data('url'));
+			
+		})
+	})
+</script>

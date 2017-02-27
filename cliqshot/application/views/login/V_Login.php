@@ -55,16 +55,17 @@
                                 
                             </div>
                             <div class="form-bottom">
-                                <form role="form" action="C_Main/login" method="post" class="login-form">
+                                <form role="form" action="<?= site_url('C_Main/login')?>" method="post" class="login-form">
                                     <div class="form-group">
                                         <label class="sr-only" for="username">Username</label>
-                                        <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username">
+                                        <input type="text" name="username" placeholder="Username..." class="form-username form-control" id="form-username" required>
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="password">Password</label>
-                                        <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password">
+                                        <input type="password" name="password" placeholder="Password..." class="form-password form-control" id="form-password" required>
                                     </div>
                                     <button type="submit" class="btn">Sign in!</button>
+                                    
                                 </form>
                             </div>
                         </div>
@@ -74,7 +75,7 @@
                         
                             <div class="social-login-buttons">
                                 
-                                <a class="btn btn-link-2" href="C_Main/Register">
+                                <a class="btn btn-link-2" href="<?= site_url('C_Main/Register')?>">
                                     <i class="fa fa-fw fa-user"></i> Create an Account
                                 </a>
                                 

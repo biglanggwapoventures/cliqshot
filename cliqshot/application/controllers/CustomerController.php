@@ -191,7 +191,7 @@ class CustomerController extends CI_Controller {
 
 		$order_id 							=  $this->input->get('order_id');
  		
- 		$order_info 					= $this->customerModel->get_order_info($order_id);
+ 		$order_info 						= $this->customerModel->get_order_info($order_id);
 		
 		$orders_data['date_ordered'] 		=  $order_info['date_ordered'];
 
@@ -224,39 +224,90 @@ class CustomerController extends CI_Controller {
 	 public function payment_slip($order_id)
 	{
 
+			$this->output->set_content_type('json');
 
-				
+			$config['upload_path'] = './payment_slips/';
+			$config['allowed_types'] = 'gif|jpg|png|jpeg';
+			$config['max_size'] = '0'; // Unlimited
+			$config['max_width']  = '0'; // Unlimited
+			$config['max_height']  = '0'; // Unlimited
 
-    		 	$config['upload_path'] = './payment_slips/';
-   		     	$config['allowed_types'] = 'gif|jpg|png|jpeg';
-    		 	$config['max_size'] = '0'; // Unlimited
-              	$config['max_width']  = '0'; // Unlimited
-              	$config['max_height']  = '0'; // Unlimited
-    		 
+			$this->load->library('upload', $config);
 
-    		 $this->load->library('upload', $config);
-    		 $this->upload->initialize($config);
-				
-				if (!$this->upload->do_upload('proof')) {
-    			$error = array('error' => $this->upload->display_errors());
-    			echo $error['error'];
-					}
+			$data = [
+				'payment_slip' => null,
+				'payment_slip_2' => null,
+				'payment_slip_3' => null,
+			];
+
+			if(!trim($this->input->post('bank_account'))){
+				$this->output->set_output(json_encode([
+					'result' => false,
+					'messages' => 'Select a bank account'
+				]));
+				return;
+			}
 
 
-    		 $this->upload->do_upload('proof');
-    		  
+			// require uploading of first photo
+			if(empty($_FILES['proof1']['name'])){
+				$this->output->set_output(json_encode([
+					'result' => false,
+					'messages' => 'You have not uploaded any deposit slip photo!'
+				]));
+				return;
+			}else{
+				if (!$this->upload->do_upload('proof1')) {
+					$this->output->set_output(json_encode([
+						'result' => false,
+						'messages' =>$this->upload->display_errors('', '')
+					]));
+					return;
+				}
 
- 			 $file_data = $this->upload->data();
-  		  	$data['payment_slip'] = $file_data['file_name'];
-  		  	$data['bank_account'] = $this->input->post('bank_account');
-  		
+				// die($this->upload->data('filename'));
+				$data['payment_slip'] = $this->upload->data('file_name');
+			}
 
+
+			// check existence of 2nd photo
+			if(!empty($_FILES['proof2']['name'])){
+				if (!$this->upload->do_upload('proof2')) {
+					$this->output->set_output(json_encode([
+						'result' => false,
+						'messages' => $this->upload->display_errors('', '')
+					]));
+					return;
+				}
+				$data['payment_slip_2'] = $this->upload->data('file_name');
+			}
+			
+			// check existence of 3rd photo
+			if(!empty($_FILES['proof3']['name'])){
+				if (!$this->upload->do_upload('proof3')) {
+					$this->output->set_output(json_encode([
+						'result' => false,
+						'messages' =>$this->upload->display_errors('', '')
+					]));
+					return;
+				}
+				$data['payment_slip_3'] = $this->upload->data('file_name');
+			}
+
+			$data['bank_account'] = $this->input->post('bank_account');
  			$this->customerModel->get_payment_slip($data, $order_id);
+			
 
- 			//$this->session->set_flashdata('success',true);
- 			$this->session->set_flashdata('uploaded', 'You have successfully uploaded your deposit slip proof. Please wait for 24 hours
- 				until the clerk will approve your appointment');
- 			redirect(site_url('CustomerController/my_appointments'));
+			 $this->output->set_output(json_encode([
+				'result' => true,
+				'redirect' => site_url('CustomerController/my_appointments')
+			]));
+			 
+
+ 			// //$this->session->set_flashdata('success',true);
+ 			// $this->session->set_flashdata('uploaded', 'You have successfully uploaded your deposit slip proof. Please wait for 24 hours
+ 			// 	until the clerk will approve your appointment');
+ 			// redirect();
 
  		 
 

@@ -245,9 +245,10 @@ class ClerkController extends CI_Controller {
 		{
 
 
-		$order_id 							=  $this->input->get('order_id');
  		
  		$order_info 					= $this->ClerkModel->get_order_info($order_id);
+		//  print_r($order_info);
+		$orders_data['info'] 		=  $order_info;
 		
 		$orders_data['date_ordered'] 		=  $order_info['date_ordered'];
 
@@ -258,6 +259,7 @@ class ClerkController extends CI_Controller {
 		$orders_data['package_info'] 		=  $this->ClerkModel->get_package_info($order_info['package_id']);
 
 		$orders_data['customer_info'] 		=  $this->ClerkModel->get_acct_info($order_info['user_id']);
+		
 
 
 		

@@ -218,12 +218,14 @@
     {
 
 
+        $data['payment_status'] = 'pending deposit slip';
+        return $this->db->update('orders', $data, ['order_id' => $order_id]);
 
 
-        $this->db->set( ['payment_status'=> 'pending deposit slip', 'payment_slip'=> $data['payment_slip'],'bank_account'=> $data['bank_account'] ] )
+        // $this->db->set( ['payment_status'=> 'pending deposit slip', 'payment_slip'=> $data['payment_slip'],'bank_account'=> $data['bank_account'] ] )
 
-        ->where('order_id',$order_id)
-        ->update('orders');
+        // ->where('order_id',$order_id)
+        // ->update('orders');
 
 
     }

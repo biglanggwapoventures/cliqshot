@@ -49,6 +49,24 @@
 
                 return $result;
         }
-}
 
-?>
+        public function getOrdersReportForChart(){
+
+                return $this->db->select('*, COUNT(p.package_id) as packagePerMonth, SUM(p.package_price) as packageSalesPerMonth')
+                ->from('orders as o')
+                ->join('package as p','p.package_id = o.package_id')
+                ->group_by('month(o.date_ordered)',false)
+                ->get()
+                ->result() ? : [];
+        }
+
+         public function getMostFrequentPackageForChart(){
+
+                return $this->db->select('*, COUNT(p.package_id) as packagePerMonth, SUM(p.package_price) as packageSalesPerMonth')
+                ->from('orders as o')
+                ->join('package as p','p.package_id = o.package_id')
+                ->group_by('p.package_id',false)
+                ->get()
+                ->result() ? : [];
+        }
+}

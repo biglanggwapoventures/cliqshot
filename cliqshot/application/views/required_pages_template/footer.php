@@ -45,11 +45,11 @@ Turnover time is between 7 - 10 business days depending on the service selected.
     </div>
     <!-- /#wrapper -->
 
-    <!-- jQuery -->
-    <script src="<?php echo 'http://localhost/cliqshot/cliqshot/assets/js/jquery.js'; ?>"></script>
-
+   
     <!-- Bootstrap Core JavaScript -->
     <script src="<?php echo 'http://localhost/cliqshot/cliqshot/assets/js/bootstrap.min.js'; ?>"></script>
+
+
 
 </body>
 

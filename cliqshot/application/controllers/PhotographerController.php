@@ -176,8 +176,8 @@ class PhotographerController extends CI_Controller {
 
 		$data['album_details'] 		= $this->photo_managementModel->get_album_details($order_id);
 		$data['order_info']	 		  =  $this->photo_managementModel->get_order_info($order_id);
-
 		$data['photos'] 			= $this->photo_managementModel->get_photo_albums($data['album_details'][0]->album_id);
+			
 		
 		$this->load->view('photographer/photographer_required_pages/header');
 
@@ -189,6 +189,25 @@ class PhotographerController extends CI_Controller {
 	
 	}
 
+	public function zip_album($order_id)
+	{
+		$data['album_details'] 		= $this->photo_managementModel->get_album_details($order_id);
+		$data['photos'] 			= $this->photo_managementModel->get_photo_albums($data['album_details'][0]->album_id);
+
+		$this->load->library('zip');
+
+		foreach($data['photos'] AS $i => $photo){
+			// $file = explode('.', $photo->photos_img_url);
+			$this->zip->read_file("{$photo->photos_img_url}");
+		}
+
+		$this->zip->download('clickshot.zip');
+
+		
+
+		// die(json_encode($data['photos']));
+	}
+
 	public function upload_order_album()
 	{
 		$order_id =  $this->input->get('order_id');
@@ -197,6 +216,8 @@ class PhotographerController extends CI_Controller {
 		$data['order_info']	 		  =  $this->photo_managementModel->get_order_info($order_id);
 
 		$nav_data['page_name'] 			= "upload_order_order";
+
+		
 
 		$this->load->view('photographer/photographer_required_pages/header');
 
@@ -256,7 +277,7 @@ class PhotographerController extends CI_Controller {
 		    //Setup our new file path
 		   	// File Path should have folder name the same name in album name/title
 		   	 
-		    $newFilePath = "uploadFiles/" . uniqid();
+		    $newFilePath = "uploadFiles/" .$_FILES['photos_uploaded']['name'][$i];
  
 		    // File name should be uniq and random
 		    

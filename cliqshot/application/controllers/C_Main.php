@@ -63,7 +63,7 @@ class C_Main extends CI_Controller
 				else
 				{
 					//$data['error']='Wrong Password!';
-					$this->load->view('V_Login');
+					$this->load->view('login/V_Login');
 				}
 
 			}
@@ -88,7 +88,7 @@ class C_Main extends CI_Controller
 				else
 				{
 					//$data['error']='Wrong Password!';
-					redirect('C_Main/login');
+					$this->load->view('login/V_Login');
 				}
 
 			}
@@ -111,7 +111,7 @@ class C_Main extends CI_Controller
 				else
 				{
 					//$data['error']='Wrong Password!';
-					$this->load->view('V_Login');
+					$this->load->view('login/V_Login');
 				}
 
 			}

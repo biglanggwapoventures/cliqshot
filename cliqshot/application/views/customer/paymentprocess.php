@@ -95,7 +95,10 @@
         <h4 class="modal-title">Upload Deposit Slip Proof</h4>
       </div>
       <div class="modal-body">
-       <?php echo form_open_multipart("CustomerController/payment_slip/{$this->input->get('order_id')}"); ?>
+       <?php echo form_open_multipart("CustomerController/payment_slip/{$this->input->get('order_id')}", 'class="ajax"'); ?>
+            <div class="alert alert-danger hidden">
+              <ul class="list-unstyled"></ul>
+            </div>  
                 <div class="form-group">
 
                  <strong>Note:</strong> <br>
@@ -107,15 +110,21 @@
                    <strong>Select Bank Account Transaction:</strong> <br><br>
 
 
-                   <?php echo form_radio('bank_account', 'BDO'); ?> BDO Account - A0J-123-ASDSDSCXC-ASDA<br>
-                   <?php echo form_radio('bank_account', 'BPI'); ?> BPI Account - A0J-123-ASDSDSCXC-ASDA<br>
-                   <?php echo form_radio('bank_account', 'Metrobank'); ?> Metrobank Account - A0J-123-ASDSDSCXC-ASDA<br>
+                   <label><?php echo form_radio('bank_account', 'BDO'); ?> BDO Account - A0J-123-ASDSDSCXC-ASDA</label>
+                   <label><?php echo form_radio('bank_account', 'BPI'); ?> BPI Account - A0J-123-ASDSDSCXC-ASDA</label>
+                   <label><?php echo form_radio('bank_account', 'Metrobank'); ?> Metrobank Account - A0J-123-ASDSDSCXC-ASDA</label>
 
                   
                   <hr>
 
-                        <label>Deposit Slip Photo</label>
-                        <input type="file" name="proof" required="required">
+                        <label>Deposit Slip Photo # 1</label>
+                        <input type="file" name="proof1">
+
+                        <label>Deposit Slip Photo # 2 (optional)</label>
+                        <input type="file" name="proof2">
+
+                        <label>Deposit Slip Photo # 3  (optional)</label>
+                        <input type="file" name="proof3" >
                 </div>
 
                
@@ -131,17 +140,33 @@
 
 
   <?php echo form_close(); ?>
+  <script type="text/javascript">
+  $('.ajax').submit(function(e){
+    e.preventDefault();
+    var $this = $(this),
+      formData = new FormData($this[0]);
 
+    $this.find('.alert-danger').addClass('hidden');
+    $this.find('[type=submit]').attr('disabled', 'disabled');
 
-
-         
-
-
-
-
-
-
-
-                                
-
-                               
+    $.ajax({
+      url: $this.attr('action'),
+      contentType: false,
+      processData: false,
+      method: 'POST',
+      data: formData
+    }).done(function(res) {
+      if(res.result){
+        window.location.href = res.redirect;
+      }else{
+          $this.find('.alert-danger').removeClass('hidden')
+            .find('ul').html('<li>'+res.messages+'</li>')
+      }
+    }).fail(function(){
+      alert('An internal server error has occured.');
+    }).always(function(){
+       $this.find('[type=submit]').removeAttr('disabled');
+    })
+  })
+  
+  </script>

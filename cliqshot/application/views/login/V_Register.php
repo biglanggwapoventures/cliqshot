@@ -101,6 +101,7 @@
                                         <input type="password" name="passconf" placeholder="Re-Type your Password..." class="form-password form-control" id="form-password">
                                     </div>
                                     <button type="submit" class="btn">Sign in!</button>
+                                    
                                 </form>
                             </div>
                         </div>

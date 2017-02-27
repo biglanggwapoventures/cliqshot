@@ -157,10 +157,9 @@
                 
                 data-src="<?php echo base_url($photos_row->photos_img_url); ?>" 
 
-                data-sub-html="<h4><?php echo $album_details[0]->album_title; ?> </h4>
-                               <p>Classic view from Rigwood Jetty on Coniston Water an old archive shot similar to an old post but a little later on.</p>"
+                data-download-url="<?php echo base_url($photos_row->photos_img_url); ?>"
 
-                >
+                data-sub-html="<h4><?php echo $album_details[0]->album_title; ?> </h4>">
                     <a href="">
                         <img class="img-thumbnail" src="<?php echo base_url($photos_row->photos_img_url); ?>" alt="">
                     </a>

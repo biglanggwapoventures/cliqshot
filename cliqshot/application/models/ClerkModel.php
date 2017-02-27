@@ -1,4 +1,6 @@
-<?php class ClerkModel extends CI_Model {
+<?php 
+class ClerkModel extends CI_Model 
+{
 
  
         public function __construct()
@@ -53,14 +55,15 @@
                 $this->db->from("orders");
                
                 $this->db->where("order_id", $order_id);
-                $this->db->join('package', 'package.package_id = orders.package_id');
-                $this->db->join('customer', 'customer.client_id = orders.user_id');
+                $this->db->join('package', 'package.package_id = orders.package_id', 'left');
+                $this->db->join('customer', 'customer.client_id = orders.user_id', 'left');
                 $query = $this->db->get();
 
                 $result =  $query->row_array();
                
+                // die(json_encode($result));
                  
-                return $result;
+                return $result ?: [];
        }
 
       public function get_order_info_for_email($order_id)
